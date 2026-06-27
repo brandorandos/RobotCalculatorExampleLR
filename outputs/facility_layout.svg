@@ -1,0 +1,183 @@
+<svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg"
+     font-family="'Segoe UI',Arial,sans-serif">
+<rect width="1000" height="640" fill="#f5f6f8"/>
+<text x="500" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">WAREHOUSE FACILITY OVERVIEW — 200,000 sq ft | 28–32 ft clear height</text>
+<text x="500" y="38" text-anchor="middle" font-size="9.5" fill="#777">Aisles run top-to-bottom within each zone. Zone A (fastest) is closest to Pack/Ship.</text>
+<rect x="10" y="48" width="980" height="482" fill="white" stroke="#aaa" stroke-width="2" rx="2"/>
+<rect x="10" y="48" width="118" height="482" fill="#dce8f7" stroke="#8aaad4" stroke-width="1"/>
+<rect x="10" y="48" width="14" height="482" fill="#2c3e50" rx="2 0 0 2"/>
+<rect x="22" y="240" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="22" y="282" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="22" y="324" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="22" y="366" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="22" y="408" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="22" y="450" width="7" height="28" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<text x="16" y="232" text-anchor="middle" font-size="7.5" fill="#8aaad4" transform="rotate(-90,16,232)">INBOUND DOCK</text>
+<rect x="31" y="54" width="94" height="168" fill="#e8e8e8" stroke="#b0b0b0" stroke-width="1" rx="2"/>
+<text x="78" y="72" text-anchor="middle" font-size="9.5" font-weight="700" fill="#555">OFFICE /</text>
+<text x="78" y="85" text-anchor="middle" font-size="9.5" font-weight="700" fill="#555">BREAK ROOM</text>
+<rect x="38" y="100" width="22" height="14" fill="#ccc" rx="2"/>
+<rect x="67" y="100" width="22" height="14" fill="#ccc" rx="2"/>
+<rect x="38" y="124" width="22" height="14" fill="#ccc" rx="2"/>
+<rect x="67" y="124" width="22" height="14" fill="#ccc" rx="2"/>
+<text x="78" y="246" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2563a8">RECEIVING /</text>
+<text x="78" y="259" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2563a8">INBOUND STAGING</text>
+<line x1="31" y1="268" x2="123" y2="268" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="286" x2="123" y2="286" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="304" x2="123" y2="304" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="322" x2="123" y2="322" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="340" x2="123" y2="340" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="358" x2="123" y2="358" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="376" x2="123" y2="376" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="394" x2="123" y2="394" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="412" x2="123" y2="412" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="430" x2="123" y2="430" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="448" x2="123" y2="448" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="466" x2="123" y2="466" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="484" x2="123" y2="484" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<line x1="31" y1="502" x2="123" y2="502" stroke="#8aaad4" stroke-width="0.7" stroke-dasharray="5,3"/>
+<rect x="128" y="48" width="138" height="482" fill="#e3f0fb" stroke="#c8c8c8" stroke-width="0.8"/>
+<rect x="128" y="48" width="138" height="28" fill="#2980b9"/>
+<text x="197" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="white">ZONE E</text>
+<rect x="128" y="76" width="138" height="18" fill="#e8e8e0"/>
+<text x="197" y="89" text-anchor="middle" font-size="7" fill="#888">cross aisle</text>
+<rect x="128" y="482" width="138" height="18" fill="#e8e8e0"/>
+<rect x="194" y="94" width="2" height="388" fill="#b0b0b0"/>
+<rect x="132" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="163" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="196" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="227" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="258" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="139" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="170" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="203" y="94" width="24" height="388" fill="#faf0e6"/>
+<rect x="234" y="94" width="24" height="388" fill="#faf0e6"/>
+<text x="166" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#1e4a8a">H&amp;B</text>
+<text x="166" y="521" text-anchor="middle" font-size="7.5" fill="#3366aa">aisles 1-2</text>
+<text x="230" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c00">APP</text>
+<text x="230" y="521" text-anchor="middle" font-size="7.5" fill="#9a5010">aisles 3-4</text>
+<rect x="266" y="48" width="138" height="482" fill="#eafbee" stroke="#c8c8c8" stroke-width="0.8"/>
+<rect x="266" y="48" width="138" height="28" fill="#27ae60"/>
+<text x="335" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="white">ZONE D</text>
+<rect x="266" y="76" width="138" height="18" fill="#e8e8e0"/>
+<text x="335" y="89" text-anchor="middle" font-size="7" fill="#888">cross aisle</text>
+<rect x="266" y="482" width="138" height="18" fill="#e8e8e0"/>
+<rect x="332" y="94" width="2" height="388" fill="#b0b0b0"/>
+<rect x="270" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="301" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="334" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="365" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="396" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="277" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="308" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="341" y="94" width="24" height="388" fill="#faf0e6"/>
+<rect x="372" y="94" width="24" height="388" fill="#faf0e6"/>
+<text x="304" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#1e4a8a">H&amp;B</text>
+<text x="304" y="521" text-anchor="middle" font-size="7.5" fill="#3366aa">aisles 1-2</text>
+<text x="368" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c00">APP</text>
+<text x="368" y="521" text-anchor="middle" font-size="7.5" fill="#9a5010">aisles 3-4</text>
+<rect x="404" y="48" width="138" height="482" fill="#fefce4" stroke="#c8c8c8" stroke-width="0.8"/>
+<rect x="404" y="48" width="138" height="28" fill="#c9a800"/>
+<text x="473" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="white">ZONE C</text>
+<rect x="404" y="76" width="138" height="18" fill="#e8e8e0"/>
+<text x="473" y="89" text-anchor="middle" font-size="7" fill="#888">cross aisle</text>
+<rect x="404" y="482" width="138" height="18" fill="#e8e8e0"/>
+<rect x="470" y="94" width="2" height="388" fill="#b0b0b0"/>
+<rect x="408" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="439" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="472" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="503" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="534" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="415" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="446" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="479" y="94" width="24" height="388" fill="#faf0e6"/>
+<rect x="510" y="94" width="24" height="388" fill="#faf0e6"/>
+<text x="442" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#1e4a8a">H&amp;B</text>
+<text x="442" y="521" text-anchor="middle" font-size="7.5" fill="#3366aa">aisles 1-2</text>
+<text x="506" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c00">APP</text>
+<text x="506" y="521" text-anchor="middle" font-size="7.5" fill="#9a5010">aisles 3-4</text>
+<rect x="542" y="48" width="138" height="482" fill="#fef3e2" stroke="#c8c8c8" stroke-width="0.8"/>
+<rect x="542" y="48" width="138" height="28" fill="#e67e22"/>
+<text x="611" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="white">ZONE B</text>
+<rect x="542" y="76" width="138" height="18" fill="#e8e8e0"/>
+<text x="611" y="89" text-anchor="middle" font-size="7" fill="#888">cross aisle</text>
+<rect x="542" y="482" width="138" height="18" fill="#e8e8e0"/>
+<rect x="608" y="94" width="2" height="388" fill="#b0b0b0"/>
+<rect x="546" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="577" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="610" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="641" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="672" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="553" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="584" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="617" y="94" width="24" height="388" fill="#faf0e6"/>
+<rect x="648" y="94" width="24" height="388" fill="#faf0e6"/>
+<text x="580" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#1e4a8a">H&amp;B</text>
+<text x="580" y="521" text-anchor="middle" font-size="7.5" fill="#3366aa">aisles 1-2</text>
+<text x="644" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c00">APP</text>
+<text x="644" y="521" text-anchor="middle" font-size="7.5" fill="#9a5010">aisles 3-4</text>
+<rect x="680" y="48" width="138" height="482" fill="#fde8e6" stroke="#c8c8c8" stroke-width="0.8"/>
+<rect x="680" y="48" width="138" height="28" fill="#e74c3c"/>
+<text x="749" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="white">ZONE A</text>
+<rect x="680" y="76" width="138" height="18" fill="#e8e8e0"/>
+<text x="749" y="89" text-anchor="middle" font-size="7" fill="#888">cross aisle</text>
+<rect x="680" y="482" width="138" height="18" fill="#e8e8e0"/>
+<rect x="746" y="94" width="2" height="388" fill="#b0b0b0"/>
+<rect x="684" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="715" y="94" width="7" height="388" fill="#bacfe8"/>
+<rect x="748" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="779" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="810" y="94" width="7" height="388" fill="#cdb08a"/>
+<rect x="691" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="722" y="94" width="24" height="388" fill="#eef4fc"/>
+<rect x="755" y="94" width="24" height="388" fill="#faf0e6"/>
+<rect x="786" y="94" width="24" height="388" fill="#faf0e6"/>
+<text x="718" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#1e4a8a">H&amp;B</text>
+<text x="718" y="521" text-anchor="middle" font-size="7.5" fill="#3366aa">aisles 1-2</text>
+<text x="782" y="510" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c00">APP</text>
+<text x="782" y="521" text-anchor="middle" font-size="7.5" fill="#9a5010">aisles 3-4</text>
+<rect x="128" y="288" width="690" height="22" fill="#d8d8ce" stroke="#b0b0a0" stroke-width="0.8"/>
+<text x="473" y="303" text-anchor="middle" font-size="8" fill="#666" font-style="italic">central travel aisle</text>
+<rect x="818" y="48" width="172" height="482" fill="#d5edd8" stroke="#7ebc88" stroke-width="1"/>
+<rect x="976" y="48" width="14" height="482" fill="#2c3e50" rx="0 2 2 0"/>
+<text x="897" y="70" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1a6b2a">PACK &amp; SHIP</text>
+<rect x="828" y="78" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<rect x="828" y="106" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<rect x="874" y="78" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<rect x="874" y="106" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<rect x="920" y="78" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<rect x="920" y="106" width="36" height="20" fill="#a8d4b0" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<text x="897" y="144" text-anchor="middle" font-size="8" fill="#2d8a3c" font-style="italic">6 pack stations</text>
+<rect x="826" y="156" width="144" height="364" fill="#88c490" stroke="#5a9e68" stroke-width="0.8" rx="2"/>
+<text x="897" y="344" text-anchor="middle" font-size="9.5" fill="#1a6b2a" font-weight="700">Carrier</text>
+<text x="897" y="358" text-anchor="middle" font-size="9.5" fill="#1a6b2a" font-weight="700">Staging</text>
+<rect x="969" y="170" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="969" y="227" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="969" y="284" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="969" y="341" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="969" y="398" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<rect x="969" y="455" width="7" height="51" fill="#4fc3f7" stroke="#1a6090" stroke-width="0.8" rx="1"/>
+<text x="983" y="343" text-anchor="middle" font-size="7.5" fill="#8aaad4" transform="rotate(90,983,343)">OUTBOUND DOCK</text>
+<defs><marker id="ah2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#555"/></marker></defs>
+<line x1="132" y1="289" x2="814" y2="289" stroke="#555" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ah2)"/>
+<text x="473" y="284" text-anchor="middle" font-size="8" fill="#666">pick flow →</text>
+<line x1="128" y1="552" x2="818" y2="552" stroke="#aaa" stroke-width="1"/>
+<line x1="197" y1="549" x2="197" y2="555" stroke="#aaa" stroke-width="1.5"/>
+<text x="197" y="566" text-anchor="middle" font-size="8.5" fill="#555">~525 ft</text>
+<line x1="335" y1="549" x2="335" y2="555" stroke="#aaa" stroke-width="1.5"/>
+<text x="335" y="566" text-anchor="middle" font-size="8.5" fill="#555">~400 ft</text>
+<line x1="473" y1="549" x2="473" y2="555" stroke="#aaa" stroke-width="1.5"/>
+<text x="473" y="566" text-anchor="middle" font-size="8.5" fill="#555">~275 ft</text>
+<line x1="611" y1="549" x2="611" y2="555" stroke="#aaa" stroke-width="1.5"/>
+<text x="611" y="566" text-anchor="middle" font-size="8.5" fill="#555">~150 ft</text>
+<line x1="749" y1="549" x2="749" y2="555" stroke="#aaa" stroke-width="1.5"/>
+<text x="749" y="566" text-anchor="middle" font-size="8.5" fill="#555">~50 ft</text>
+<text x="473" y="579" text-anchor="middle" font-size="8" fill="#999" font-style="italic">avg distance from Pack/Ship dock ↑</text>
+<rect x="10"    y="588" width="13" height="12" fill="#bacfe8" stroke="#7a9ec8" stroke-width="0.8"/>
+<text x="26" y="598"  font-size="8.5" fill="#333">H&amp;B rack (36" wide bay, 5 levels)</text>
+<rect x="205" y="588" width="13" height="12" fill="#cdb08a" stroke="#9a7850" stroke-width="0.8"/>
+<text x="221" y="598"  font-size="8.5" fill="#333">Apparel rack (48" wide bay, 4 levels)</text>
+<rect x="416" y="588" width="13" height="12" fill="#d8d8ce" stroke="#aaa" stroke-width="0.8"/>
+<text x="432" y="598"  font-size="8.5" fill="#333">Cross-aisle / travel lane</text>
+<text x="990" y="600" text-anchor="end" font-size="8" fill="#bbb" font-style="italic">schematic — not to scale</text>
+</svg>

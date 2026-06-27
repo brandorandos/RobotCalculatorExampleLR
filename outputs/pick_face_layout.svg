@@ -1,0 +1,100 @@
+<svg viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg"
+     font-family="'Segoe UI',Arial,sans-serif">
+<rect width="720" height="510" fill="#f5f6f8"/>
+<text x="360" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">PICK FACE ELEVATION — 2-Bay Front View (per zone)</text>
+<text x="360" y="38" text-anchor="middle" font-size="9.5" fill="#777">Front elevation showing shelf levels and ergonomic zones. Both bay types share the same floor datum.</text>
+<rect x="60" y="46" width="224" height="30" fill="#2563a8" rx="3"/>
+<text x="172" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="white">Health &amp; Beauty — 2 Bays</text>
+<text x="172" y="74" text-anchor="middle" font-size="8.5" fill="#2563a8" font-style="italic">36" wide × 18" deep  |  5 levels  |  2 bins/level</text>
+<rect x="60" y="352" width="224" height="68" fill="#ffd5d5" opacity="0.55"/>
+<rect x="60" y="284" width="224" height="68" fill="#c8f0c8" opacity="0.55"/>
+<rect x="60" y="216" width="224" height="68" fill="#c8f0c8" opacity="0.55"/>
+<rect x="60" y="148" width="224" height="68" fill="#ffefc0" opacity="0.55"/>
+<rect x="60" y="80" width="224" height="68" fill="#e0d0ff" opacity="0.55"/>
+<rect x="60" y="416" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="60" y="348" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="60" y="280" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="60" y="212" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="60" y="144" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="60" y="76" width="224" height="4" fill="#bacfe8" stroke="#4a7bbf" stroke-width="0.6"/>
+<rect x="58" y="80" width="4" height="340" fill="#8a8a98"/>
+<rect x="114" y="80" width="4" height="340" fill="#8a8a98"/>
+<rect x="170" y="80" width="4" height="340" fill="#8a8a98"/>
+<rect x="226" y="80" width="4" height="340" fill="#8a8a98"/>
+<rect x="282" y="80" width="4" height="340" fill="#8a8a98"/>
+<line x1="172" y1="80" x2="172" y2="420" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="172" y="72" text-anchor="middle" font-size="7" fill="#999">bay divide</text>
+<line x1="48" y1="420" x2="300" y2="420" stroke="#444" stroke-width="3"/>
+<text x="292" y="390" font-size="8.5" fill="#555">L1</text>
+<text x="292" y="322" font-size="8.5" fill="#555">L2</text>
+<text x="292" y="254" font-size="8.5" fill="#555">L3</text>
+<text x="292" y="186" font-size="8.5" fill="#555">L4</text>
+<text x="292" y="118" font-size="8.5" fill="#555">L5</text>
+<text x="52" y="424" text-anchor="end" font-size="8" fill="#888">0"</text>
+<line x1="56" y1="420" x2="60" y2="420" stroke="#bbb" stroke-width="0.8"/>
+<text x="52" y="356" text-anchor="end" font-size="8" fill="#888">18"</text>
+<line x1="56" y1="352" x2="60" y2="352" stroke="#bbb" stroke-width="0.8"/>
+<text x="52" y="288" text-anchor="end" font-size="8" fill="#888">36"</text>
+<line x1="56" y1="284" x2="60" y2="284" stroke="#bbb" stroke-width="0.8"/>
+<text x="52" y="220" text-anchor="end" font-size="8" fill="#888">54"</text>
+<line x1="56" y1="216" x2="60" y2="216" stroke="#bbb" stroke-width="0.8"/>
+<text x="52" y="152" text-anchor="end" font-size="8" fill="#888">72"</text>
+<line x1="56" y1="148" x2="60" y2="148" stroke="#bbb" stroke-width="0.8"/>
+<text x="52" y="84" text-anchor="end" font-size="8" fill="#888">90"</text>
+<line x1="56" y1="80" x2="60" y2="80" stroke="#bbb" stroke-width="0.8"/>
+<rect x="374" y="114" width="224" height="30" fill="#7a3c10" rx="3"/>
+<text x="486" y="131" text-anchor="middle" font-size="11" font-weight="700" fill="white">Apparel &amp; Footwear — 2 Bays</text>
+<text x="486" y="142" text-anchor="middle" font-size="8.5" fill="#7a3c10" font-style="italic">48" wide × 24" deep  |  4 levels  |  2 bins/level</text>
+<rect x="374" y="352" width="224" height="68" fill="#ffd5d5" opacity="0.55"/>
+<rect x="374" y="284" width="224" height="68" fill="#c8f0c8" opacity="0.55"/>
+<rect x="374" y="216" width="224" height="68" fill="#c8f0c8" opacity="0.55"/>
+<rect x="374" y="148" width="224" height="68" fill="#ffefc0" opacity="0.55"/>
+<rect x="374" y="416" width="224" height="4" fill="#d4b896" stroke="#9a6840" stroke-width="0.6"/>
+<rect x="374" y="348" width="224" height="4" fill="#d4b896" stroke="#9a6840" stroke-width="0.6"/>
+<rect x="374" y="280" width="224" height="4" fill="#d4b896" stroke="#9a6840" stroke-width="0.6"/>
+<rect x="374" y="212" width="224" height="4" fill="#d4b896" stroke="#9a6840" stroke-width="0.6"/>
+<rect x="374" y="144" width="224" height="4" fill="#d4b896" stroke="#9a6840" stroke-width="0.6"/>
+<rect x="372" y="148" width="4" height="272" fill="#8a8a98"/>
+<rect x="428" y="148" width="4" height="272" fill="#8a8a98"/>
+<rect x="484" y="148" width="4" height="272" fill="#8a8a98"/>
+<rect x="540" y="148" width="4" height="272" fill="#8a8a98"/>
+<rect x="596" y="148" width="4" height="272" fill="#8a8a98"/>
+<line x1="486" y1="148" x2="486" y2="420" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="486" y="140" text-anchor="middle" font-size="7" fill="#999">bay divide</text>
+<line x1="362" y1="420" x2="614" y2="420" stroke="#444" stroke-width="3"/>
+<text x="606" y="390" font-size="8.5" fill="#555">L1</text>
+<text x="606" y="322" font-size="8.5" fill="#555">L2</text>
+<text x="606" y="254" font-size="8.5" fill="#555">L3</text>
+<text x="606" y="186" font-size="8.5" fill="#555">L4</text>
+<text x="366" y="424" text-anchor="end" font-size="8" fill="#888">0"</text>
+<line x1="370" y1="420" x2="374" y2="420" stroke="#bbb" stroke-width="0.8"/>
+<text x="366" y="356" text-anchor="end" font-size="8" fill="#888">18"</text>
+<line x1="370" y1="352" x2="374" y2="352" stroke="#bbb" stroke-width="0.8"/>
+<text x="366" y="288" text-anchor="end" font-size="8" fill="#888">36"</text>
+<line x1="370" y1="284" x2="374" y2="284" stroke="#bbb" stroke-width="0.8"/>
+<text x="366" y="220" text-anchor="end" font-size="8" fill="#888">54"</text>
+<line x1="370" y1="216" x2="374" y2="216" stroke="#bbb" stroke-width="0.8"/>
+<text x="366" y="152" text-anchor="end" font-size="8" fill="#888">72"</text>
+<line x1="370" y1="148" x2="374" y2="148" stroke="#bbb" stroke-width="0.8"/>
+<line x1="290" y1="420" x2="368" y2="420" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="329" y="415" text-anchor="middle" font-size="8.5" font-weight="700" fill="#e74c3c">shared floor datum</text>
+<text x="70" y="434" font-size="8.5" fill="#444" font-weight="700">▲ FLOOR</text>
+<text x="384" y="434" font-size="8.5" fill="#444" font-weight="700">▲ FLOOR</text>
+<text x="10" y="470" font-size="10" font-weight="700" fill="#333">Ergonomic Tier</text>
+<rect x="10" y="474" width="16" height="12" fill="#ffd5d5" stroke="#e74c3c" stroke-width="1" rx="2" opacity="0.8"/>
+<text x="30" y="484" font-size="9" fill="#333">L1  Floor  0–18"</text>
+<text x="175" y="484" font-size="8.5" fill="#888" font-style="italic">sub-optimal</text>
+<rect x="10" y="490" width="16" height="12" fill="#c8f0c8" stroke="#27ae60" stroke-width="1" rx="2" opacity="0.8"/>
+<text x="30" y="500" font-size="9" fill="#333">L2  Prime  18–36"</text>
+<text x="175" y="500" font-size="8.5" fill="#888" font-style="italic">best zone</text>
+<rect x="10" y="506" width="16" height="12" fill="#c8f0c8" stroke="#27ae60" stroke-width="1" rx="2" opacity="0.8"/>
+<text x="30" y="516" font-size="9" fill="#333">L3  Prime  36–54"</text>
+<text x="175" y="516" font-size="8.5" fill="#888" font-style="italic">best zone</text>
+<rect x="10" y="522" width="16" height="12" fill="#ffefc0" stroke="#e67e22" stroke-width="1" rx="2" opacity="0.8"/>
+<text x="30" y="532" font-size="9" fill="#333">L4  Sub-prime  54–72"</text>
+<text x="175" y="532" font-size="8.5" fill="#888" font-style="italic">acceptable</text>
+<rect x="10" y="538" width="16" height="12" fill="#e0d0ff" stroke="#8b5cf6" stroke-width="1" rx="2" opacity="0.8"/>
+<text x="30" y="548" font-size="9" fill="#333">L5  Overhead  72–90"</text>
+<text x="175" y="548" font-size="8.5" fill="#888" font-style="italic">H&amp;B only — light items</text>
+<text x="710" y="502" text-anchor="end" font-size="8" fill="#bbb" font-style="italic">schematic — not to scale</text>
+</svg>
