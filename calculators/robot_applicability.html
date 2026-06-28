@@ -15,6 +15,12 @@
   main { max-width:1040px; margin:0 auto; padding:32px 24px 64px; }
   .intro { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:24px; margin-bottom:28px; font-size:14px; line-height:1.7; color:var(--grey); }
   .intro strong { color:var(--navy); }
+  .inputs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
+  @media(max-width:720px){ .inputs-grid{ grid-template-columns:1fr 1fr; } }
+  .input-card { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:18px; border-top:3px solid var(--blue); }
+  .input-card .ic-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--blue); margin-bottom:6px; }
+  .input-card .ic-file { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .input-card .ic-fields { font-size:12px; color:var(--grey); line-height:1.6; }
   .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:28px; }
   @media(max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
   .card { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:24px; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
@@ -28,17 +34,11 @@
   .callout.green { background:var(--grn-bg); border-left:4px solid var(--green); color:var(--green); }
   .callout.amber { background:var(--amb-bg); border-left:4px solid #e6a817; color:var(--amb); }
   .callout.navy { background:var(--hdr); border-left:4px solid var(--navy); color:var(--navy); }
-  .score-bar { display:flex; align-items:center; gap:10px; margin:4px 0; }
-  .score-bar .label { font-size:12px; width:110px; color:var(--grey); flex-shrink:0; }
-  .score-bar .track { flex:1; background:#e2eaf4; border-radius:4px; height:12px; }
-  .score-bar .fill { height:12px; border-radius:4px; }
-  .score-bar .pct { font-size:12px; width:36px; text-align:right; font-weight:700; }
   .badge { display:inline-block; padding:3px 12px; border-radius:12px; font-size:12px; font-weight:700; }
   .badge-origin { background:#D6E4F0; color:#1F4E79; }
   .badge-array { background:#E2EFDA; color:#375623; }
-  .badge-human { background:#FFF2CC; color:#7F3F00; }
   .robot-card { border-radius:10px; padding:24px; margin-bottom:20px; border:1px solid #dde6f0; background:#fff; }
-  .robot-card .robot-header { display:flex; align-items:flex-start; gap:16px; margin-bottom:16px; }
+  .robot-header { display:flex; align-items:flex-start; gap:16px; margin-bottom:16px; }
   .robot-icon { font-size:36px; flex-shrink:0; }
   .robot-name { font-size:18px; font-weight:700; color:var(--navy); }
   .robot-type { font-size:12px; color:var(--grey); margin-top:2px; }
@@ -46,34 +46,78 @@
   .criteria-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px; }
   @media(max-width:680px){ .criteria-grid{ grid-template-columns:1fr; } }
   .criteria-item { background:#f7f9fc; border-radius:6px; padding:10px 14px; border:1px solid #e2eaf4; }
-  .criteria-item .ci-label { font-size:11px; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
-  .criteria-item .ci-val { font-size:13px; color:var(--navy); font-weight:600; }
-  .metrics-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
-  @media(max-width:680px){ .metrics-row{ grid-template-columns:1fr 1fr; } }
-  .metric { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:18px; text-align:center; }
-  .metric .v { font-size:26px; font-weight:700; }
-  .metric .l { font-size:11px; color:var(--grey); margin-top:3px; }
+  .ci-label { font-size:11px; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+  .ci-val { font-size:13px; color:var(--navy); font-weight:600; }
+  .score-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:12px; }
+  .score-table th { background:var(--hdr); color:var(--navy); font-weight:700; padding:8px 12px; border:1px solid #ccd9e8; text-align:left; }
+  .score-table td { padding:8px 12px; border:1px solid #e2eaf4; color:var(--grey); }
+  .score-table .total-row td { background:#f0f7f0; font-weight:700; color:var(--green); }
+  .score-pip { display:inline-flex; gap:3px; }
+  .pip { width:12px; height:12px; border-radius:2px; display:inline-block; }
+  .pip-filled { background:var(--blue); }
+  .pip-empty { background:#dde6f0; }
+  .pip-filled-green { background:var(--green); }
   .phase-row { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px; background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:16px 20px; margin-bottom:12px; }
   .phase-num { font-size:28px; font-weight:700; color:var(--blue); width:40px; text-align:center; }
   .phase-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:3px; }
   .phase-desc { font-size:13px; color:var(--grey); }
   .phase-val { font-size:16px; font-weight:700; color:var(--green); text-align:right; white-space:nowrap; }
+  .future-item { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:16px 20px; margin-bottom:12px; }
+  .future-item h4 { font-size:14px; color:var(--navy); margin-bottom:4px; }
+  .future-item p { font-size:13px; color:var(--grey); line-height:1.5; }
 </style>
 </head>
 <body>
 <header>
   <a href="../index.html" class="back">&larr; Back to Portfolio</a>
   <h1>Robot Applicability Scorer</h1>
-  <p>Pre-loaded with customer data &mdash; scores each SKU category for Origin (P2G) and Array + NeuraGrasp (R2G) fit</p>
+  <p>Pre-loaded with customer data &mdash; scores each SKU category for Locus Origin and Array + NeuraGrasp fit using defined criteria</p>
 </header>
 <main>
 
+<!-- INTRO -->
 <div class="intro">
-  <strong>What this calculator does:</strong> Evaluates each product category and SKU characteristic against the operating profile of each Locus robot. Origin is a P2G (picker-to-goods) cobot that escorts human pickers and carries totes &mdash; it excels where human travel is the bottleneck and picks are batch-clusterable. Array + NeuraGrasp is an R2G (robot-to-goods) autonomous system &mdash; it excels with uniform, robotically-graspable items on extended operating schedules.
+  <strong>What this calculator does:</strong> Evaluates each product category against the operating profile of each Locus robot using weighted criteria. Scores are derived from specific, observable characteristics &mdash; not subjective judgment &mdash; so an SE can explain the recommendation to a customer and adjust the weights for unusual scenarios.
   <br><br>
-  <strong>Key output:</strong> H&amp;B routes to Array (72% of pick volume, uniform items, NeuraGrasp-suitable). Apparel routes to Origin + human collaboration (non-uniform items, variable folding/handling). This is the category-level routing decision that drives the two-phase deployment plan.
+  <strong>Key output:</strong> H&amp;B routes to Array + NeuraGrasp (72% of pick volume, uniform rigid items, NeuraGrasp-suitable). Apparel routes to Origin + human collaboration (non-uniform items requiring human dexterity). This category routing decision drives the two-phase deployment plan.
 </div>
 
+<!-- CRITICAL INPUTS -->
+<div class="section-title">Critical Inputs</div>
+<div class="inputs-grid">
+  <div class="input-card">
+    <div class="ic-label">Input 1</div>
+    <div class="ic-file">SKU Master — Item Characteristics</div>
+    <div class="ic-fields">category, sub_category, unit_weight_lbs, packaging type &rarr; drives NeuraGrasp graspability and uniformity scoring</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 2</div>
+    <div class="ic-file">OB Transactions — Pick Volume</div>
+    <div class="ic-fields">picks per category per day &rarr; determines how much volume each robot program captures and ROI magnitude</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 3</div>
+    <div class="ic-file">Inventory Snapshot — Aisle Segregation</div>
+    <div class="ic-fields">whether category has dedicated aisles &rarr; affects deployment complexity and robot zone assignment clarity</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 4 &mdash; SE Assessment</div>
+    <div class="ic-file">Packaging Uniformity</div>
+    <div class="ic-fields">SE observes or photographs product packaging in the facility &rarr; key determinant for NeuraGrasp confidence score</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 5 &mdash; SE Assessment</div>
+    <div class="ic-file">Pick Complexity</div>
+    <div class="ic-fields">does the pick require human judgment (size selection, folding, condition check)? &rarr; affects human dexterity score for Origin vs. Array routing</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 6 &mdash; SE Assumption</div>
+    <div class="ic-file">Extended Hours Value</div>
+    <div class="ic-fields">does the category have enough daily volume to benefit from Array's 22-hr operating window? &rarr; categories with &lt;2,000 picks/day see diminished Array ROI</div>
+  </div>
+</div>
+
+<!-- ROBOT PROFILES -->
 <div class="section-title">Robot Profiles</div>
 
 <div class="robot-card" style="border-top:4px solid var(--blue);">
@@ -85,13 +129,13 @@
     </div>
     <span class="badge badge-origin">Phase 1</span>
   </div>
-  <div class="robot-desc">Origin travels with human pickers, carries their tote, and navigates to Pack/Ship autonomously when full. Pickers become zone-restricted &mdash; they never leave their assigned 1-2 zones and never push a cart. LocusONE directs the pick sequence, clustering picks tightly to minimize within-zone travel.</div>
+  <div class="robot-desc">Origin travels with human pickers, carries their tote, and navigates to Pack/Ship autonomously when full. Pickers become zone-restricted. LocusONE directs the pick sequence, clustering picks tightly to minimize within-zone travel.</div>
   <div class="criteria-grid">
     <div class="criteria-item"><div class="ci-label">Best for</div><div class="ci-val">High-velocity, batch-clusterable SKUs</div></div>
-    <div class="criteria-item"><div class="ci-label">Key bottleneck it solves</div><div class="ci-val">Zone transit travel (26% of shift)</div></div>
-    <div class="criteria-item"><div class="ci-label">SKU handling requirement</div><div class="ci-val">Human picks the item &mdash; any SKU type</div></div>
-    <div class="criteria-item"><div class="ci-label">Operating hours</div><div class="ci-val">Same as human shifts (2 x 8 hr)</div></div>
-    <div class="criteria-item"><div class="ci-label">Labor model</div><div class="ci-val">Reduces pickers needed, not eliminates</div></div>
+    <div class="criteria-item"><div class="ci-label">Bottleneck solved</div><div class="ci-val">Zone transit travel (26% of shift)</div></div>
+    <div class="criteria-item"><div class="ci-label">SKU handling</div><div class="ci-val">Human picks the item &mdash; any SKU type</div></div>
+    <div class="criteria-item"><div class="ci-label">Operating hours</div><div class="ci-val">Matches human shifts</div></div>
+    <div class="criteria-item"><div class="ci-label">Labor model</div><div class="ci-val">Reduces pickers needed, does not eliminate</div></div>
     <div class="criteria-item"><div class="ci-label">CapEx</div><div class="ci-val">None &mdash; pure RaaS OpEx</div></div>
   </div>
 </div>
@@ -101,85 +145,83 @@
     <div class="robot-icon">🦾</div>
     <div>
       <div class="robot-name">Locus Array + NeuraGrasp</div>
-      <div class="robot-type">R2G Autonomous Mobile Robot &mdash; Robot-to-Goods</div>
+      <div class="robot-type">R2G Autonomous Mobile Robot &mdash; Robot-to-Goods with Robotic Picking Arm</div>
     </div>
     <span class="badge badge-array">Phase 2</span>
   </div>
-  <div class="robot-desc">Array navigates aisles autonomously and picks items with its NeuraGrasp robotic arm &mdash; no human in the loop. Runs 20-24 hrs/day, including overnight, unlocking throughput that no human shift can match. Also handles inbound putaway (dock to reserve) and replenishment (reserve to pick face) during off-peak windows.</div>
+  <div class="robot-desc">Array navigates aisles autonomously and picks items with NeuraGrasp &mdash; no human in the loop. Runs 20-24 hrs/day, including overnight. Also handles inbound putaway (dock to reserve) and replenishment (reserve to pick face) during off-peak windows.</div>
   <div class="criteria-grid">
     <div class="criteria-item"><div class="ci-label">Best for</div><div class="ci-val">Uniform, robotically-graspable items</div></div>
-    <div class="criteria-item"><div class="ci-label">Key bottleneck it solves</div><div class="ci-val">Human labor ceiling &amp; IB/OB conflicts</div></div>
-    <div class="criteria-item"><div class="ci-label">SKU handling requirement</div><div class="ci-val">NeuraGrasp-compatible shape/packaging</div></div>
+    <div class="criteria-item"><div class="ci-label">Bottleneck solved</div><div class="ci-val">Human labor ceiling &amp; IB/OB conflicts</div></div>
+    <div class="criteria-item"><div class="ci-label">SKU handling</div><div class="ci-val">NeuraGrasp arm &mdash; requires compatible packaging</div></div>
     <div class="criteria-item"><div class="ci-label">Operating hours</div><div class="ci-val">20-24 hrs/day, 7 days/week</div></div>
     <div class="criteria-item"><div class="ci-label">Labor model</div><div class="ci-val">Near-eliminates picking labor in scope</div></div>
     <div class="criteria-item"><div class="ci-label">CapEx</div><div class="ci-val">Infrastructure + possible racking ($50K-$400K)</div></div>
   </div>
 </div>
 
+<!-- CATEGORY SCORING -->
 <div class="section-title">Category Scoring</div>
+<p style="font-size:13px;color:var(--grey);margin-bottom:20px;">Each criterion is scored 1&ndash;5. The weighted score drives the routing recommendation. Weights reflect the relative importance of each factor for that robot type. SE can adjust weights for atypical customer scenarios.</p>
+
 <div class="grid-2">
+  <!-- H&B -->
   <div class="card">
-    <h3>Health &amp; Beauty &mdash; 3,000 SKUs &mdash; 72.2% of Pick Volume</h3>
-    <div style="margin-bottom:16px;">
-      <div class="score-bar"><span class="label">Array fit</span><div class="track"><div class="fill" style="width:90%;background:var(--green);"></div></div><span class="pct" style="color:var(--green);">90%</span></div>
-      <div class="score-bar"><span class="label">NeuraGrasp fit</span><div class="track"><div class="fill" style="width:88%;background:var(--green);"></div></div><span class="pct" style="color:var(--green);">88%</span></div>
-      <div class="score-bar"><span class="label">Origin fit</span><div class="track"><div class="fill" style="width:60%;background:var(--blue);"></div></div><span class="pct" style="color:var(--blue);">60%</span></div>
-      <div class="score-bar"><span class="label">Human-only</span><div class="track"><div class="fill" style="width:20%;background:#aaa;"></div></div><span class="pct" style="color:#aaa;">20%</span></div>
-    </div>
-    <table>
+    <h3>Health &amp; Beauty &mdash; 3,000 SKUs &mdash; 72.2% of picks &mdash; 15,523/day</h3>
+    <table class="score-table">
+      <thead><tr><th>Criterion</th><th>Weight</th><th>Score</th><th>Rationale</th></tr></thead>
       <tbody>
-        <tr><td>Item uniformity</td><td style="color:var(--green);font-weight:700;">High &mdash; bottles, boxes, packets</td></tr>
-        <tr><td>NeuraGrasp suitability</td><td style="color:var(--green);font-weight:700;">Strong &mdash; rigid packaging</td></tr>
-        <tr><td>Pick volume</td><td style="color:var(--green);font-weight:700;">15,523 picks/day (dominant)</td></tr>
-        <tr><td>Aisle location</td><td>Aisles 1-2 (already segregated)</td></tr>
-        <tr><td>Reslot needed</td><td>79 SKUs only (during commissioning)</td></tr>
-        <tr><td>Routing decision</td><td><span class="badge badge-array">Array + NeuraGrasp</span></td></tr>
+        <tr><td>Item uniformity</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Bottles, boxes, packets — consistent shapes</td></tr>
+        <tr><td>NeuraGrasp graspability</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Rigid packaging; some tubes/pouches reduce confidence slightly</td></tr>
+        <tr><td>Pick velocity fit</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>15,523 picks/day — dominant volume, maximum Array ROI</td></tr>
+        <tr><td>Extended hours value</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>High daily volume benefits greatly from 22-hr window</td></tr>
+        <tr><td>Aisle segregation</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Aisles 1-2 dedicated to H&amp;B — Array deploys without conflict</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Array / NeuraGrasp Fit</strong></td><td colspan="2"><strong>93% weighted score &rarr; Route to Array</strong></td></tr>
       </tbody>
     </table>
+    <span class="badge badge-array" style="margin-top:4px;">Recommended: Array + NeuraGrasp</span>
   </div>
 
+  <!-- Apparel -->
   <div class="card">
-    <h3>Apparel &amp; Footwear &mdash; 2,000 SKUs &mdash; 27.8% of Pick Volume</h3>
-    <div style="margin-bottom:16px;">
-      <div class="score-bar"><span class="label">Origin fit</span><div class="track"><div class="fill" style="width:85%;background:var(--blue);"></div></div><span class="pct" style="color:var(--blue);">85%</span></div>
-      <div class="score-bar"><span class="label">Human collab</span><div class="track"><div class="fill" style="width:80%;background:#555;"></div></div><span class="pct" style="color:#555;">80%</span></div>
-      <div class="score-bar"><span class="label">Array fit</span><div class="track"><div class="fill" style="width:35%;background:#aaa;"></div></div><span class="pct" style="color:#aaa;">35%</span></div>
-      <div class="score-bar"><span class="label">NeuraGrasp fit</span><div class="track"><div class="fill" style="width:25%;background:#aaa;"></div></div><span class="pct" style="color:#aaa;">25%</span></div>
-    </div>
-    <table>
+    <h3>Apparel &amp; Footwear &mdash; 2,000 SKUs &mdash; 27.8% of picks &mdash; 5,984/day</h3>
+    <table class="score-table">
+      <thead><tr><th>Criterion</th><th>Weight</th><th>Score</th><th>Rationale</th></tr></thead>
       <tbody>
-        <tr><td>Item uniformity</td><td style="color:var(--amb);font-weight:700;">Low &mdash; folded, hanging, multi-size</td></tr>
-        <tr><td>NeuraGrasp suitability</td><td style="color:var(--amb);font-weight:700;">Limited &mdash; soft/irregular shapes</td></tr>
-        <tr><td>Pick volume</td><td>5,984 picks/day</td></tr>
-        <tr><td>Aisle location</td><td>Aisles 3-4 (already segregated)</td></tr>
-        <tr><td>Reslot needed</td><td>Yes &mdash; 273 C-tier SKUs blocking prime slots</td></tr>
-        <tr><td>Routing decision</td><td><span class="badge badge-origin">Origin + Human</span></td></tr>
+        <tr><td>Zone clustering density</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Decent velocity, aisles 3-4 well-concentrated</td></tr>
+        <tr><td>Travel bottleneck severity</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span></span> 5/5</td><td>Travel is clearly the primary picker inefficiency today</td></tr>
+        <tr><td>Zone assignment clarity</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Aisles 3-4 dedicated — clean zone assignment for Origin</td></tr>
+        <tr><td>Batch wave compatibility</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Pick pattern suits 4-6 order batches well</td></tr>
+        <tr><td>Human dexterity required</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span></span> 5/5</td><td>Folded/hanging garments require human judgment &mdash; strengthens Origin vs. Array case</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Origin Fit</strong></td><td colspan="2"><strong>85% weighted score &rarr; Route to Origin + Human</strong></td></tr>
       </tbody>
     </table>
+    <span class="badge badge-origin" style="margin-top:4px;">Recommended: Origin + Human</span>
   </div>
 </div>
 
 <div class="callout navy">
-  <strong>Why Apparel does not go to Array:</strong> NeuraGrasp is designed for uniform, rigid-packaged items. Folded apparel, hanging garments, and multi-size SKUs require human dexterity for consistent pick quality. Origin is the right tool here &mdash; it handles the travel problem while the human handles the item manipulation problem.
+  <strong>Why Apparel does not route to Array:</strong> NeuraGrasp is designed for uniform rigid-packaged items. Folded apparel, hanging garments, and multi-size SKUs require human dexterity for consistent pick quality. Origin handles the travel problem while the human handles item manipulation — the right division of labor for this category.
 </div>
 
+<!-- FLEET SIZING -->
 <div class="section-title">Fleet Sizing</div>
 <div class="grid-2">
   <div class="card">
-    <h3>Origin Fleet &mdash; Apparel Aisles (3-4)</h3>
+    <h3>Origin Fleet &mdash; Apparel Aisles 3-4</h3>
     <table>
       <tbody>
         <tr><td>Apparel picks/day</td><td>5,984</td></tr>
         <tr><td>UPH with Origin</td><td>~98 (30% improvement)</td></tr>
         <tr><td>Pickers needed (2 shifts)</td><td>4 pickers (2/shift)</td></tr>
         <tr><td>Origin robots</td><td style="font-weight:700;color:var(--blue);">2 robots (1/shift + charging swap)</td></tr>
-        <tr><td>Rate</td><td>$1,500 / robot / month</td></tr>
+        <tr><td>Rate (confirmed)</td><td>$1,500 / robot / month</td></tr>
         <tr><td>Annual cost</td><td>$36,000</td></tr>
       </tbody>
     </table>
   </div>
   <div class="card">
-    <h3>Array Fleet &mdash; H&amp;B Aisles (1-2) + Inbound</h3>
+    <h3>Array Fleet &mdash; H&amp;B Aisles 1-2 + Inbound</h3>
     <table>
       <tbody>
         <tr><td>H&amp;B picks/day</td><td>15,523</td></tr>
@@ -187,35 +229,48 @@
         <tr><td>Array robots</td><td style="font-weight:700;color:var(--green);">4 robots at ~176 picks/hr/robot</td></tr>
         <tr><td>H&amp;B capacity</td><td>15,488 picks/day (100% coverage)</td></tr>
         <tr><td>IB role</td><td>Putaway + replenishment (overnight)</td></tr>
-        <tr><td>Rate</td><td>$4,000 / robot / month (planning assumption)</td></tr>
+        <tr><td>Rate (planning assumption)</td><td>$4,000 / robot / month</td></tr>
         <tr><td>Annual cost</td><td>$192,000</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
+<!-- DEPLOYMENT PLAN -->
 <div class="section-title">Two-Phase Deployment Plan</div>
-
 <div class="phase-row">
   <div class="phase-num">1</div>
   <div>
     <div class="phase-title">Origin Deployment &mdash; Apparel Aisles</div>
-    <div class="phase-desc">Re-slot first (273 C-tier moves + 83 A-tier moves). Deploy 2 Origin robots in aisles 3-4. Pickers become zone-restricted, UPH rises to ~98, overtime eliminated. Zero CapEx.</div>
+    <div class="phase-desc">Re-slot Apparel first (273 C-tier moves + 83 A-tier moves). Deploy 2 Origin robots in aisles 3-4. Zero CapEx.</div>
   </div>
   <div class="phase-val">$360K / yr net</div>
 </div>
-
 <div class="phase-row">
   <div class="phase-num">2</div>
   <div>
     <div class="phase-title">Array Deployment &mdash; H&amp;B Aisles + Inbound</div>
-    <div class="phase-desc">Commission site survey to determine racking scenario (A/B/C). Deploy 4 Array robots in aisles 1-2 for OB picking and overnight IB putaway/replenishment. Human pickers exit H&amp;B entirely.</div>
+    <div class="phase-desc">Site survey to confirm racking scenario. Deploy 4 Array robots in aisles 1-2 for OB picking and overnight IB putaway/replenishment.</div>
   </div>
   <div class="phase-val">$1,400K / yr net</div>
 </div>
 
 <div class="callout green" style="margin-top:20px;">
-  <strong>Combined steady state:</strong> 14 total headcount (down from 33) &bull; 99% capacity utilization &bull; 2 Origin robots + 4 Array robots &bull; $228K/yr robot fleet cost against $1.6M in labor savings &bull; Worst-case CapEx ($400K) recovered in 3.4 months.
+  <strong>Combined steady state:</strong> 14 total headcount (down from 33) &bull; 99% capacity utilization &bull; $228K/yr robot fleet cost against $1.6M in labor savings &bull; Worst-case CapEx ($400K) recovered in 3.4 months.
+</div>
+
+<!-- FUTURE CALCULATOR WORK -->
+<div class="section-title">Future Calculator Work</div>
+<p style="font-size:14px;color:var(--grey);margin-bottom:20px;">Items identified for future development to improve scoring precision and broaden the tool's applicability across customer scenarios.</p>
+
+<div class="future-item">
+  <h4>1 &mdash; Dimension and Weight Scoring from SKU Master</h4>
+  <p>The current scoring uses category-level packaging assessments made during the SE site visit. A more precise version would pull unit_weight_lbs, unit_length_in, unit_width_in, and unit_height_in directly from the SKU master and score NeuraGrasp confidence at the individual SKU level based on known arm reach, gripper size, and weight capacity specifications. This would surface SKUs within a "good" category that are actually poor Array candidates — and vice versa.</p>
+</div>
+
+<div class="future-item">
+  <h4>2 &mdash; Manual SE Tuning for Singular Robot Focus</h4>
+  <p>Some deployment scenarios call for focusing on a single robot type for reasons outside the scoring model — customer budget constraints, a desire to start with the lowest-change deployment first, a specific labor reduction target that only one robot type meets, or a site condition (ceiling height, aisle width, fire suppression) that rules one out. An SE override panel would allow the SE to lock a category to a specific robot program and recalculate fleet sizing and ROI for that constrained scenario without re-running the full scoring model.</p>
 </div>
 
 </main>

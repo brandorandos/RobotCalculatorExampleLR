@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Warehouse Robotics Proposal | Locus Robotics</title>
+<style>
+  :root { --navy:#1F4E79; --blue:#2E75B6; --green:#375623; --grn-bg:#E2EFDA;
+          --amb:#7F3F00; --amb-bg:#FFF2CC; --red:#C00000; --redbg:#fde8e8;
+          --hdr:#D6E4F0; --grey:#595959; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:#f0f4f8; color:#222; }
+  .back { display:block; background:var(--navy); color:#90c8f0; text-decoration:none; font-size:13px; padding:10px 32px; }
+  .slide {
+    max-width:960px; margin:24px auto; background:#fff;
+    border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.12);
+    overflow:hidden;
+  }
+  .slide-header {
+    background:var(--navy); color:#fff; padding:28px 40px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .slide-header h2 { font-size:22px; font-weight:700; }
+  .slide-header .slide-num { font-size:13px; color:#90c8f0; font-weight:600; }
+  .slide-body { padding:32px 40px; }
+  /* TITLE SLIDE */
+  .title-slide { background:linear-gradient(135deg,var(--navy) 0%,#2a6099 60%,var(--blue) 100%); color:#fff; padding:64px 40px; text-align:center; }
+  .title-slide .tag { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:4px 16px; margin-bottom:20px; color:#cde; }
+  .title-slide h1 { font-size:36px; font-weight:700; margin-bottom:10px; }
+  .title-slide h1 span { color:#90c8f0; }
+  .title-slide p { font-size:16px; color:#cde; margin-top:8px; }
+  /* STAT GRID */
+  .stat-grid { display:grid; gap:16px; }
+  .stat-grid-3 { grid-template-columns:repeat(3,1fr); }
+  .stat-grid-4 { grid-template-columns:repeat(4,1fr); }
+  @media(max-width:680px){ .stat-grid-3,.stat-grid-4{ grid-template-columns:1fr 1fr; } }
+  .stat { border-radius:10px; padding:24px; text-align:center; }
+  .stat.red { background:var(--redbg); border:1px solid #f5c0c0; }
+  .stat.blue { background:var(--hdr); border:1px solid #c2d8ee; }
+  .stat.green { background:var(--grn-bg); border:1px solid #b8ddb0; }
+  .stat.amber { background:var(--amb-bg); border:1px solid #f5d98a; }
+  .stat .val { font-size:36px; font-weight:700; }
+  .stat.red .val { color:var(--red); }
+  .stat.blue .val { color:var(--navy); }
+  .stat.green .val { color:var(--green); }
+  .stat.amber .val { color:var(--amb); }
+  .stat .lbl { font-size:12px; color:var(--grey); margin-top:6px; line-height:1.4; }
+  /* COMPARISON TABLE */
+  .comp-table { width:100%; border-collapse:collapse; font-size:14px; }
+  .comp-table th { padding:12px 16px; text-align:center; font-weight:700; font-size:13px; }
+  .comp-table th.metric-col { text-align:left; background:var(--hdr); color:var(--navy); }
+  .comp-table th.current { background:#f5f5f5; color:var(--grey); border:1px solid #ddd; }
+  .comp-table th.phase1 { background:var(--hdr); color:var(--navy); border:1px solid #c2d8ee; }
+  .comp-table th.phase2 { background:var(--grn-bg); color:var(--green); border:1px solid #b8ddb0; }
+  .comp-table td { padding:10px 16px; border:1px solid #e2eaf4; color:var(--grey); }
+  .comp-table td.metric-col { background:var(--hdr); font-weight:700; color:var(--navy); font-size:13px; }
+  .comp-table td.current { text-align:center; background:#fafafa; }
+  .comp-table td.phase1 { text-align:center; background:#f5f9ff; }
+  .comp-table td.phase2 { text-align:center; background:#f5faf3; font-weight:700; color:var(--green); }
+  .comp-table tr:nth-child(even) td.current { background:#f5f5f5; }
+  .comp-table tr:nth-child(even) td.phase1 { background:#eef5ff; }
+  .comp-table tr:nth-child(even) td.phase2 { background:#eef8ec; }
+  /* PHASE CARD */
+  .phase-card { border-radius:10px; padding:28px; margin-bottom:16px; }
+  .phase-card.p1 { background:var(--hdr); border:1px solid #c2d8ee; }
+  .phase-card.p2 { background:var(--grn-bg); border:1px solid #b8ddb0; }
+  .phase-card h3 { font-size:18px; font-weight:700; margin-bottom:6px; }
+  .phase-card.p1 h3 { color:var(--navy); }
+  .phase-card.p2 h3 { color:var(--green); }
+  .phase-card p { font-size:13px; color:var(--grey); line-height:1.6; margin-bottom:12px; }
+  .phase-detail { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  @media(max-width:680px){ .phase-detail{ grid-template-columns:1fr 1fr; } }
+  .pd { background:rgba(255,255,255,0.7); border-radius:6px; padding:12px; text-align:center; }
+  .pd .pv { font-size:22px; font-weight:700; }
+  .pd .pl { font-size:11px; color:var(--grey); margin-top:2px; }
+  .phase-card.p1 .pd .pv { color:var(--navy); }
+  .phase-card.p2 .pd .pv { color:var(--green); }
+  /* ROI */
+  .roi-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:680px){ .roi-row{ grid-template-columns:1fr; } }
+  .roi-block { border-radius:10px; padding:24px; }
+  .roi-block.p1 { background:var(--hdr); border:1px solid #c2d8ee; }
+  .roi-block.p2 { background:var(--grn-bg); border:1px solid #b8ddb0; }
+  .roi-block h4 { font-size:15px; font-weight:700; margin-bottom:16px; }
+  .roi-block.p1 h4 { color:var(--navy); }
+  .roi-block.p2 h4 { color:var(--green); }
+  .roi-line { display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.08); }
+  .roi-line:last-child { border-bottom:none; font-weight:700; font-size:14px; }
+  .roi-line .rv { font-weight:600; }
+  /* NEXT STEPS */
+  .steps-list { list-style:none; }
+  .steps-list li { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid #e2eaf4; }
+  .steps-list li:last-child { border-bottom:none; }
+  .step-num { width:32px; height:32px; border-radius:50%; background:var(--navy); color:#fff; font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-content h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+  .step-content p { font-size:13px; color:var(--grey); line-height:1.5; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700; margin-right:4px; }
+  .badge-green { background:var(--grn-bg); color:var(--green); }
+  .badge-blue { background:var(--hdr); color:var(--navy); }
+</style>
+</head>
+<body>
+
+<a href="../index.html" class="back">&larr; Back to Portfolio</a>
+
+<!-- TITLE -->
+<div class="slide">
+  <div class="title-slide">
+    <div class="tag">Confidential &mdash; For Discussion</div>
+    <h1>Warehouse Robotics <span>Deployment Proposal</span></h1>
+    <p>A phased Locus Origin + Array deployment plan based on your facility data</p>
+    <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,0.5);">Prepared by Brandon Hazelton &nbsp;|&nbsp; Locus Robotics Solutions Engineering</p>
+  </div>
+</div>
+
+<!-- CURRENT STATE -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Where You Are Today</h2>
+    <span class="slide-num">01</span>
+  </div>
+  <div class="slide-body">
+    <div class="stat-grid stat-grid-4" style="margin-bottom:24px;">
+      <div class="stat red"><div class="val">112%</div><div class="lbl">Capacity utilization &mdash; overtime required today</div></div>
+      <div class="stat amber"><div class="val">32%</div><div class="lbl">SKUs not in optimal slot zone</div></div>
+      <div class="stat amber"><div class="val">6 mi</div><div class="lbl">Picker walk distance per shift</div></div>
+      <div class="stat red"><div class="val">58%</div><div class="lbl">Of each paid shift not touching product</div></div>
+    </div>
+    <div style="background:#f7f9fc;border-radius:8px;padding:20px;border:1px solid #dde6f0;font-size:13px;color:var(--grey);line-height:1.7;">
+      <strong style="color:var(--navy);">The core problem:</strong> Your facility is generating 21,508 picks on a typical weekday against a theoretical capacity of 19,200 — requiring overtime every day just to keep up with today's volume, before any growth is factored in. Meanwhile, 58% of every picker shift is spent on travel and overhead rather than touching product. The right robotics deployment can simultaneously solve the capacity problem and the efficiency problem.
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTION OVERVIEW -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>The Approach: Two Phases, Two Robot Types</h2>
+    <span class="slide-num">02</span>
+  </div>
+  <div class="slide-body">
+    <div class="phase-card p1" style="margin-bottom:16px;">
+      <h3>Phase 1 &mdash; Locus Origin (Apparel Aisles)</h3>
+      <p>Origin is a collaborative mobile robot that travels with pickers, carries their tote, and delivers to Pack/Ship autonomously. Pickers become zone-restricted — they never leave their assigned aisles. LocusONE directs pick sequence and manages wave execution.</p>
+      <div class="phase-detail">
+        <div class="pd"><div class="pv">4</div><div class="pl">Origin robots deployed</div></div>
+        <div class="pd"><div class="pv">75→98</div><div class="pl">UPH improvement</div></div>
+        <div class="pd"><div class="pv">$0</div><div class="pl">CapEx required</div></div>
+        <div class="pd"><div class="pv">$360K</div><div class="pl">Net annual benefit</div></div>
+        <div class="pd"><div class="pv">Day 1</div><div class="pl">Positive cash flow</div></div>
+        <div class="pd"><div class="pv">Apparel</div><div class="pl">Aisles 3-4</div></div>
+      </div>
+    </div>
+    <div class="phase-card p2">
+      <h3>Phase 2 &mdash; Locus Array + NeuraGrasp (H&amp;B Aisles)</h3>
+      <p>Array is an autonomous robot that picks items with its NeuraGrasp arm — no human in the loop. Runs 20-24 hrs/day, including overnight. Handles inbound putaway and replenishment during off-peak windows, eliminating the IB/OB aisle conflict.</p>
+      <div class="phase-detail">
+        <div class="pd"><div class="pv">4</div><div class="pl">Array robots deployed</div></div>
+        <div class="pd"><div class="pv">22 hr</div><div class="pl">Operating window/day</div></div>
+        <div class="pd"><div class="pv">$50-400K</div><div class="pl">CapEx (site survey req.)</div></div>
+        <div class="pd"><div class="pv">$1.4M</div><div class="pl">Combined net annual benefit</div></div>
+        <div class="pd"><div class="pv">&lt;4 mo</div><div class="pl">CapEx payback</div></div>
+        <div class="pd"><div class="pv">H&amp;B</div><div class="pl">Aisles 1-2</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Before &amp; After Comparison</h2>
+    <span class="slide-num">03</span>
+  </div>
+  <div class="slide-body">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="metric-col">Metric</th>
+          <th class="current">Today</th>
+          <th class="phase1">Phase 1 &mdash; Origin</th>
+          <th class="phase2">Phase 2 &mdash; Origin + Array</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="metric-col">OB Pickers / shift</td><td class="current">16</td><td class="phase1">7</td><td class="phase2">2</td></tr>
+        <tr><td class="metric-col">Total headcount</td><td class="current">33</td><td class="phase1">30</td><td class="phase2">14</td></tr>
+        <tr><td class="metric-col">Pick capacity / day</td><td class="current">19,200 (OT to reach 21,508)</td><td class="phase1">21,952 (no OT)</td><td class="phase2">21,760 (no OT)</td></tr>
+        <tr><td class="metric-col">Capacity utilization</td><td class="current" style="color:var(--red);font-weight:700;">112% — over capacity</td><td class="phase1">98%</td><td class="phase2">99%</td></tr>
+        <tr><td class="metric-col">Picker walk / shift</td><td class="current">6 miles</td><td class="phase1">~4 miles</td><td class="phase2">~2 miles (Apparel only)</td></tr>
+        <tr><td class="metric-col">H&amp;B picking</td><td class="current">Human</td><td class="phase1">Human + Origin</td><td class="phase2">Fully autonomous</td></tr>
+        <tr><td class="metric-col">Overnight replenishment</td><td class="current">None</td><td class="phase1">None</td><td class="phase2">Autonomous (Array)</td></tr>
+        <tr><td class="metric-col">Annual robot cost</td><td class="current">—</td><td class="phase1">$72K</td><td class="phase2">$228K</td></tr>
+        <tr><td class="metric-col">Net annual benefit</td><td class="current">—</td><td class="phase1">$360K</td><td class="phase2">$1,400K</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ROI -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Return on Investment</h2>
+    <span class="slide-num">04</span>
+  </div>
+  <div class="slide-body">
+    <div class="roi-row" style="margin-bottom:24px;">
+      <div class="roi-block p1">
+        <h4>Phase 1 — Origin Only</h4>
+        <div class="roi-line"><span>Overtime elimination</span><span class="rv">$240,000</span></div>
+        <div class="roi-line"><span>Picker headcount reduction</span><span class="rv">$191,600</span></div>
+        <div class="roi-line"><span>Total labor savings</span><span class="rv">$431,600</span></div>
+        <div class="roi-line"><span>Origin fleet cost (4 robots)</span><span class="rv" style="color:var(--red);">-$72,000</span></div>
+        <div class="roi-line"><span style="color:var(--navy);">Net annual benefit</span><span class="rv" style="color:var(--navy);">$359,600</span></div>
+        <div style="margin-top:12px;font-size:12px;color:var(--grey);">No CapEx &bull; Positive cash flow from month one</div>
+      </div>
+      <div class="roi-block p2">
+        <h4>Phase 2 — Origin + Array (Combined)</h4>
+        <div class="roi-line"><span>Total labor savings</span><span class="rv">$1,627,531</span></div>
+        <div class="roi-line"><span>Origin fleet (2 robots)</span><span class="rv" style="color:var(--red);">-$36,000</span></div>
+        <div class="roi-line"><span>Array fleet (4 robots)</span><span class="rv" style="color:var(--red);">-$192,000</span></div>
+        <div class="roi-line"><span style="color:var(--green);">Net annual benefit</span><span class="rv" style="color:var(--green);">$1,399,531</span></div>
+        <div style="margin-top:12px;font-size:12px;color:var(--grey);">CapEx: $50K–$400K depending on racking &bull; Payback: &lt;4 months</div>
+      </div>
+    </div>
+    <div style="background:var(--grn-bg);border-radius:8px;padding:18px 24px;border-left:4px solid var(--green);font-size:13px;color:var(--green);line-height:1.6;">
+      <strong>Phase 1 stands on its own.</strong> Origin delivers $360K net annual benefit with zero CapEx and positive cash flow from day one — independently of Phase 2. Phase 2 (Array) is additive, not dependent. You can evaluate and approve each phase separately.
+    </div>
+  </div>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Recommended Next Steps</h2>
+    <span class="slide-num">05</span>
+  </div>
+  <div class="slide-body">
+    <ul class="steps-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>SKU Re-Slot <span class="badge badge-blue">Immediate</span></h4>
+          <p>Correct the 356 highest-impact SKU positions (83 A-tier in far zones + 273 C-tier in prime zones). Estimated one-time effort, no robot spend. Lifts UPH from 75 to ~83 and prepares zone structure for robot deployment.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Phase 1 — Origin Deployment <span class="badge badge-blue">Near-term</span></h4>
+          <p>Deploy 4 Origin robots in Apparel aisles (3-4) with LocusONE orchestration. Pickers become zone-restricted, UPH rises to ~98, overtime eliminated. Cash-flow positive from day one of operation.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Phase 2 — Array Site Survey <span class="badge badge-green">Following Phase 1 stabilization</span></h4>
+          <p>Commission a site survey to assess racking compatibility in H&amp;B aisles and confirm CapEx scenario (A: existing compatible / B: retooling / C: full replacement). Site survey informs the final Array deployment timeline and budget.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Phase 2 — Array Deployment <span class="badge badge-green">After site survey</span></h4>
+          <p>Deploy 4 Array robots in H&amp;B aisles for autonomous OB picking and overnight IB putaway/replenishment. Human pickers exit H&amp;B entirely. Combined steady-state: 14 headcount (down from 33), $1.4M net annual benefit.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

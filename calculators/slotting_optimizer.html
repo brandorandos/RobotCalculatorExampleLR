@@ -15,6 +15,12 @@
   main { max-width:1000px; margin:0 auto; padding:32px 24px 64px; }
   .intro { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:24px; margin-bottom:28px; font-size:14px; line-height:1.7; color:var(--grey); }
   .intro strong { color:var(--navy); }
+  .inputs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
+  @media(max-width:720px){ .inputs-grid{ grid-template-columns:1fr 1fr; } }
+  .input-card { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:18px; border-top:3px solid var(--blue); }
+  .input-card .ic-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--blue); margin-bottom:6px; }
+  .input-card .ic-file { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .input-card .ic-fields { font-size:12px; color:var(--grey); line-height:1.6; }
   .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:28px; }
   @media(max-width:680px){ .grid-2{ grid-template-columns:1fr; } }
   .card { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:24px; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
@@ -23,9 +29,6 @@
   th { background:var(--hdr); color:var(--navy); font-weight:700; padding:8px 12px; text-align:left; border:1px solid #ccd9e8; }
   td { padding:8px 12px; border:1px solid #e2eaf4; color:var(--grey); }
   tr:nth-child(even) td { background:#f7f9fc; }
-  .big-stat { text-align:center; padding:8px 0; }
-  .big-stat .val { font-size:36px; font-weight:700; color:var(--blue); }
-  .big-stat .lbl { font-size:12px; color:var(--grey); margin-top:2px; }
   .metrics-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
   @media(max-width:680px){ .metrics-row{ grid-template-columns:1fr 1fr; } }
   .metric { background:#fff; border-radius:8px; border:1px solid #dde6f0; padding:18px; text-align:center; }
@@ -34,16 +37,22 @@
   .callout { border-radius:6px; padding:16px 20px; margin-bottom:28px; font-size:13px; line-height:1.6; }
   .callout.green { background:var(--grn-bg); border-left:4px solid var(--green); color:var(--green); }
   .callout.amber { background:var(--amb-bg); border-left:4px solid #e6a817; color:var(--amb); }
+  .callout.navy { background:var(--hdr); border-left:4px solid var(--navy); color:var(--navy); }
   .bar-wrap { margin-bottom:6px; }
   .bar-label { display:flex; justify-content:space-between; font-size:12px; color:var(--grey); margin-bottom:2px; }
   .bar-track { background:#e2eaf4; border-radius:4px; height:14px; }
-  .bar-fill { height:14px; border-radius:4px; transition:width 0.5s; }
+  .bar-fill { height:14px; border-radius:4px; }
   .tag { display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:700; }
   .tag-a { background:#E2EFDA; color:#375623; }
   .tag-b { background:#D6E4F0; color:#1F4E79; }
   .tag-c { background:#FFF2CC; color:#7F3F00; }
   .tag-bad { background:#fde8e8; color:#c00000; }
   .section-title { font-size:18px; font-weight:700; color:var(--navy); margin:32px 0 16px; padding-bottom:6px; border-bottom:2px solid var(--hdr); }
+  .future-item { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:16px 20px; margin-bottom:12px; }
+  .future-item h4 { font-size:14px; color:var(--navy); margin-bottom:4px; }
+  .future-item p { font-size:13px; color:var(--grey); line-height:1.5; }
+  .formula-box { background:#1a2a3a; color:#90c8f0; font-family:monospace; font-size:13px; padding:16px 20px; border-radius:6px; margin:12px 0; line-height:1.8; }
+  .formula-box .comment { color:#6a8fa8; }
 </style>
 </head>
 <body>
@@ -54,19 +63,57 @@
 </header>
 <main>
 
+<!-- INTRO -->
 <div class="intro">
-  <strong>What this calculator does:</strong> Classifies every SKU by ABC velocity tier based on pick frequency, compares current slotted zone to optimal zone, and quantifies the walk distance waste created by slotting drift. The output drives the pre-deployment re-slot recommendation and sets up a clean zone structure for Locus robot assignment.
+  <strong>What this calculator does:</strong> Classifies every SKU by ABC velocity tier based on pick frequency, compares current slotted zone to the optimal zone for that velocity tier, and quantifies the walk distance waste created by slotting drift. The output drives the pre-deployment re-slot recommendation and sets up a clean zone structure for Locus robot assignment.
   <br><br>
-  <strong>Why this matters:</strong> You cannot size or deploy robots effectively into a broken slot structure. Origin robots are zone-restricted &mdash; if the fastest SKUs are in the wrong zones, the robot assignment is wrong by definition. Fix slotting first, then deploy.
+  <strong>Why this matters for robot deployment:</strong> You cannot size or zone-assign robots effectively into a sub-optimal slot structure. Origin robots are zone-restricted &mdash; if the fastest SKUs are in the wrong zones, the robot assignment is wrong by definition. Fix slotting first, then deploy.
 </div>
 
+<!-- CRITICAL INPUTS -->
+<div class="section-title">Critical Inputs</div>
+<div class="inputs-grid">
+  <div class="input-card">
+    <div class="ic-label">Input 1</div>
+    <div class="ic-file">OB Transactions</div>
+    <div class="ic-fields">pick counts per SKU over the analysis window &rarr; drives velocity ranking and ABC tier assignment</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 2</div>
+    <div class="ic-file">Inventory Snapshot</div>
+    <div class="ic-fields">current zone per SKU &rarr; compared against optimal zone to detect drift</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 3</div>
+    <div class="ic-file">SKU Master</div>
+    <div class="ic-fields">abc_tier_optimal field &rarr; the benchmark zone each SKU should be in based on its velocity category</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 4 &mdash; SE Assumption</div>
+    <div class="ic-file">Zone Distance Map</div>
+    <div class="ic-fields">distance in feet from Pack/Ship to each zone &mdash; assumed from facility layout; SE should validate per site</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 5 &mdash; SE Assumption</div>
+    <div class="ic-file">Picker Walk Speed</div>
+    <div class="ic-fields">assumed 3 mph (264 ft/min) &mdash; industry standard; SE can adjust for sites with narrow aisles or heavy carts</div>
+  </div>
+  <div class="input-card">
+    <div class="ic-label">Input 6 &mdash; SE Assumption</div>
+    <div class="ic-file">UPH Baseline</div>
+    <div class="ic-fields">assumed 75 UPH gross &mdash; confirmed with customer; change this to match stated or measured UPH for the site</div>
+  </div>
+</div>
+
+<!-- METRICS -->
 <div class="metrics-row">
   <div class="metric"><div class="v" style="color:var(--navy)">5,000</div><div class="l">Total Active SKUs</div></div>
-  <div class="metric"><div class="v" style="color:#c00000">1,618</div><div class="l">SKUs with Tier Drift (32.4%)</div></div>
+  <div class="metric"><div class="v" style="color:#c00000">1,618</div><div class="l">SKUs Sub-Optimal (32.4%)</div></div>
   <div class="metric"><div class="v" style="color:var(--blue)">21,508</div><div class="l">Weekday Picks / Day</div></div>
   <div class="metric"><div class="v" style="color:var(--green)">155 ft</div><div class="l">Weighted Avg Pick Distance</div></div>
 </div>
 
+<!-- ZONE PICK DISTRIBUTION -->
 <div class="section-title">Zone Pick Distribution</div>
 <div class="card" style="margin-bottom:28px;">
   <h3>Current Pick Volume by Zone &mdash; Zone A is nearest Pack/Ship</h3>
@@ -78,18 +125,54 @@
     <div class="bar-wrap"><div class="bar-label"><span>Zone E &mdash; 525 ft</span><span>3.0% &nbsp; 648 picks/day</span></div><div class="bar-track"><div class="bar-fill" style="width:3%;background:#aad0ec;"></div></div></div>
   </div>
   <div style="margin-top:16px;font-size:12px;color:var(--grey);">
-    Weighted avg distance (current slotting): <strong>155 ft/pick</strong> &nbsp;&nbsp;
-    Ideal (all SKUs optimally slotted): <strong>135 ft/pick</strong> &nbsp;&nbsp;
+    Weighted avg distance (current): <strong>155 ft/pick</strong> &nbsp;&nbsp;
+    Ideal (fully optimized): <strong>135 ft/pick</strong> &nbsp;&nbsp;
     Drift penalty: <strong>+20 ft/pick (13% excess travel)</strong>
   </div>
 </div>
 
+<!-- WALK DISTANCE METHODOLOGY -->
+<div class="section-title">Walk Distance Methodology</div>
+<div class="card" style="margin-bottom:20px;">
+  <h3>How Zone Distances Were Determined</h3>
+  <table>
+    <thead><tr><th>Zone</th><th>Assumed Distance from Pack/Ship</th><th>Basis</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>50 ft</td><td>Nearest zone — estimated from facility layout dimensions</td></tr>
+      <tr><td>B</td><td>150 ft</td><td>~100 ft increment based on equal-width zone spacing</td></tr>
+      <tr><td>C</td><td>275 ft</td><td>Mid-facility — confirmed plausible against 200K sqft floor plan</td></tr>
+      <tr><td>D</td><td>400 ft</td><td>Far zone — estimated</td></tr>
+      <tr><td>E</td><td>525 ft</td><td>Farthest zone, near receiving — estimated</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="card" style="margin-bottom:20px;">
+  <h3>Weighted Average Distance Calculation</h3>
+  <div class="formula-box">
+<span class="comment"># Weighted avg distance = sum of (zone_pick_share × zone_distance)</span>
+weighted_dist = (0.453 × 50) + (0.286 × 150) + (0.150 × 275) + (0.081 × 400) + (0.030 × 525)
+             = 22.65 + 42.90 + 41.25 + 32.40 + 15.75
+             = <strong>155 ft per pick</strong>
+
+<span class="comment"># Walk distance per shift</span>
+travel_time_per_pick = 12.5 sec  <span class="comment"># 26% of 48-sec gross pick time</span>
+walk_speed           = 264 ft/min  <span class="comment"># 3 mph</span>
+dist_per_pick        = (12.5 / 60) × 264 = <strong>55 ft per pick</strong>
+picks_per_shift      = 75 UPH × 8 hrs = 600 picks
+walk_per_shift       = 600 × 55 = 33,000 ft = <strong>~6.2 miles</strong>
+  </div>
+</div>
+<div class="callout navy">
+  <strong>SE note on zone distances:</strong> The distances above were estimated from the facility layout. For higher-accuracy modeling, an SE should walk the facility with a measuring wheel or pull distances from the WMS/LMS if available. Aisle-level distances (rather than zone-level) would further improve the walk distance model — this is called out in Future Calculator Work below.
+</div>
+
+<!-- ABC TIER ANALYSIS -->
 <div class="section-title">ABC Tier Analysis</div>
 <div class="grid-2">
   <div class="card">
     <h3>SKU Count by Velocity Tier</h3>
     <table>
-      <thead><tr><th>Tier</th><th>Definition</th><th>SKUs</th><th>Drifted</th><th>Drift %</th></tr></thead>
+      <thead><tr><th>Tier</th><th>Definition</th><th>SKUs</th><th>Sub-Optimal</th><th>%</th></tr></thead>
       <tbody>
         <tr><td><span class="tag tag-a">A</span></td><td>Top 80% pick vol</td><td>861</td><td><span style="color:#c00000;font-weight:700;">190</span></td><td>22%</td></tr>
         <tr><td><span class="tag tag-b">B</span></td><td>80&ndash;95% pick vol</td><td>2,166</td><td><span style="color:#c00000;font-weight:700;">711</span></td><td>33%</td></tr>
@@ -99,56 +182,82 @@
     </table>
   </div>
   <div class="card">
-    <h3>High-Impact Drift Cases</h3>
+    <h3>High-Impact Cases</h3>
     <table>
       <thead><tr><th>Problem</th><th>Count</th><th>Impact</th></tr></thead>
       <tbody>
         <tr><td>A-tier SKUs in Zones D/E</td><td><span class="tag tag-bad">83 SKUs</span></td><td>30.8 wasted picker-miles/day</td></tr>
-        <tr><td>C-tier SKUs in Zones A/B</td><td><span class="tag tag-bad">273 SKUs</span></td><td>Prime slots blocked for fast movers</td></tr>
+        <tr><td>C-tier in Zones A/B</td><td><span class="tag tag-bad">273 SKUs</span></td><td>Prime slots blocked for fast movers</td></tr>
         <tr><td>H&amp;B fast-movers in D/E</td><td><span class="tag tag-bad">79 SKUs</span></td><td>Array travel penalty if not corrected</td></tr>
-        <tr><td>Surge SKUs not re-slotted</td><td><span class="tag tag-bad">3 groups</span></td><td>Activewear +2.5x, Skincare +2.2x, Wellness +2.2x</td></tr>
+        <tr><td>Surge SKUs not repositioned</td><td><span class="tag tag-bad">3 groups</span></td><td>Activewear +2.5&times;, Skincare +2.2&times;, Wellness +2.2&times;</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
 <div class="callout amber">
-  <strong>Slotting drift root cause:</strong> Last full re-slot was ~18 months ago. No ongoing governance mechanism exists &mdash; SKUs drift as velocity changes but locations stay fixed. 32% of SKUs are now in the wrong tier zone, adding 20 ft of excess travel per pick and ~30 wasted picker-miles per day.
+  <strong>Slotting drift root cause:</strong> No ongoing governance mechanism exists &mdash; SKUs drift as velocity changes but locations stay fixed. 32% of SKUs are not in their optimal tier zone, adding 20 ft of excess travel per pick and approximately 30 wasted picker-miles per day.
 </div>
 
+<!-- RE-SLOT RECOMMENDATION -->
 <div class="section-title">Re-Slot Recommendation</div>
 <div class="card" style="margin-bottom:28px;">
   <h3>Prioritized Move List</h3>
   <table>
-    <thead><tr><th>Priority</th><th>Action</th><th>SKUs to Move</th><th>Expected UPH Gain</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Priority</th><th>Action</th><th>SKUs</th><th>Expected UPH Gain</th><th>Notes</th></tr></thead>
     <tbody>
       <tr><td style="font-weight:700;color:var(--navy);">1 &mdash; Critical</td><td>Move 83 A-tier SKUs from Zones D/E to Zone A/B</td><td>83</td><td>+5 UPH</td><td>Highest walk waste per SKU</td></tr>
-      <tr><td style="font-weight:700;color:var(--blue);">2 &mdash; High</td><td>Move 273 C-tier SKUs out of Zones A/B to Zone C/D</td><td>273</td><td>+4 UPH (frees prime slots)</td><td>Enables Priority 1 moves</td></tr>
-      <tr><td>3 &mdash; Medium</td><td>Re-slot surge sub-categories (Activewear, Skincare, Wellness)</td><td>~400</td><td>+2 UPH</td><td>Velocity has shifted 2x+ since last slot</td></tr>
+      <tr><td style="font-weight:700;color:var(--blue);">2 &mdash; High</td><td>Move 273 C-tier SKUs out of Zones A/B to Zone C/D</td><td>273</td><td>+4 UPH (frees prime slots)</td><td>Required before Priority 1 moves</td></tr>
+      <tr><td>3 &mdash; Medium</td><td>Re-slot surge sub-categories (Activewear, Skincare, Wellness)</td><td>~400</td><td>+2 UPH</td><td>Velocity has shifted significantly</td></tr>
       <tr><td>4 &mdash; Array prep</td><td>Move 79 H&amp;B fast-movers from D/E to A/B within H&amp;B aisles</td><td>79</td><td>Array travel -15%</td><td>Do during Array commissioning</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="callout green">
-  <strong>Re-slot + Origin result:</strong> Correcting slotting drift lifts UPH from 75 to ~83 (+11%) before any robots are deployed. Combined with Origin zone restriction and directed picking, total UPH reaches ~98 &mdash; a 31% improvement over today. LocusONE pick data then governs slotting continuously, preventing recurrence.
+  <strong>Re-slot + Origin result:</strong> Correcting slotting lifts UPH from 75 to ~83 (+11%) before any robots are deployed. Combined with Origin zone restriction and directed picking, total UPH reaches ~98. LocusONE pick data then governs slotting continuously, preventing recurrence.
 </div>
 
+<!-- WALK DISTANCE MODEL -->
 <div class="section-title">Walk Distance Model</div>
-<div class="card">
-  <h3>Picker Time Breakdown &mdash; How 48 Seconds Per Pick Is Spent</h3>
+<div class="card" style="margin-bottom:28px;">
+  <h3>How 48 Seconds Per Pick Is Spent</h3>
   <table>
     <thead><tr><th>Activity</th><th>Time / Pick</th><th>% of Shift</th><th>With Origin</th></tr></thead>
     <tbody>
       <tr><td>Active pick (scan, locate, pick, place)</td><td>20 sec</td><td>42%</td><td>~20 sec (unchanged)</td></tr>
       <tr><td style="color:#c00000;">Travel between picks</td><td style="color:#c00000;">12.5 sec</td><td style="color:#c00000;">26%</td><td style="color:var(--green);">~6 sec (zone-restricted)</td></tr>
-      <tr><td>Admin / overhead (wave mgmt, system, delays)</td><td>15.5 sec</td><td>32%</td><td>~10 sec (LocusONE directed)</td></tr>
+      <tr><td>Admin / overhead</td><td>15.5 sec</td><td>32%</td><td>~10 sec (LocusONE directed)</td></tr>
       <tr style="font-weight:700;background:var(--hdr);"><td>Gross time / pick</td><td>48 sec</td><td>100%</td><td>~37 sec (~98 UPH)</td></tr>
     </tbody>
   </table>
   <div style="margin-top:12px;font-size:12px;color:var(--grey);">
-    Walk speed: 3 mph (264 ft/min) &nbsp;&bull;&nbsp; Walk distance per pick: ~55 ft &nbsp;&bull;&nbsp; Walk per shift: ~6 miles/picker &nbsp;&bull;&nbsp; Total picker-miles/day: ~200
+    Walk speed: 3 mph (264 ft/min) &nbsp;&bull;&nbsp; Walk distance per pick: ~55 ft &nbsp;&bull;&nbsp; Walk per shift: ~6.2 miles/picker &nbsp;&bull;&nbsp; Total picker-miles/day: ~200
   </div>
+</div>
+
+<!-- FUTURE CALCULATOR WORK -->
+<div class="section-title">Future Calculator Work</div>
+<p style="font-size:14px;color:var(--grey);margin-bottom:20px;">Items identified for future development to make this calculator more precise and broadly applicable across customer scenarios.</p>
+
+<div class="future-item">
+  <h4>1 &mdash; Robot Mode Toggle (Human / Origin / Array)</h4>
+  <p>The current calculator optimizes purely for human picking efficiency. The slotting criteria shift by robot type: Origin mode increases weight on zone clustering density (tighter clusters = more robot efficiency); Array mode removes ergonomic tier as a factor entirely (Array reaches all 5 levels equally) and adjusts the distance model for robot travel speed vs. human walking pace. A mode toggle would recalculate drift count and re-slot recommendations based on the target deployment.</p>
+</div>
+
+<div class="future-item">
+  <h4>2 &mdash; Aisle-Level Granularity</h4>
+  <p>Zone-level distances are a reasonable approximation but introduce error for large zones. Replacing zone distances with aisle-level distances (pulled from WMS or measured on-site) would improve the walk distance model and make re-slot priority rankings more accurate. Particularly important for Array deployment planning where robot travel path efficiency matters at the aisle level.</p>
+</div>
+
+<div class="future-item">
+  <h4>3 &mdash; SE-Adjustable SKU-Level Overrides</h4>
+  <p>Some SKUs have operational constraints that override velocity-based slotting — vendor agreements, temperature requirements, hazmat zones, or items that must stay together for fulfillment reasons. An override field would let the SE flag individual SKUs as location-locked so they are excluded from the re-slot recommendation without affecting the overall drift metrics.</p>
+</div>
+
+<div class="future-item">
+  <h4>4 &mdash; SKU Affinity Modeling</h4>
+  <p>Frequently co-ordered SKUs (ordered together in the same shipment) should ideally be slotted in proximity to minimize within-batch travel. Mining the OB transaction data for SKU co-occurrence pairs and incorporating affinity scores into zone placement would further reduce picks-per-batch travel time, beyond what ABC tiering alone achieves.</p>
 </div>
 
 </main>
