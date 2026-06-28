@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About This Project | Brandon Hazelton — Locus SE Portfolio</title>
+<style>
+  :root {
+    --navy:#1F4E79; --blue:#2E75B6; --green:#375623;
+    --grn-bg:#E2EFDA; --amb:#7F3F00; --amb-bg:#FFF2CC;
+    --hdr:#D6E4F0; --grey:#595959; --light:#f7f9fc;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--light); color:#222; }
+  nav {
+    background:var(--navy); padding:0 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav .brand { color:#fff; font-size:15px; font-weight:600; }
+  nav .brand span { color:#90c8f0; }
+  nav .links a { color:#cde; text-decoration:none; font-size:13px; margin-left:24px; }
+  nav .links a:hover { color:#fff; }
+  .hero {
+    background:linear-gradient(135deg,#2c3e6e 0%,var(--navy) 60%,#1a3d6b 100%);
+    color:#fff; padding:64px 40px 52px; text-align:center;
+  }
+  .hero .tag {
+    display:inline-block; background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3); border-radius:20px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+    padding:4px 16px; margin-bottom:20px; color:#cde;
+  }
+  .hero h1 { font-size:34px; font-weight:700; line-height:1.2; margin-bottom:12px; }
+  .hero h1 span { color:#90c8f0; }
+  .hero p { font-size:16px; color:#cde; max-width:640px; margin:0 auto; line-height:1.6; }
+  main { max-width:860px; margin:0 auto; padding:48px 24px 80px; }
+  .back { display:inline-flex; align-items:center; gap:6px; color:var(--blue); text-decoration:none; font-size:13px; font-weight:600; margin-bottom:32px; }
+  .back:hover { color:var(--navy); }
+  .timeline { position:relative; padding-left:40px; }
+  .timeline::before { content:''; position:absolute; left:15px; top:6px; bottom:6px; width:2px; background:var(--hdr); }
+  .step { position:relative; margin-bottom:48px; }
+  .step:last-child { margin-bottom:0; }
+  .step-dot {
+    position:absolute; left:-40px; top:4px;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--navy); border:3px solid #fff;
+    box-shadow:0 0 0 2px var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; color:#fff; font-weight:700;
+  }
+  .step-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:6px; }
+  .step h3 { font-size:20px; color:var(--navy); margin-bottom:12px; font-weight:700; }
+  .step p { font-size:15px; color:var(--grey); line-height:1.75; margin-bottom:12px; }
+  .step p:last-child { margin-bottom:0; }
+  .tool-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:16px 0; }
+  .tool-card { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:14px 16px; border-left:4px solid var(--blue); }
+  .tool-card .tc-name { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .tool-card .tc-use { font-size:12px; color:var(--grey); line-height:1.5; }
+  .callout { border-radius:8px; padding:18px 22px; margin:16px 0; font-size:14px; line-height:1.7; }
+  .callout.green { background:var(--grn-bg); border-left:4px solid var(--green); color:var(--green); }
+  .callout.amber { background:var(--amb-bg); border-left:4px solid #e6a817; color:var(--amb); }
+  .callout.navy { background:var(--hdr); border-left:4px solid var(--navy); color:var(--navy); }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+  @media(max-width:600px){ .two-col{ grid-template-columns:1fr; } }
+  .list-card { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:18px 20px; }
+  .list-card h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px; }
+  .list-card ul { padding-left:18px; font-size:13px; color:var(--grey); line-height:1.8; }
+  .chip { display:inline-block; background:var(--hdr); color:var(--navy); font-size:11px; padding:3px 12px; border-radius:12px; margin:4px 4px 4px 0; font-weight:600; }
+  footer { background:var(--navy); color:#aac4de; text-align:center; padding:24px; font-size:13px; }
+  footer a { color:#90c8f0; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Brandon Hazelton &nbsp;|&nbsp; <span>Locus Robotics SE Example</span></div>
+  <div class="links">
+    <a href="index.html#story">Story</a>
+    <a href="index.html#data">Data</a>
+    <a href="index.html#calculators">Calculators</a>
+    <a href="index.html#outputs">Outputs</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tag">SE Reflection</div>
+  <h1>About This <span>Project</span></h1>
+  <p>The goal, the process, the tools, the gaps, and where this goes next — a frank look at how this analysis was built and what it would take to turn it into a full SE team asset.</p>
+</div>
+
+<main>
+
+<a href="index.html" class="back">&larr; Back to Portfolio</a>
+
+<div class="timeline">
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-dot">1</div>
+    <div class="step-label">The Goal</div>
+    <h3>What I Set Out to Build</h3>
+    <p>I built this to answer one question a recruiter or hiring manager should be able to ask: <em>can this person actually do the job?</em> Not in the abstract — but concretely. Given raw customer data, can they identify the opportunity, size the robots correctly, model the ROI, and build a presentation that a non-technical VP would understand?</p>
+    <p>This isn't a slide deck about what robotics can do. It's an end-to-end demonstration of the analytical process an SE runs in the first 4-6 weeks of a customer engagement — from the initial data request all the way through to the phased deployment proposal. Every calculation is visible and explainable. Every recommendation ties back to a number.</p>
+    <p>The secondary goal was to build something <em>reusable</em>. These calculators aren't one-offs for a synthetic example — they're structured so an SE could drop in a real customer's data and run the same analysis in an afternoon rather than from scratch.</p>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-dot">2</div>
+    <div class="step-label">Tools Used</div>
+    <h3>How It Was Built</h3>
+    <p>The stack was deliberately minimal — everything runs in a browser or on the command line with no proprietary systems required:</p>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tc-name">Python + pandas</div>
+        <div class="tc-use">All core analysis — transaction processing, ABC tiering, slotting drift detection, fleet sizing math, and data generation for synthetic datasets</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-name">Claude (Anthropic AI)</div>
+        <div class="tc-use">Development acceleration — writing Python scripts, HTML calculators, the Word report generator, and SVG diagrams. All analytical decisions, framing, and validation were mine.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-name">HTML / CSS / JavaScript</div>
+        <div class="tc-use">All calculator and presentation pages — no frameworks, no build step. Runs as a static site from any folder or GitHub Pages.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-name">Node.js + docx</div>
+        <div class="tc-use">Generated the full 9-section Word report programmatically — tables, formatted sections, callouts, and CapEx scenario comparisons</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-name">GitHub + GitHub Pages</div>
+        <div class="tc-use">Version control and free static hosting — anyone with the URL can access the full portfolio and run every calculator</div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-name">SVG (hand-written)</div>
+        <div class="tc-use">Warehouse facility and pick face layout diagrams — precise, scalable, and renderable in any browser without external dependencies</div>
+      </div>
+    </div>
+
+    <div class="callout navy" style="margin-top:16px;">
+      <strong>On using AI for development:</strong> I used Claude throughout this build as a development accelerator — it wrote the bulk of the HTML, Python, and Node.js code. The analytical structure, methodology decisions, number validation, and narrative framing were all mine. I treated it like a very fast junior developer: give it a clear spec, review what it produces, and push back when the math or framing is wrong. The final output is only as good as the person directing it.
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-dot">3</div>
+    <div class="step-label">The Process</div>
+    <h3>How I Followed an SE Engagement Workflow</h3>
+    <p>I structured the build to mirror the order of work an SE actually does — not skipping ahead to the robot recommendation before the baseline is understood:</p>
+
+    <div style="margin:16px 0;">
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">1</span>
+        <div><strong style="color:var(--navy);">Define the data request.</strong><span style="color:var(--grey);font-size:14px;"> What would I actually ask a customer for? OB transactions, IB receipts, inventory snapshot, SKU master. Minimum viable dataset that allows a real ROI conversation.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">2</span>
+        <div><strong style="color:var(--navy);">Establish the baseline before any robot talk.</strong><span style="color:var(--grey);font-size:14px;"> Capacity utilization, current UPH, zone distribution, slotting health. You can't claim a 25% UPH gain if you don't know what 100% looks like today.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">3</span>
+        <div><strong style="color:var(--navy);">Slotting review before robot sizing.</strong><span style="color:var(--grey);font-size:14px;"> 1,618 SKUs were misplaced — that's 32% of the catalog in sub-optimal zones. You cannot reliably size a P2G robot fleet into a broken slot structure.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">4</span>
+        <div><strong style="color:var(--navy);">Score categories for robot fit — with criteria, not intuition.</strong><span style="color:var(--grey);font-size:14px;"> H&amp;B scored 93% for Array. Apparel scored 85% for Origin. The scores come from observable criteria with explicit weights — an SE can defend them in front of a customer operations VP.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">5</span>
+        <div><strong style="color:var(--navy);">Size the fleet from throughput demand, not catalog size.</strong><span style="color:var(--grey);font-size:14px;"> 4 Array robots × 176 picks/hr × 22 hrs = 15,488 picks/day — exactly covers H&amp;B daily demand. Derived by working backward from the data, not guessing.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">6</span>
+        <div><strong style="color:var(--navy);">Phase the proposal to de-risk for the customer.</strong><span style="color:var(--grey);font-size:14px;"> Start with Origin in Apparel (zero CapEx, proven ROI within weeks) before asking the customer to commit to racking changes and a new robot type in H&amp;B.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <span style="background:var(--blue);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;">7</span>
+        <div><strong style="color:var(--navy);">Build a customer-facing deliverable that hides the complexity.</strong><span style="color:var(--grey);font-size:14px;"> The customer presentation shows five clean slides. The full 9-section report and these calculators are the work behind it — not what gets put in front of the VP of Operations.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-dot">4</div>
+    <div class="step-label">Domain Knowledge</div>
+    <h3>Where the Locus Knowledge Came From</h3>
+    <p>I didn't come into this with an SE background at Locus. Here's exactly where the domain knowledge in this analysis comes from:</p>
+
+    <div class="two-col">
+      <div class="list-card">
+        <h4>Locus-Specific</h4>
+        <ul>
+          <li>Public product materials and press releases for Origin, Array, NeuraGrasp, and LocusONE</li>
+          <li>Published UPH improvement benchmarks (25-35% for P2G) and R2G pick rate ranges (150-300 picks/hr)</li>
+          <li>RaaS pricing model structure — confirmed no CapEx for robots, monthly subscription</li>
+          <li>$1,500/robot/month for Origin (confirmed); $4,000/robot/month for Array (planning assumption, needs account team confirmation)</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <h4>Warehouse Operations</h4>
+        <ul>
+          <li>ABC velocity tiering methodology — industry standard, widely documented</li>
+          <li>Three-bucket time model: active pick / travel / overhead (42% / 26% / 32% split)</li>
+          <li>UPH benchmarks for manual e-comm fulfillment (65-85 range)</li>
+          <li>Walk distance as a measurable, calculable waste metric</li>
+          <li>IB/OB conflict patterns in two-shift operations</li>
+          <li>Min/max replenishment logic and reserve-to-pick-face flow</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout amber" style="margin-top:4px;">
+      <strong>The honest caveat:</strong> Several inputs in this analysis are estimated rather than measured. Zone distances from Pack/Ship (A=50 ft through E=525 ft) are approximations from the facility layout, not tape-measured. The Array pick rate of 176 picks/hr was derived by working backward from H&amp;B daily demand — it falls within the published R2G spec range but is not based on a Locus-provided figure for this specific item mix. A real engagement would validate both of these with a site survey before quoting a number to the customer.
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-dot">5</div>
+    <div class="step-label">Strengths</div>
+    <h3>What This Approach Gets Right</h3>
+
+    <div class="two-col">
+      <div class="list-card" style="border-left:4px solid var(--green);">
+        <h4 style="color:var(--green);">Analytical</h4>
+        <ul>
+          <li>Every recommendation is traceable to a number in the underlying data</li>
+          <li>Methodology is explicit — an SE can explain any figure to a customer without referring back to a black box</li>
+          <li>Slotting-first sequencing prevents fleet sizing mistakes</li>
+          <li>Three-bucket time model is more defensible than a single "percent improvement" claim</li>
+          <li>Three CapEx scenarios (not one) because the real answer requires a site survey</li>
+        </ul>
+      </div>
+      <div class="list-card" style="border-left:4px solid var(--green);">
+        <h4 style="color:var(--green);">Structural</h4>
+        <ul>
+          <li>Reusable — swap in a real customer's data files and the calculators regenerate</li>
+          <li>Phased deployment de-risks for the customer — Phase 1 has zero CapEx and validates ROI before Phase 2 commitment</li>
+          <li>Two expansion paths give the customer options without making Array feel like a forced upsell</li>
+          <li>Customer presentation is separately designed for a non-technical audience — the analysis stays in the SE's toolkit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-dot">6</div>
+    <div class="step-label">Honest Gaps</div>
+    <h3>What Needs Validation in a Real Engagement</h3>
+    <p>These are the places where this analysis makes assumptions that a real SE would validate on-site or with the Locus account team before presenting a number to a customer:</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0;">
+      <div style="background:#fff;border:1px solid #dde6f0;border-left:4px solid var(--amb);border-radius:8px;padding:14px 18px;">
+        <strong style="color:var(--navy);">Zone distances are estimated.</strong>
+        <span style="font-size:14px;color:var(--grey);"> The 50/150/275/400/525 ft zone distances from Pack/Ship were read off the facility layout, not measured. Walk distance and UPH calculations are sensitive to this — a 10% error in distance propagates to the labor savings number.</span>
+      </div>
+      <div style="background:#fff;border:1px solid #dde6f0;border-left:4px solid var(--amb);border-radius:8px;padding:14px 18px;">
+        <strong style="color:var(--navy);">Array pricing needs account team confirmation.</strong>
+        <span style="font-size:14px;color:var(--grey);"> $4,000/robot/month is a planning assumption, explicitly flagged throughout. The real figure depends on fleet size, contract term, and customer-specific negotiation.</span>
+      </div>
+      <div style="background:#fff;border:1px solid #dde6f0;border-left:4px solid var(--amb);border-radius:8px;padding:14px 18px;">
+        <strong style="color:var(--navy);">Array pick rate is back-derived, not published.</strong>
+        <span style="font-size:14px;color:var(--grey);"> 176 picks/hr/robot was calculated from H&amp;B daily demand ÷ (4 robots × 22 hrs). It sits in the middle of the 150-300 picks/hr R2G benchmark range, which makes it defensible — but a Locus SE would validate against NeuraGrasp throughput data for this specific item mix.</span>
+      </div>
+      <div style="background:#fff;border:1px solid #dde6f0;border-left:4px solid var(--amb);border-radius:8px;padding:14px 18px;">
+        <strong style="color:var(--navy);">NeuraGrasp graspability is category-level, not SKU-level.</strong>
+        <span style="font-size:14px;color:var(--grey);"> H&amp;B scored 4/5 for graspability based on general packaging profile. A real engagement would pull unit dimensions and weights from the SKU master and run item-level confidence checks — some tubes, pouches, and flexible packaging in H&amp;B would score lower.</span>
+      </div>
+      <div style="background:#fff;border:1px solid #dde6f0;border-left:4px solid var(--amb);border-radius:8px;padding:14px 18px;">
+        <strong style="color:var(--navy);">Slotting calculator is human-optimized.</strong>
+        <span style="font-size:14px;color:var(--grey);"> The current slotting tool uses ergonomic tier (prime, secondary, floor) as a scoring factor. Array removes the ergonomic tier entirely — robot arm reach is the constraint, not human back angle. In an Array scenario, the slotting logic would be recalculated against robot-specific constraints.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step">
+    <div class="step-dot">7</div>
+    <div class="step-label">Where This Goes</div>
+    <h3>What I'd Build Next as an SE at Locus</h3>
+    <p>These calculators are a working foundation. Here's the roadmap I'd pursue to turn them into a standard SE team asset:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;">
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Robot Mode Toggle — Slotting Calculator</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">Switch the slotting optimizer from "human mode" to "Array mode" and re-rank zones by robot arm reach, not ergonomic tier. Show the SE exactly how the slotting recommendation changes when Array enters the picture.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">SKU-Level NeuraGrasp Scoring</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">Pull unit dimensions and weights from the SKU master and score NeuraGrasp graspability at the individual item level — not category-level. Surface exceptions within a "good" category before they become surprises at go-live.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">WMS Data Connector</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">Replace the CSV file drop with a live WMS export connection. The SE runs a data pull during the site visit and the calculators auto-populate — instead of a 2-3 day turnaround on analysis, it's same-day.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Vertical-Specific Benchmarks</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">Preset configurations for common Locus verticals — 3PL, retail replenishment, grocery, pharmaceutical. Each vertical has different UPH norms, ergonomic profiles, and IB patterns. Pre-loading these saves the SE from re-deriving benchmarks for every engagement.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Multi-Site Comparison</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">Enterprise customers often have 5-20 DCs. A multi-site scoring tool would let the SE rank DCs by robotics opportunity — which sites have the highest ROI per dollar, and in what order should they be sequenced for rollout.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde6f0;border-radius:8px;padding:16px 18px;border-top:3px solid var(--blue);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">SE Onboarding Version</div>
+        <p style="font-size:13px;color:var(--grey);line-height:1.6;">A guided walkthrough version of the calculators for new Locus SEs — explains <em>why</em> each input matters, shows the analysis methodology step by step, and calibrates the SE's judgment against known good examples before they run their first real engagement.</p>
+      </div>
+
+    </div>
+
+    <div class="callout green" style="margin-top:8px;">
+      <strong>The bigger picture:</strong> The goal is to reduce the time from "customer shares data" to "SE has a defensible proposal" from two weeks to two days. Every hour the analysis takes is an hour the customer is not moving forward. These calculators are a step toward that — but the version that runs in two days requires tighter data connections, more automation in the analysis layer, and institutional calibration of the benchmarks against real Locus deployments.
+    </div>
+  </div>
+
+</div><!-- end timeline -->
+
+</main>
+
+<footer>
+  Built by <a href="mailto:brandohazelton@gmail.com">Brandon Hazelton</a> &nbsp;|&nbsp;
+  Locus Robotics Solutions Engineering Portfolio &nbsp;|&nbsp;
+  <a href="https://github.com/brandorandos/RobotCalculatorExampleLR">GitHub Repo</a>
+</footer>
+</body>
+</html>
