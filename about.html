@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About This Project | Brandon Hazelton — Locus SE Portfolio</title>
+<title>About This Project | Brandon Hazelton - Locus SE Portfolio</title>
 <style>
   :root {
     --navy:#1F4E79; --blue:#2E75B6; --green:#375623;
@@ -63,6 +63,10 @@
   .list-card { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:18px 20px; }
   .list-card h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px; }
   .list-card ul { padding-left:18px; font-size:14px; color:var(--grey); line-height:1.9; }
+  .stack-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:16px 0; }
+  .stack-card { background:#fff; border:1px solid #dde6f0; border-radius:8px; padding:14px 16px; border-left:4px solid var(--blue); }
+  .stack-card .sc-name { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .stack-card .sc-use { font-size:12px; color:var(--grey); line-height:1.5; }
   footer { background:var(--navy); color:#aac4de; text-align:center; padding:24px; font-size:13px; }
   footer a { color:#90c8f0; text-decoration:none; }
 </style>
@@ -97,14 +101,14 @@
     <div class="step-label">The Goal</div>
     <h3>Opening a Door That May Not Currently Be Open</h3>
     <p>I built this to show what I am capable of creating with my current skills in data analysis, AI tooling, and SE process knowledge. The intent is straightforward: I want a hiring manager at Locus to be able to review this, see that I understand SE process and have done serious research on Locus and their customers, and want to have a conversation with me about it.</p>
-    <p>Most SE applications look the same. A resume, maybe a cover letter, a list of past accounts. I wanted to do something different &mdash; something that shows how I actually think through a customer problem, not just that I have done it before. This is my way of standing out and giving someone a concrete reason to pick up the phone.</p>
+    <p>Most SE applications look the same. A resume, maybe a cover letter, a list of past accounts. I wanted to do something different. Something that shows how I actually think through a customer problem, not just that I have done it before. This is my way of standing out and giving someone a concrete reason to pick up the phone.</p>
   </div>
 
   <div class="step">
     <div class="step-dot">2</div>
     <div class="step-label">My Background</div>
     <h3>Where the Warehouse Knowledge Comes From</h3>
-    <p>I have been an SE for approximately five years, with a range of adjacent roles that have expanded my perspective well beyond a typical sales engineering function. The most formative of those was at 6 River Systems, where I had a blast quickly understanding the P2G and R2G product space and the types of customers and applications that go with it. At 6RS specifically, I managed a significant portion of their data offering &mdash; work that gave me a clear view into not only how the robots operate, but how customers actually utilize them day to day.</p>
+    <p>I have been an SE for approximately five years, with a range of adjacent roles that have expanded my perspective well beyond a typical sales engineering function. The most formative of those was at 6 River Systems, where I had a blast quickly understanding the P2G and R2G product space and the types of customers and applications that go with it. At 6RS specifically, I managed a significant portion of their data offering. That work gave me a clear view into not only how the robots operate, but how customers actually utilize them day to day.</p>
     <p>Across those five years I have worked with many different types of AMRs and fixed automation, which has given me an invaluable perspective when analyzing customer sites and operations. I can walk a facility and quickly identify where the real bottlenecks are, which is the starting point for any honest robotics recommendation.</p>
   </div>
 
@@ -112,18 +116,18 @@
     <div class="step-dot">3</div>
     <div class="step-label">Why Locus</div>
     <h3>Why I Spent This Much Time on This Specific Company</h3>
-    <p>Since working in the AMR segment, I quickly identified Locus as a leader in the space &mdash; and a seemingly great one at that. The growing team, the long employee tenure, and the expanding product portfolio all point to a company on a strong trajectory. That matters to me when choosing where to invest my time and career.</p>
+    <p>Since working in the AMR segment, I quickly identified Locus as a leader in the space, and a seemingly great one at that. The growing team, the long employee tenure, and the expanding product portfolio all point to a company on a strong trajectory. That matters to me when choosing where to invest my time and career.</p>
     <p>I want to bring my SE experience with AMRs across a variety of customer environments, along with my more recent exposure to AI tooling and data analysis, to what I believe is already a powerful team. The goal is to add efficiency and optimization to a group that clearly already knows what they are doing.</p>
   </div>
 
   <div class="step">
     <div class="step-dot">4</div>
-    <div class="step-label">How I Built It</div>
+    <div class="step-label">How I Approached It</div>
     <h3>The Process, and How I Used AI</h3>
-    <p>I spent a significant amount of time upfront on AI-assisted research into Locus &mdash; their products, their customers, their competitors, and how their robots actually operate in the field. I used my domain knowledge to direct that research toward specific things I did not know, and I pressed hard for sources. Any time AI made an assumption or offered an estimate, I challenged it on realism and alignment before letting it go into the model.</p>
-    <p>The harder part of working with AI is keeping it on the rails. It consistently wanted to build more than was needed. I had to re-enter planning phases multiple times to make sure the end state of this project stayed within my original scope. More time on this project would go toward continuing that refinement &mdash; further matching the tooling to Locus' actual offering and to what would set them apart in front of a customer.</p>
+    <p>I spent a significant amount of time upfront on AI-assisted research into Locus: their products, their customers, their competitors, and how their robots actually operate in the field. I used my domain knowledge to direct that research toward specific things I did not know, and I pressed hard for sources. Any time AI made an assumption or offered an estimate, I challenged it on realism and alignment before letting it go into the model.</p>
+    <p>The harder part of working with AI is keeping it on the rails. It consistently wanted to build more than was needed. I had to re-enter planning phases multiple times to make sure the end state stayed within my original scope. More time on this project would go toward continuing that refinement, further matching the tooling to Locus' actual offering and to what would set them apart in front of a customer.</p>
     <div class="callout navy">
-      <strong>How to read the AI involvement here:</strong> AI wrote the code. I directed the analysis, validated every output against my domain knowledge, challenged the assumptions, and made every decision about what to build, what to cut, and what the numbers should mean. The analytical framework is mine &mdash; the implementation was accelerated.
+      <strong>How to read the AI involvement here:</strong> AI wrote the code. I directed the analysis, validated every output against my domain knowledge, challenged the assumptions, and made every decision about what to build, what to cut, and what the numbers should mean. The analytical framework is mine. The implementation was accelerated.
     </div>
   </div>
 
@@ -131,7 +135,7 @@
     <div class="step-dot">5</div>
     <div class="step-label">What I Stand Behind</div>
     <h3>Where the Work Is Solid</h3>
-    <p>I am confident in the calculations. The way this analysis looks at the customer data &mdash; the ABC tiering, the walk distance model, the fleet sizing math, the ROI comparison &mdash; is sound. I can defend those outputs in a room with a customer's operations team because the methodology is transparent and the logic holds.</p>
+    <p>I am confident in the calculations. The way this analysis looks at the customer data, the ABC tiering, the walk distance model, the fleet sizing math, and the ROI comparison, is sound. I can defend those outputs in a room with a customer's operations team because the methodology is transparent and the logic holds.</p>
     <p>What I cannot vouch for are the Locus-specific inputs: the exact pick rates for Origin and Array in a given environment, the precise UPH improvement a customer would see, the actual pricing. Those are planning assumptions, and they are flagged throughout as exactly that.</p>
   </div>
 
@@ -139,9 +143,9 @@
     <div class="step-dot">6</div>
     <div class="step-label">Honest Gaps</div>
     <h3>What a Real Engagement Would Fix</h3>
-    <p>The weakest parts of this analysis are the assumptions I had to make because the data does not exist outside of a real customer engagement: how far off a customer's slotting strategy actually is, what Locus robots cost under a specific contract, how fast Array picks in a specific item mix. I did not build anything overly complex, so the simple calculations are straightforward &mdash; but the inputs they depend on would all need to be validated on-site or with the Locus account team before going in front of a customer with a real number.</p>
+    <p>The weakest parts of this analysis are the assumptions I had to make because the data does not exist outside of a real customer engagement: how far off a customer's slotting strategy actually is, what Locus robots cost under a specific contract, how fast Array picks in a specific item mix. I did not build anything overly complex, so the calculations themselves are straightforward. But the inputs they depend on would all need to be validated on-site or with the Locus account team before going in front of a customer with a real number.</p>
     <div class="callout amber">
-      The ROI model and fleet sizing math are valid frameworks. The specific outputs &mdash; $1.4M net benefit, 4-month payback &mdash; are only as reliable as the assumptions underneath them. A real engagement replaces those assumptions with measured data.
+      The ROI model and fleet sizing math are valid frameworks. The specific outputs, $1.4M net benefit and 4-month payback, are only as reliable as the assumptions underneath them. A real engagement replaces those assumptions with measured data.
     </div>
   </div>
 
@@ -149,8 +153,44 @@
     <div class="step-dot">7</div>
     <div class="step-label">Where This Goes</div>
     <h3>What I Would Do With This at Locus</h3>
-    <p>The first thing I would do is replace every Locus-specific assumption in these calculators with real data from the account team &mdash; actual pricing, actual pick rates by robot type and item profile, actual UPH improvement ranges from live deployments. That alone would make this a significantly more useful tool.</p>
-    <p>From there, I would want to understand two things from the internal SE team: what takes the most time and creates the most friction in a typical engagement, and what customers actually care about most when they are evaluating an ROI. Those two inputs would drive where the calculators get refined next. Building tools that do not address those two questions is just building for the sake of building.</p>
+    <p>The first thing I would do is replace every Locus-specific assumption in these calculators with real data from the account team: actual pricing, actual pick rates by robot type and item profile, actual UPH improvement ranges from live deployments. That alone would make this a significantly more useful tool.</p>
+    <p>From there, I would want to understand two things from the internal SE team: what takes the most time and creates the most friction in a typical engagement, and what customers actually care about most when evaluating an ROI. Those two inputs would drive where the calculators get refined next. Building tools that do not address those two questions is just building for the sake of building.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-dot">8</div>
+    <div class="step-label">How It Was Built + Where It Can Go</div>
+    <h3>The Technical Stack and the Real Opportunity for SE Teams</h3>
+    <p>The stack is minimal by design. Python and pandas for data analysis, AI for accelerated development, HTML and CSS for the web-based calculators and outputs, and GitHub Pages for free hosting. No proprietary tools, no complex infrastructure. Any SE with access to standard customer data exports could run this analysis.</p>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="sc-name">Python + pandas</div>
+        <div class="sc-use">Core data analysis: ABC tiering, slotting drift, fleet sizing math, synthetic data generation</div>
+      </div>
+      <div class="stack-card">
+        <div class="sc-name">Claude AI</div>
+        <div class="sc-use">Development accelerator for code, calculators, report generation, and diagrams</div>
+      </div>
+      <div class="stack-card">
+        <div class="sc-name">HTML / CSS / JS</div>
+        <div class="sc-use">All calculator and presentation pages, no frameworks, no build step</div>
+      </div>
+      <div class="stack-card">
+        <div class="sc-name">Node.js + docx</div>
+        <div class="sc-use">Programmatic Word report generation with tables, callouts, and scenario comparisons</div>
+      </div>
+      <div class="stack-card">
+        <div class="sc-name">GitHub Pages</div>
+        <div class="sc-use">Free static hosting, anyone with the link can open every calculator and output</div>
+      </div>
+    </div>
+
+    <p>What makes this worth talking about as a team tool is not the technology. It is the structure. The calculators are built around a repeatable process: get the data, establish the baseline, check operations health before recommending robots, score applicability by category, size the fleet from throughput demand, and phase the proposal to reduce customer risk. That process is the same whether the customer is a 3PL in New Jersey or a retail DC in Texas.</p>
+    <p>To make this genuinely useful across an SE team today, the next steps are: replace the planning assumptions with real Locus data from the account team, understand what the current SE process actually looks like and where the time goes, and build toward reducing the time from customer data receipt to a defensible proposal. If that window is currently two weeks, tooling like this should be able to cut it significantly. Every hour saved in analysis is an hour spent with the customer.</p>
+    <div class="callout green">
+      <strong>The conversation I want to have:</strong> What does your current SE process look like? Where is the friction? What does a good proposal take today in terms of time and effort? Those answers would tell me exactly where to focus the next version of this.
+    </div>
   </div>
 
 </div>
