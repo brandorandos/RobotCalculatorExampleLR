@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SKU Slotting Optimizer | Locus SE</title>
+<title>Pre-Deployment Operations Analysis | Locus SE</title>
 <style>
   :root { --navy:#1F4E79; --blue:#2E75B6; --green:#375623; --grn-bg:#E2EFDA;
           --amb:#7F3F00; --amb-bg:#FFF2CC; --hdr:#D6E4F0; --grey:#595959; }
@@ -138,11 +138,11 @@
   <table>
     <thead><tr><th>Zone</th><th>Assumed Distance from Pack/Ship</th><th>Basis</th></tr></thead>
     <tbody>
-      <tr><td>A</td><td>50 ft</td><td>Nearest zone — estimated from facility layout dimensions</td></tr>
+      <tr><td>A</td><td>50 ft</td><td>Nearest zone  -  estimated from facility layout dimensions</td></tr>
       <tr><td>B</td><td>150 ft</td><td>~100 ft increment based on equal-width zone spacing</td></tr>
-      <tr><td>C</td><td>275 ft</td><td>Mid-facility — confirmed plausible against 200K sqft floor plan</td></tr>
-      <tr><td>D</td><td>400 ft</td><td>Far zone — estimated</td></tr>
-      <tr><td>E</td><td>525 ft</td><td>Farthest zone, near receiving — estimated</td></tr>
+      <tr><td>C</td><td>275 ft</td><td>Mid-facility  -  confirmed plausible against 200K sqft floor plan</td></tr>
+      <tr><td>D</td><td>400 ft</td><td>Far zone  -  estimated</td></tr>
+      <tr><td>E</td><td>525 ft</td><td>Farthest zone, near receiving  -  estimated</td></tr>
     </tbody>
   </table>
 </div>
@@ -163,7 +163,7 @@ walk_per_shift       = 600 × 55 = 33,000 ft = <strong>~6.2 miles</strong>
   </div>
 </div>
 <div class="callout navy">
-  <strong>SE note on zone distances:</strong> The distances above were estimated from the facility layout. For higher-accuracy modeling, an SE should walk the facility with a measuring wheel or pull distances from the WMS/LMS if available. Aisle-level distances (rather than zone-level) would further improve the walk distance model — this is called out in Future Calculator Work below.
+  <strong>SE note on zone distances:</strong> The distances above were estimated from the facility layout. For higher-accuracy modeling, an SE should walk the facility with a measuring wheel or pull distances from the WMS/LMS if available. Aisle-level distances (rather than zone-level) would further improve the walk distance model  -  this is called out in Future Calculator Work below.
 </div>
 
 <!-- ABC TIER ANALYSIS -->
@@ -252,7 +252,10 @@ walk_per_shift       = 600 × 55 = 33,000 ft = <strong>~6.2 miles</strong>
 
 <div class="future-item">
   <h4>3 - SE-Adjustable SKU-Level Overrides</h4>
-  <p>Some SKUs have operational constraints that override velocity-based slotting — vendor agreements, temperature requirements, hazmat zones, or items that must stay together for fulfillment reasons. An override field would let the SE flag individual SKUs as location-locked so they are excluded from the re-slot recommendation without affecting the overall drift metrics.</p>
+  <p>Some SKUs have operational constraints that override velocity-based slotting  -  vendor agreements, temperature requirements, hazmat zones, or items that must stay together for fulfillment reasons. An override field would let the SE flag individual SKUs as location-locked so they are excluded from the re-slot recommendation without affecting the overall drift metrics.</p>
 </div>
 
-<div class="future
+</main>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2b82e77306e84bfd856c40c201ad9040"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

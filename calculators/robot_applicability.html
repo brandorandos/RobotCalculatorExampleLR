@@ -87,17 +87,17 @@
 <div class="inputs-grid">
   <div class="input-card">
     <div class="ic-label">Input 1</div>
-    <div class="ic-file">SKU Master — Item Characteristics</div>
+    <div class="ic-file">SKU Master  -  Item Characteristics</div>
     <div class="ic-fields">category, sub_category, unit_weight_lbs, packaging type &rarr; drives NeuraGrasp graspability and uniformity scoring</div>
   </div>
   <div class="input-card">
     <div class="ic-label">Input 2</div>
-    <div class="ic-file">OB Transactions — Pick Volume</div>
+    <div class="ic-file">OB Transactions  -  Pick Volume</div>
     <div class="ic-fields">picks per category per day &rarr; determines how much volume each robot program captures and ROI magnitude</div>
   </div>
   <div class="input-card">
     <div class="ic-label">Input 3</div>
-    <div class="ic-file">Inventory Snapshot — Aisle Segregation</div>
+    <div class="ic-file">Inventory Snapshot  -  Aisle Segregation</div>
     <div class="ic-fields">whether category has dedicated aisles &rarr; affects deployment complexity and robot zone assignment clarity</div>
   </div>
   <div class="input-card">
@@ -171,11 +171,11 @@
     <table class="score-table">
       <thead><tr><th>Criterion</th><th>Weight</th><th>Score</th><th>Rationale</th></tr></thead>
       <tbody>
-        <tr><td>Item uniformity</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Bottles, boxes, packets — consistent shapes</td></tr>
+        <tr><td>Item uniformity</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Bottles, boxes, packets  -  consistent shapes</td></tr>
         <tr><td>NeuraGrasp graspability</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Rigid packaging; some tubes/pouches reduce confidence slightly</td></tr>
-        <tr><td>Pick velocity fit</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>15,523 picks/day — dominant volume, maximum Array ROI</td></tr>
+        <tr><td>Pick velocity fit</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>15,523 picks/day  -  dominant volume, maximum Array ROI</td></tr>
         <tr><td>Extended hours value</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>High daily volume benefits greatly from 22-hr window</td></tr>
-        <tr><td>Aisle segregation</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Aisles 1-2 dedicated to H&amp;B — Array deploys without conflict</td></tr>
+        <tr><td>Aisle segregation</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span><span class="pip pip-filled-green"></span></span> 5/5</td><td>Aisles 1-2 dedicated to H&amp;B  -  Array deploys without conflict</td></tr>
         <tr class="total-row"><td colspan="2"><strong>Array / NeuraGrasp Fit</strong></td><td colspan="2"><strong>93% weighted score &rarr; Route to Array</strong></td></tr>
       </tbody>
     </table>
@@ -190,7 +190,7 @@
       <tbody>
         <tr><td>Zone clustering density</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Decent velocity, aisles 3-4 well-concentrated</td></tr>
         <tr><td>Travel bottleneck severity</td><td>25%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span></span> 5/5</td><td>Travel is clearly the primary picker inefficiency today</td></tr>
-        <tr><td>Zone assignment clarity</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Aisles 3-4 dedicated — clean zone assignment for Origin</td></tr>
+        <tr><td>Zone assignment clarity</td><td>20%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Aisles 3-4 dedicated  -  clean zone assignment for Origin</td></tr>
         <tr><td>Batch wave compatibility</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-empty"></span></span> 4/5</td><td>Pick pattern suits 4-6 order batches well</td></tr>
         <tr><td>Human dexterity required</td><td>15%</td><td><span class="score-pip"><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span><span class="pip pip-filled"></span></span> 5/5</td><td>Folded/hanging garments require human judgment - strengthens Origin vs. Array case</td></tr>
         <tr class="total-row"><td colspan="2"><strong>Origin Fit</strong></td><td colspan="2"><strong>85% weighted score &rarr; Route to Origin + Human</strong></td></tr>
@@ -201,7 +201,7 @@
 </div>
 
 <div class="callout navy">
-  <strong>Why Apparel does not route to Array:</strong> NeuraGrasp is designed for uniform rigid-packaged items. Folded apparel, hanging garments, and multi-size SKUs require human dexterity for consistent pick quality. Origin handles the travel problem while the human handles item manipulation — the right division of labor for this category.
+  <strong>Why Apparel does not route to Array:</strong> NeuraGrasp is designed for uniform rigid-packaged items. Folded apparel, hanging garments, and multi-size SKUs require human dexterity for consistent pick quality. Origin handles the travel problem while the human handles item manipulation  -  the right division of labor for this category.
 </div>
 
 <!-- FLEET SIZING -->
@@ -237,34 +237,43 @@
 </div>
 
 <!-- DEPLOYMENT PLAN -->
-<div class="section-title">Phased Deployment Plan</div>
+<div class="section-title">Two-Phase Deployment Plan</div>
 <div class="phase-row">
   <div class="phase-num">1</div>
   <div>
-    <div class="phase-title">Origin Deployment - Apparel Aisles (Start Here)</div>
-    <div class="phase-desc">Re-slot Apparel first (273 C-tier moves + 83 A-tier moves). Deploy 2 Origin robots in aisles 3-4. Zero CapEx. Validates Origin ROI before committing to further expansion.</div>
+    <div class="phase-title">Origin Deployment - Apparel Aisles</div>
+    <div class="phase-desc">Re-slot Apparel first (273 C-tier moves + 83 A-tier moves). Deploy 2 Origin robots in aisles 3-4. Zero CapEx.</div>
   </div>
   <div class="phase-val">$360K / yr net</div>
 </div>
-
-<p style="font-size:13px;color:var(--grey);margin:20px 0 12px;font-weight:600;">From Phase 1, two expansion paths — choose based on customer appetite for automation and CapEx:</p>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px;">
-
-  <!-- PATH A -->
-  <div style="border:2px solid var(--green);border-radius:10px;padding:20px;background:#fff;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:10px;">Path A - Recommended</div>
-    <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Add Array to H&amp;B Aisles</div>
-    <div style="font-size:13px;color:var(--grey);line-height:1.6;margin-bottom:14px;">Site survey confirms racking scenario. Deploy 4 Array robots in aisles 1-2 for OB picking and overnight IB putaway/replenishment. Origin remains in Apparel. Near-eliminates H&amp;B picking labor and unlocks 22-hr operating window.</div>
-    <table style="width:100%;font-size:12px;border-collapse:collapse;">
-      <tr><td style="padding:4px 0;color:var(--grey);">Total fleet</td><td style="padding:4px 0;font-weight:700;color:var(--navy);">2 Origin + 4 Array</td></tr>
-      <tr><td style="padding:4px 0;color:var(--grey);">H&amp;B labor</td><td style="padding:4px 0;font-weight:700;color:var(--green);">Near-eliminated (Array autonomous)</td></tr>
-      <tr><td style="padding:4px 0;color:var(--grey);">IB handled</td><td style="padding:4px 0;font-weight:700;color:var(--green);">Yes — overnight putaway + replenishment</td></tr>
-      <tr><td style="padding:4px 0;color:var(--grey);">CapEx required</td><td style="padding:4px 0;color:var(--amb);">$50K – $400K (racking + infrastructure)</td></tr>
-      <tr><td style="padding:4px 0;color:var(--grey);">Combined net benefit</td><td style="padding:4px 0;font-size:16px;font-weight:700;color:var(--green);">$1,400K / yr</td></tr>
-    </table>
+<div class="phase-row">
+  <div class="phase-num">2</div>
+  <div>
+    <div class="phase-title">Array Deployment - H&amp;B Aisles + Inbound</div>
+    <div class="phase-desc">Site survey to confirm racking scenario. Deploy 4 Array robots in aisles 1-2 for OB picking and overnight IB putaway/replenishment.</div>
   </div>
+  <div class="phase-val">$1,400K / yr net</div>
+</div>
 
-  <!-- PATH B -->
-  <div style="border:2px solid var(--blue);border-radius:10px;padding:20px;background:#fff;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;l
+<div class="callout green" style="margin-top:20px;">
+  <strong>Combined steady state:</strong> 14 total headcount (down from 33) &bull; 99% capacity utilization &bull; $228K/yr robot fleet cost against $1.6M in labor savings &bull; Worst-case CapEx ($400K) recovered in 3.4 months.
+</div>
+
+<!-- FUTURE CALCULATOR WORK -->
+<div class="section-title">Future Calculator Work</div>
+<p style="font-size:14px;color:var(--grey);margin-bottom:20px;">Items identified for future development to improve scoring precision and broaden the tool's applicability across customer scenarios.</p>
+
+<div class="future-item">
+  <h4>1 - Dimension and Weight Scoring from SKU Master</h4>
+  <p>The current scoring uses category-level packaging assessments made during the SE site visit. A more precise version would pull unit_weight_lbs, unit_length_in, unit_width_in, and unit_height_in directly from the SKU master and score NeuraGrasp confidence at the individual SKU level based on known arm reach, gripper size, and weight capacity specifications. This would surface SKUs within a "good" category that are actually poor Array candidates  -  and vice versa.</p>
+</div>
+
+<div class="future-item">
+  <h4>2 - Manual SE Tuning for Singular Robot Focus</h4>
+  <p>Some deployment scenarios call for focusing on a single robot type for reasons outside the scoring model  -  customer budget constraints, a desire to start with the lowest-change deployment first, a specific labor reduction target that only one robot type meets, or a site condition (ceiling height, aisle width, fire suppression) that rules one out. An SE override panel would allow the SE to lock a category to a specific robot program and recalculate fleet sizing and ROI for that constrained scenario without re-running the full scoring model.</p>
+</div>
+
+</main>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2b82e77306e84bfd856c40c201ad9040"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
