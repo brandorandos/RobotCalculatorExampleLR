@@ -58,16 +58,16 @@
 <body>
 <header>
   <a href="../index.html" class="back">&larr; Back to Portfolio</a>
-  <h1>SKU Slotting Optimizer</h1>
+  <h1>Pre-Deployment Operations Analysis &mdash; SKU Slotting Health</h1>
   <p>Pre-loaded with customer data from this SE engagement &mdash; 5,000 SKUs, 60-day OB history</p>
 </header>
 <main>
 
 <!-- INTRO -->
 <div class="intro">
-  <strong>What this calculator does:</strong> Classifies every SKU by ABC velocity tier based on pick frequency, compares current slotted zone to the optimal zone for that velocity tier, and quantifies the walk distance waste created by slotting drift. The output drives the pre-deployment re-slot recommendation and sets up a clean zone structure for Locus robot assignment.
+  <strong>What this is:</strong> Before recommending any robot deployment, a good SE needs to understand whether the customer's current operation is already running at its most optimal. Slotting health is one check in that process &mdash; but not the only one. An SE might also look at batch wave strategy, labor scheduling, dock-to-floor flow, or replenishment frequency depending on where the pain points are. This calculator is an example of how to surface one of those dimensions systematically using the customer's own data.
   <br><br>
-  <strong>Why this matters for robot deployment:</strong> You cannot size or zone-assign robots effectively into a sub-optimal slot structure. Origin robots are zone-restricted &mdash; if the fastest SKUs are in the wrong zones, the robot assignment is wrong by definition. Fix slotting first, then deploy.
+  <strong>What it does:</strong> Classifies every SKU by ABC velocity tier based on pick frequency, compares current slotted zone to the optimal zone for that tier, and quantifies the walk distance waste created by slotting drift. If this analysis finds significant misplacement, the recommendation is to re-slot before deploying robots &mdash; because you cannot zone-assign Origin robots effectively into a sub-optimal slot structure. If the fastest SKUs are in the wrong zones, any robot assignment built on top of that is wrong by definition.
 </div>
 
 <!-- CRITICAL INPUTS -->
@@ -255,11 +255,4 @@ walk_per_shift       = 600 × 55 = 33,000 ft = <strong>~6.2 miles</strong>
   <p>Some SKUs have operational constraints that override velocity-based slotting — vendor agreements, temperature requirements, hazmat zones, or items that must stay together for fulfillment reasons. An override field would let the SE flag individual SKUs as location-locked so they are excluded from the re-slot recommendation without affecting the overall drift metrics.</p>
 </div>
 
-<div class="future-item">
-  <h4>4 &mdash; SKU Affinity Modeling</h4>
-  <p>Frequently co-ordered SKUs (ordered together in the same shipment) should ideally be slotted in proximity to minimize within-batch travel. Mining the OB transaction data for SKU co-occurrence pairs and incorporating affinity scores into zone placement would further reduce picks-per-batch travel time, beyond what ABC tiering alone achieves.</p>
-</div>
-
-</main>
-</body>
-</html>
+<div class="future
