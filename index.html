@@ -39,13 +39,6 @@
   .section-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--blue); font-weight:700; margin-bottom:8px; }
   h2 { font-size:26px; color:var(--navy); margin-bottom:6px; }
   .section-sub { color:var(--grey); font-size:15px; margin-bottom:32px; line-height:1.5; }
-  .metrics {
-    background:var(--navy); border-radius:12px; padding:32px 40px;
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:24px; margin-bottom:56px; text-align:center;
-  }
-  .metric-val { font-size:30px; font-weight:700; color:#90c8f0; }
-  .metric-lbl { font-size:12px; color:#aac4de; margin-top:4px; line-height:1.4; }
   .timeline { position:relative; padding-left:32px; margin-bottom:56px; }
   .timeline::before { content:''; position:absolute; left:11px; top:6px; bottom:6px; width:2px; background:var(--hdr); }
   .step { position:relative; margin-bottom:36px; }
@@ -105,25 +98,16 @@
 <div class="hero">
   <div class="tag">Solutions Engineering Portfolio</div>
   <h1>Warehouse Robotics <span>Analysis &amp; Proposal</span></h1>
-  <p>An example real-world SE engagement walkthrough from raw customer data to a phased Locus Origin + Array deployment recommendation with full ROI model.</p>
+  <p>A full SE engagement example: raw customer data in, phased Locus Origin and Array deployment recommendation out. Built to show how I think through a customer problem, not just that I have done it before.</p>
 </div>
 
 <main>
-
-  <div class="metrics">
-    <div><div class="metric-val">5,000</div><div class="metric-lbl">Active SKUs analyzed</div></div>
-    <div><div class="metric-val">1M+</div><div class="metric-lbl">OB transactions processed</div></div>
-    <div><div class="metric-val">112%</div><div class="metric-lbl">Capacity utilization at intake</div></div>
-    <div><div class="metric-val">$1.4M</div><div class="metric-lbl">Net annual benefit modeled</div></div>
-    <div><div class="metric-val">-19</div><div class="metric-lbl">Headcount reduction (Phase 2)</div></div>
-    <div><div class="metric-val">4 mo</div><div class="metric-lbl">Worst-case CapEx payback</div></div>
-  </div>
 
   <!-- STORY -->
   <div id="story">
     <div class="section-label">The Engagement</div>
     <h2>How This Analysis Was Built</h2>
-    <p class="section-sub">A step-by-step walkthrough of a typical SE discovery-to-proposal process, using real analytical methods and purpose-built calculators to accelerate the work.</p>
+    <p class="section-sub">A step-by-step walkthrough of a typical SE discovery-to-proposal process. Real analytical methods, purpose-built calculators, and a phased proposal that gives the customer options rather than a single path.</p>
 
     <div class="timeline">
       <div class="step">
@@ -167,10 +151,10 @@
       <div class="step">
         <div class="step-dot">5</div>
         <h3>Phased Deployment &amp; ROI Model</h3>
-        <p>Structured a two-phase proposal: Phase 1 deploys 4 Origin robots in Apparel aisles for $360K net annual benefit with zero CapEx. Phase 2 adds 4 Array robots to H&amp;B aisles for autonomous picking and overnight inbound putaway, lifting combined net benefit to $1.4M/yr. Worst-case CapEx pays back in under 4 months.</p>
-        <span class="chip">Phase 1: Origin $360K/yr</span>
-        <span class="chip">Phase 2: +Array $1.4M/yr</span>
-        <span class="chip">Less than 4 month payback</span>
+        <p>Structured a three-path proposal rather than a single recommendation. Phase 1 starts Origin in Apparel aisles at zero CapEx. From there, the customer picks the expansion path: scale Origin to all aisles for ~$580K net with no added CapEx, or add Array to H&amp;B for fully autonomous picking at $1.4M/yr net. One starting point, two expansion options, and the customer decides after seeing Phase 1 perform.</p>
+        <span class="chip">Phase 1: Origin, $0 CapEx</span>
+        <span class="chip">Path A: All-Origin, ~$580K/yr</span>
+        <span class="chip">Path B: +Array, $1.4M/yr</span>
       </div>
 
       <div class="step">
@@ -207,7 +191,7 @@
   <div id="calculators">
     <div class="section-label">Analytical Tools</div>
     <h2>Calculators &amp; Visual Aids</h2>
-    <p class="section-sub">Calculators are pre-loaded with the customer data from this engagement. Each one shows its inputs, logic, and outputs explicitly so the methodology is transparent and adjustable for different customer scenarios.</p>
+    <p class="section-sub">Pre-loaded with the customer data from this engagement. Each one surfaces its inputs, logic, and outputs explicitly so the methodology can be reviewed, challenged, or adjusted for a different customer scenario.</p>
     <div class="cards">
       <a href="calculators/slotting_optimizer.html" class="card calc">
         <div class="icon">📦</div>
@@ -240,7 +224,7 @@
   <div id="outputs">
     <div class="section-label">Deliverables</div>
     <h2>Customer-Facing Outputs</h2>
-    <p class="section-sub">Artifacts delivered to the customer at the conclusion of the engagement.</p>
+    <p class="section-sub">What gets handed to the customer at the end of the engagement. A visual presentation built for a decision-maker audience and a full written report with all the underlying analysis.</p>
     <div class="cards">
       <a href="outputs/customer_presentation.html" class="card output">
         <div class="icon">📊</div>
@@ -273,4 +257,13 @@
     </div>
   </div>
 
-</mai
+</main>
+
+<footer>
+  Built by <a href="mailto:brandohazelton@gmail.com">Brandon Hazelton</a> &nbsp;|&nbsp;
+  Locus Robotics Solutions Engineering Portfolio &nbsp;|&nbsp;
+  <a href="https://github.com/brandorandos/RobotCalculatorExampleLR">GitHub Repo</a>
+</footer>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
