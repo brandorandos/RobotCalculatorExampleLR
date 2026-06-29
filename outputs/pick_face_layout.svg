@@ -1,6 +1,6 @@
-<svg viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg"
+<svg viewBox="0 0 720 565" xmlns="http://www.w3.org/2000/svg"
      font-family="'Segoe UI',Arial,sans-serif">
-<rect width="720" height="510" fill="#f5f6f8"/>
+<rect width="720" height="565" fill="#f5f6f8"/>
 <text x="360" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">PICK FACE ELEVATION — 2-Bay Front View (per zone)</text>
 <text x="360" y="38" text-anchor="middle" font-size="9.5" fill="#777">Front elevation showing shelf levels and ergonomic zones. Both bay types share the same floor datum.</text>
 <rect x="60" y="46" width="224" height="30" fill="#2563a8" rx="3"/>
