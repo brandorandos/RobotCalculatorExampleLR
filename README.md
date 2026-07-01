@@ -15,7 +15,7 @@ A collection of work built in preparation for a Locus Robotics Solutions Enginee
 
 ## What's in Here
 
-### `/` — SE Engagement Example (the original deliverable)
+### `/` — SE Engagement Example
 A complete mock SE engagement: raw customer data in, phased deployment recommendation and ROI model out. Built to demonstrate how I think through a customer problem end-to-end.
 
 | File | Description |
@@ -32,7 +32,7 @@ A complete mock SE engagement: raw customer data in, phased deployment recommend
 
 ---
 
-### `/quick-reference` — SE Interview Quick Reference
+### `/company-research/quick-reference` — SE Interview Quick Reference
 A self-contained Excel workbook built for rapid recall during interviews and customer conversations. 8 tabs covering the full Locus product and competitive landscape.
 
 | File | Description |
@@ -49,7 +49,7 @@ A self-contained Excel workbook built for rapid recall during interviews and cus
 
 ---
 
-### `/research` — Sourced Research Notes
+### `/company-research/research` — Sourced Research Notes
 Markdown docs behind the quick reference. Useful for reviewing sources or going deeper on any topic.
 
 | File | Description |
@@ -60,7 +60,7 @@ Markdown docs behind the quick reference. Useful for reviewing sources or going 
 
 ---
 
-### `/tools` — Build Scripts
+### `/company-research/tools` — Build Scripts
 Scripts used to generate deliverables. Lets the Excel be regenerated or extended as new info comes in.
 
 | File | Description |
