@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locus Robotics Quick Reference | Brandon Hazelton</title>
+<style>
+  :root {
+    --navy:#1F4E79; --blue:#2E75B6; --green:#375623;
+    --grn-bg:#E2EFDA; --amb:#7F3F00; --amb-bg:#FFF2CC;
+    --hdr:#D6E4F0; --grey:#595959; --light:#f7f9fc;
+    --red-bg:#FFDCE0; --red:#8B0000;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--light); color:#222; }
+
+  /* NAV */
+  nav {
+    background:var(--navy); padding:0 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav .brand { color:#fff; font-size:15px; font-weight:600; }
+  nav .brand span { color:#90c8f0; }
+  nav .links a { color:#cde; text-decoration:none; font-size:13px; margin-left:24px; }
+  nav .links a:hover { color:#fff; }
+
+  /* HERO */
+  .hero {
+    background:linear-gradient(135deg,var(--navy) 0%,#2a6099 60%,var(--blue) 100%);
+    color:#fff; padding:56px 40px 48px; text-align:center;
+  }
+  .hero .tag {
+    display:inline-block; background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3); border-radius:20px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+    padding:4px 16px; margin-bottom:16px; color:#cde;
+  }
+  .hero h1 { font-size:32px; font-weight:700; line-height:1.2; margin-bottom:10px; }
+  .hero h1 span { color:#90c8f0; }
+  .hero p { font-size:15px; color:#cde; max-width:620px; margin:0 auto; line-height:1.6; }
+
+  /* TAB NAV */
+  .tab-nav-wrap {
+    background:#fff; border-bottom:2px solid #dde6f0;
+    position:sticky; top:56px; z-index:90;
+    box-shadow:0 2px 4px rgba(0,0,0,0.06);
+  }
+  .tab-nav {
+    max-width:1100px; margin:0 auto; padding:0 24px;
+    display:flex; gap:2px; overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .tab-nav::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    flex-shrink:0; padding:14px 18px; border:none; background:transparent;
+    font-family:'Segoe UI',Arial,sans-serif; font-size:13px; font-weight:600;
+    color:var(--grey); cursor:pointer; border-bottom:3px solid transparent;
+    transition:color 0.15s, border-color 0.15s; white-space:nowrap;
+  }
+  .tab-btn:hover { color:var(--tc,var(--navy)); }
+  .tab-btn.active { color:var(--tc,var(--navy)); border-bottom-color:var(--tc,var(--navy)); }
+
+  /* SEARCH */
+  .search-wrap {
+    max-width:1100px; margin:0 auto; padding:20px 24px 4px;
+  }
+  .search-wrap input {
+    width:100%; max-width:420px; padding:9px 16px;
+    border:1px solid #ccd9e8; border-radius:20px;
+    font-family:'Segoe UI',Arial,sans-serif; font-size:14px;
+    background:#fff; color:#222; outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-wrap input:focus {
+    border-color:var(--blue); box-shadow:0 0 0 3px rgba(46,117,182,0.15);
+  }
+
+  /* MAIN CONTENT */
+  main { max-width:1100px; margin:0 auto; padding:16px 24px 80px; }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  .panel-header {
+    background:#fff; border-radius:8px; border:1px solid #dde6f0;
+    padding:20px 24px; margin-bottom:20px;
+    border-left-width:4px !important;
+  }
+  .panel-header h2 { font-size:22px; margin-bottom:4px; }
+  .panel-header p { font-size:14px; color:var(--grey); }
+
+  /* REFERENCE TABLES */
+  .table-wrap { overflow-x:auto; border-radius:8px; border:1px solid #dde6f0; background:#fff; }
+  .ref-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .ref-table thead tr { background:var(--navy); }
+  .ref-table thead th {
+    color:#fff; font-weight:700; padding:11px 14px; text-align:left;
+    font-size:12px; letter-spacing:0.5px; text-transform:uppercase;
+    border-right:1px solid rgba(255,255,255,0.15);
+  }
+  .ref-table thead th:last-child { border-right:none; }
+  .ref-table tbody tr { border-bottom:1px solid #e8eef5; transition:background 0.1s; }
+  .ref-table tbody tr:hover td { background:#f0f5fb !important; }
+  .ref-table tbody tr.shade td { background:#f7f9fc; }
+  .ref-table tbody td { padding:10px 14px; vertical-align:top; line-height:1.5; color:#333; border-right:1px solid #e8eef5; }
+  .ref-table tbody td:last-child { border-right:none; }
+  .ref-table td.metric { font-weight:600; color:var(--navy); white-space:nowrap; min-width:160px; }
+  .ref-table td.value { font-weight:500; color:#222; min-width:160px; }
+  .ref-table td.desc { color:var(--grey); }
+  .ref-table td.source-cell { color:var(--grey); font-size:12px; font-style:italic; }
+  .sec-row td {
+    background:var(--navy) !important; color:#fff !important;
+    font-weight:700 !important; font-size:11px !important;
+    letter-spacing:1.5px !important; text-transform:uppercase !important;
+    padding:8px 14px !important;
+  }
+
+  /* PROFILES TABLE */
+  .profiles-table .th-strong { background:#1E6B1E; color:#fff; }
+  .profiles-table .th-mid    { background:#8B6914; color:#fff; }
+  .profiles-table .th-weak   { background:#8B1A1A; color:#fff; }
+  .profiles-table .shade-row .criteria-cell { background:#f7f9fc; }
+  .profiles-table .strong-cell { color:var(--green); background:#f5fff5; }
+  .profiles-table .mid-cell    { color:var(--amb); background:#fffff5; }
+  .profiles-table .weak-cell   { color:var(--red); background:#fff5f5; }
+  .profiles-table tr.shade-row .strong-cell { background:#ebf5eb; }
+  .profiles-table tr.shade-row .mid-cell    { background:#fff9e6; }
+  .profiles-table tr.shade-row .weak-cell   { background:#ffedec; }
+
+  /* CONFIDENCE BADGES */
+  .conf { display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:10px; white-space:nowrap; }
+  .conf-high { background:var(--grn-bg); color:var(--green); }
+  .conf-med  { background:var(--amb-bg); color:var(--amb); }
+  .conf-low  { background:var(--red-bg); color:var(--red); }
+
+  /* SOFTWARE CARDS */
+  .soft-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
+  .soft-card {
+    background:#fff; border-radius:8px; border:1px solid #dde6f0;
+    padding:20px; display:flex; gap:14px;
+    transition:box-shadow 0.2s;
+  }
+  .soft-card:hover { box-shadow:0 4px 16px rgba(30,78,121,0.12); }
+  .soft-icon { font-size:28px; flex-shrink:0; padding-top:2px; }
+  .soft-name { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:2px; }
+  .soft-type { font-size:11px; color:var(--blue); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:10px; }
+  .soft-row { display:flex; gap:8px; margin-bottom:6px; font-size:13px; line-height:1.5; }
+  .soft-label { font-weight:600; color:var(--navy); white-space:nowrap; min-width:100px; flex-shrink:0; }
+
+  /* COMPETITOR CARDS */
+  .comp-group { margin-bottom:28px; }
+  .comp-group-hdr {
+    color:#fff; font-weight:700; font-size:12px; letter-spacing:1px;
+    text-transform:uppercase; padding:10px 16px; border-radius:6px 6px 0 0;
+  }
+  .comp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(420px,1fr)); gap:0; border:1px solid #dde6f0; border-top:none; border-radius:0 0 8px 8px; overflow:hidden; }
+  .comp-card { background:#fff; padding:20px; border-bottom:1px solid #e8eef5; border-right:1px solid #e8eef5; }
+  .comp-card:last-child { border-bottom:none; }
+  .comp-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:14px; }
+  .comp-name { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+  .badge { display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:10px; }
+  .badge-direct  { background:var(--hdr); color:var(--navy); }
+  .badge-winding { background:var(--red-bg); color:var(--red); }
+  .badge-adjacent { background:var(--amb-bg); color:var(--amb); }
+  .comp-row { margin-bottom:10px; font-size:13px; line-height:1.5; }
+  .comp-label { display:block; font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--grey); margin-bottom:2px; }
+  .comp-strength p { color:var(--green); }
+  .comp-weakness p { color:var(--red); }
+  .comp-source p { color:var(--grey); font-style:italic; font-size:12px; }
+
+  /* PERSONA CARDS */
+  .persona-group { margin-bottom:28px; }
+  .persona-group-hdr {
+    color:#fff; padding:14px 20px; border-radius:6px 6px 0 0;
+  }
+  .pgn { font-weight:700; font-size:14px; }
+  .pgs { font-size:12px; opacity:0.85; margin-top:2px; }
+  .persona-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; padding:16px; background:#f7f9fc; border:1px solid #dde6f0; border-top:none; border-radius:0 0 8px 8px; }
+  .persona-card {
+    background:#fff; border-radius:8px; border:1px solid #dde6f0; overflow:hidden;
+    transition:box-shadow 0.2s;
+  }
+  .persona-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+  .persona-head { padding:16px 18px 12px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #e8eef5; }
+  .persona-icon { font-size:28px; }
+  .persona-name { font-size:15px; font-weight:700; color:var(--navy); }
+  .persona-title { font-size:12px; color:var(--grey); margin-top:2px; }
+  .persona-body { padding:4px 0; }
+  .pattr { padding:10px 18px; border-bottom:1px solid #f0f4f9; font-size:13px; line-height:1.5; }
+  .pattr:last-child { border-bottom:none; }
+  .pattr-label { display:block; font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--grey); margin-bottom:3px; }
+
+  /* HIDDEN BY SEARCH */
+  .hidden { display:none !important; }
+
+  /* FOOTER */
+  footer { background:var(--navy); color:#aac4de; text-align:center; padding:24px; font-size:13px; }
+  footer a { color:#90c8f0; text-decoration:none; }
+
+  @media(max-width:680px) {
+    .tab-btn { padding:12px 10px; font-size:12px; }
+    .comp-grid { grid-template-columns:1fr; }
+    .persona-grid { grid-template-columns:1fr; }
+    .soft-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Brandon Hazelton &nbsp;|&nbsp; <span>Locus Robotics SE Reference</span></div>
+  <div class="links">
+    <a href="../../index.html">← Home</a>
+    <a href="../../about.html">About</a>
+    <a href="https://github.com/brandorandos/RobotCalculatorExampleLR">GitHub</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tag">Company Research</div>
+  <h1>Locus Robotics <span>Quick Reference</span></h1>
+  <p>Robots, software, internal stack, customer profiles, competitors, and buyer personas — sourced, organized, and ready for interview or customer conversations.</p>
+</div>
+
+<div class="tab-nav-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn" data-tab="origin" style="--tc:#1B6BA0">Origin</button>
+<button class="tab-btn" data-tab="array" style="--tc:#217346">Array</button>
+<button class="tab-btn" data-tab="vector" style="--tc:#7B3F9E">Vector</button>
+<button class="tab-btn" data-tab="software" style="--tc:#1B3A6B">External Software</button>
+<button class="tab-btn" data-tab="stack" style="--tc:#404040">Internal Stack</button>
+<button class="tab-btn" data-tab="profiles" style="--tc:#B8520A">Customer Profiles</button>
+<button class="tab-btn" data-tab="competitors" style="--tc:#6B1A1A">Competitors</button>
+<button class="tab-btn" data-tab="personas" style="--tc:#4B2D8F">Personas</button>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="Search within current tab…" autocomplete="off">
+</div>
+
+<main>
+  
+<div class="tab-panel" id="tab-origin">
+  <div class="panel-header" style="border-left:4px solid #1B6BA0">
+    <h2 style="color:#1B6BA0">Origin</h2>
+    <p>Robot quick reference — specs, performance, deployment scale, and honest limitations.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ref-table">
+    <thead><tr><th>METRIC</th><th>VALUE</th><th>DESCRIPTION</th></tr></thead>
+    <tbody><tr class="sec-row"><td colspan="3">IDENTITY</td></tr><tr><td class="metric">Robot Name</td><td class="value">Locus Origin</td><td class="desc">Collaborative AMR — the flagship Locus robot since 2016</td></tr><tr class="shade"><td class="metric">Robot Type</td><td class="value">Person-to-Goods (P2G)</td><td class="desc">Robot navigates to pick location; human picker places item in tote</td></tr><tr><td class="metric">Launch Year</td><td class="value">2016</td><td class="desc">Most battle-tested robot in the portfolio; 10 years in production</td></tr><tr class="shade"><td class="metric">Best-Fit Workflows</td><td class="value">Order picking, putaway</td><td class="desc">High-volume e-commerce, retail, 3PL fulfillment</td></tr><tr class="sec-row"><td colspan="3">PHYSICAL SPECS</td></tr><tr><td class="metric">Payload Capacity</td><td class="value">36 kg / 79 lbs</td><td class="desc">Tote capacity for picked items</td></tr><tr class="shade"><td class="metric">Dimensions (LxWxH)</td><td class="value">558 × 558 × 1,468 mm</td><td class="desc">Compact footprint fits standard warehouse aisle widths</td></tr><tr><td class="metric">Robot Weight</td><td class="value">45 kg / 99 lbs</td><td class="desc"></td></tr><tr class="shade"><td class="metric">Max Speed</td><td class="value">5 m/s (~11 mph)</td><td class="desc">Slows near associates for safety</td></tr><tr><td class="metric">Mobility Type</td><td class="value">Standard wheeled</td><td class="desc">Forward/reverse/turn; not omnidirectional</td></tr><tr class="sec-row"><td colspan="3">OPERATIONAL PERFORMANCE</td></tr><tr><td class="metric">UPH (with robots)</td><td class="value">120–150 units/hour</td><td class="desc">Up from 30–40 UPH manual — 2–3× improvement per worker</td></tr><tr class="shade"><td class="metric">UPH Improvement</td><td class="value">2–3× vs. manual</td><td class="desc">DHL: 30–180% increase across 40+ sites</td></tr><tr><td class="metric">Training Time</td><td class="value">80% reduction (DHL)</td><td class="desc">Intuitive screen interface; minimal training required</td></tr><tr class="shade"><td class="metric">Operating Hours</td><td class="value">Multi-shift capable</td><td class="desc">Charges autonomously between missions</td></tr><tr><td class="metric">Accuracy</td><td class="value">High (not publicly specified)</td><td class="desc">Vision-guided interface reduces pick errors vs. paper/RF</td></tr><tr class="sec-row"><td colspan="3">FLEET &amp; INTEGRATION</td></tr><tr><td class="metric">Picker-to-Robot Ratio</td><td class="value">1 robot : 2–3 human pickers</td><td class="desc">Standard ratio; varies by facility density and order profile</td></tr><tr class="shade"><td class="metric">Works Alongside</td><td class="value">Locus Vector, Locus Array</td><td class="desc">Unified LocusONE fleet — coordinates across robot types</td></tr><tr><td class="metric">WMS Integration</td><td class="value">API (any WMS)</td><td class="desc">Named: Manhattan Associates, Blue Yonder, Logiwa, Made4Net, Tecsys</td></tr><tr class="shade"><td class="metric">Track Record</td><td class="value">2B+ picks / 300+ deployments</td><td class="desc">Most proven robot in the Locus portfolio</td></tr><tr class="sec-row"><td colspan="3">DEPLOYMENT SCALE</td></tr><tr><td class="metric">Customer Sites</td><td class="value">350+ sites / 150+ customers</td><td class="desc">20+ countries across NA, EMEA, APAC. Source: Locus press release, Oct 2025.</td></tr><tr class="shade"><td class="metric">Active Robots</td><td class="value">Tens of thousands (fleet-wide)</td><td class="desc">Exact per-model split not published. Majority are Origin units.</td></tr><tr><td class="metric">Total Lifetime Picks</td><td class="value">6B+ picks (fleet-wide)</td><td class="desc">Hit 6B in Oct 2025; last 1B in 24 weeks — fastest pace in company history.</td></tr><tr class="shade"><td class="metric">Annual Throughput</td><td class="value">1.8B units in 2024 (+50% YoY)</td><td class="desc">45M picks/week in 2025; on track for 60M/week in Q4 peak.</td></tr><tr><td class="metric">RaaS Pricing</td><td class="value">~$1,990/mo + ~$35K hardware</td><td class="desc">Illustrative only — not officially published. Do NOT quote to customers.</td></tr><tr class="shade"><td class="metric">Avg ROI Timeframe</td><td class="value">6 months or less (Locus claim)</td><td class="desc">Industry median ~13 months. Staples Canada: 1M picks in 70 days. 500K sq ft DC: under 18 months.</td></tr><tr class="sec-row"><td colspan="3">KEY DIFFERENTIATOR</td></tr><tr><td class="metric">Why Origin</td><td class="value">Proven at scale, lowest barrier to entry</td><td class="desc">Drops into existing brownfield operations without facility redesign. No new infrastructure needed. Fastest path to ROI in the Locus fleet.</td></tr><tr class="sec-row"><td colspan="3">HONEST LIMITATIONS</td></tr><tr><td class="metric">Labor Dependency</td><td class="value">Still requires human picker</td><td class="desc">If you can't staff the floor, the robot sits idle. Augments labor, does NOT eliminate it.</td></tr><tr class="shade"><td class="metric">Throughput Ceiling</td><td class="value">Tied to picker count + speed</td><td class="desc">Can't scale throughput beyond what your labor force can physically support</td></tr><tr><td class="metric">Heavy Goods</td><td class="value">36 kg payload limit</td><td class="desc">Large or heavy SKUs require Vector or a different solution</td></tr><tr class="shade"><td class="metric">Low-Density Risk</td><td class="value">Sparse SKU layout reduces gains</td><td class="desc">Wide-spread facilities with few picks per aisle see diminished benefits</td></tr><tr><td class="metric">Aisle Constraints</td><td class="value">Standard wheels; needs clear path</td><td class="desc">Very narrow or congested aisles reduce effectiveness</td></tr></tbody>
+  </table>
+  </div>
+</div>
+  
+<div class="tab-panel" id="tab-array">
+  <div class="panel-header" style="border-left:4px solid #217346">
+    <h2 style="color:#217346">Array</h2>
+    <p>Robot quick reference — specs, performance, deployment scale, and honest limitations.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ref-table">
+    <thead><tr><th>METRIC</th><th>VALUE</th><th>DESCRIPTION</th></tr></thead>
+    <tbody><tr class="sec-row"><td colspan="3">IDENTITY</td></tr><tr><td class="metric">Robot Name</td><td class="value">Locus Array</td><td class="desc">Fully autonomous picking robot — no human required in the picking zone</td></tr><tr class="shade"><td class="metric">Robot Type</td><td class="value">Robots-to-Goods (R2G) Autonomous</td><td class="desc">Robot navigates to shelf AND picks the item itself using AI-guided arm</td></tr><tr><td class="metric">Launch Year</td><td class="value">April 2026</td><td class="desc">Brand new. DHL Supply Chain is primary early-access customer.</td></tr><tr class="shade"><td class="metric">Best-Fit Workflows</td><td class="value">Picking, putaway, induction, replenishment, slotting, deplenishment</td><td class="desc">End-to-end autonomous fulfillment within a dedicated aisle zone</td></tr><tr class="sec-row"><td colspan="3">PHYSICAL SPECS</td></tr><tr><td class="metric">Tote Capacity</td><td class="value">6 order totes simultaneously</td><td class="desc">Each tote up to 66 lbs; rack-to-tote directly in the aisle</td></tr><tr class="shade"><td class="metric">Reach Height</td><td class="value">Up to 10 ft (3 m)</td><td class="desc">Picks from either side of very narrow aisle</td></tr><tr><td class="metric">Mobility Type</td><td class="value">Omnidirectional (Vector-derived)</td><td class="desc">Tight turns in narrow aisles; slides alongside shelving</td></tr><tr class="shade"><td class="metric">Picking Mechanism</td><td class="value">Vision-guided robotic arm</td><td class="desc">Suction cup end effectors + NeuraGrasp AI</td></tr><tr><td class="metric">AI Grasping</td><td class="value">NeuraGrasp™ (Nexera acquisition)</td><td class="desc">Handles items traditional suction systems can't</td></tr><tr class="sec-row"><td colspan="3">OPERATIONAL PERFORMANCE</td></tr><tr><td class="metric">SKU Coverage (solo)</td><td class="value">60–70% of e-comm SKUs</td><td class="desc">Includes ~30% of polybag SKUs</td></tr><tr class="shade"><td class="metric">SKU Coverage (fleet)</td><td class="value">100% when paired w/ Origin + Vector</td><td class="desc">Unified LocusONE fleet covers full SKU catalog</td></tr><tr><td class="metric">Labor Reduction</td><td class="value">Up to 90% in automated zone</td><td class="desc">Near-zero-touch fulfillment in the Array-dedicated zone</td></tr><tr class="shade"><td class="metric">Accuracy</td><td class="value">99.9% (stated)</td><td class="desc">Vision-guided picking with AI validation at point of grasp</td></tr><tr><td class="metric">Operating Hours</td><td class="value">24/7 capable</td><td class="desc">No labor dependency for covered workflows</td></tr><tr class="sec-row"><td colspan="3">FLEET &amp; INTEGRATION</td></tr><tr><td class="metric">Works Alongside</td><td class="value">Locus Origin, Locus Vector</td><td class="desc">Handles autonomous zone; Origin + Vector cover remaining SKUs</td></tr><tr class="shade"><td class="metric">WMS Integration</td><td class="value">Via LocusONE API</td><td class="desc">Same integration layer as Origin and Vector</td></tr><tr><td class="metric">Awards (since launch)</td><td class="value">2026 RBR50 / AI Breakthrough / AI Excellence</td><td class="desc">Three major awards within weeks of launch</td></tr><tr class="sec-row"><td colspan="3">DEPLOYMENT SCALE</td></tr><tr><td class="metric">Customer Sites</td><td class="value">Early access only (DHL Supply Chain)</td><td class="desc">Launched April 2026. Broader commercial deployments pending.</td></tr><tr class="shade"><td class="metric">Active Robots</td><td class="value">Not publicly disclosed</td><td class="desc">Too early for published deployment counts.</td></tr><tr><td class="metric">Fleet-Level Picks</td><td class="value">Included in 6B+ fleet total</td><td class="desc">Array volume not broken out separately.</td></tr><tr class="shade"><td class="metric">RaaS Pricing</td><td class="value">Premium tier (not published)</td><td class="desc">Expected significantly higher than Origin.</td></tr><tr><td class="metric">Avg ROI Timeframe</td><td class="value">TBD — insufficient data</td><td class="desc">Too early to publish. Apply general Locus claim with heavy caveat.</td></tr><tr class="shade"><td class="metric">Industry Awards</td><td class="value">RBR50 / AI Breakthrough / AI Excellence (2026)</td><td class="desc">Three major awards within weeks of launch.</td></tr><tr class="sec-row"><td colspan="3">KEY DIFFERENTIATOR</td></tr><tr><td class="metric">Why Array</td><td class="value">Only Locus robot with zero labor dependency in its zone</td><td class="desc">Combines mobile robotics + picking arm + AI grasping in one unit. Gets smarter over time as LocusONE AI models improve with each pick.</td></tr><tr class="sec-row"><td colspan="3">HONEST LIMITATIONS</td></tr><tr><td class="metric">New to Market</td><td class="value">Launched April 2026</td><td class="desc">Very limited track record. DHL is the primary early access site. Buying risk is real.</td></tr><tr class="shade"><td class="metric">SKU Coverage Gap</td><td class="value">30–40% not coverable autonomously</td><td class="desc">Polybags, very light items, and oversized items remain challenging</td></tr><tr><td class="metric">Facility Requirements</td><td class="value">Requires dedicated narrow-aisle racking up to 10 ft</td><td class="desc">Most brownfield sites need layout modifications. Not a drop-in like Origin.</td></tr><tr class="shade"><td class="metric">Implementation Complexity</td><td class="value">Higher than Origin</td><td class="desc">More infrastructure, longer deployment runway, more complex change management</td></tr><tr><td class="metric">Cost</td><td class="value">Premium tier (unpublished)</td><td class="desc">Expected significantly higher RaaS rate than Origin. Model the ROI carefully.</td></tr></tbody>
+  </table>
+  </div>
+</div>
+  
+<div class="tab-panel" id="tab-vector">
+  <div class="panel-header" style="border-left:4px solid #7B3F9E">
+    <h2 style="color:#7B3F9E">Vector</h2>
+    <p>Robot quick reference — specs, performance, deployment scale, and honest limitations.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ref-table">
+    <thead><tr><th>METRIC</th><th>VALUE</th><th>DESCRIPTION</th></tr></thead>
+    <tbody><tr class="sec-row"><td colspan="3">IDENTITY</td></tr><tr><td class="metric">Robot Name</td><td class="value">Locus Vector</td><td class="desc">Heavy-payload AMR for material transport</td></tr><tr class="shade"><td class="metric">Robot Type</td><td class="value">Heavy Transport AMR</td><td class="desc">Moves heavy goods through facility; not a picking solution</td></tr><tr><td class="metric">Launch Year</td><td class="value">2023 (acquired from Waypoint Robotics)</td><td class="desc">Newest robot in the portfolio; building deployment track record</td></tr><tr class="shade"><td class="metric">Best-Fit Workflows</td><td class="value">Transport, replenishment, putaway, heavy goods movement</td><td class="desc">Moves product between zones; supports fulfillment indirectly</td></tr><tr class="sec-row"><td colspan="3">PHYSICAL SPECS</td></tr><tr><td class="metric">Payload Capacity</td><td class="value">Up to 272 kg / 600 lbs</td><td class="desc">Purpose-built for heavy goods Origin cannot carry</td></tr><tr class="shade"><td class="metric">Mobility Type</td><td class="value">Omnidirectional</td><td class="desc">Maneuvers in virtually any orientation; handles tight spaces</td></tr><tr><td class="metric">Navigation</td><td class="value">Dual safety-rated LiDAR + 3-stage safety system</td><td class="desc">Operates safely alongside workers, forklifts, other equipment</td></tr><tr class="shade"><td class="metric">Chassis</td><td class="value">Industrial strength</td><td class="desc">Built for repeated heavy-load cycles in warehouse environments</td></tr><tr class="sec-row"><td colspan="3">OPERATIONAL PERFORMANCE</td></tr><tr><td class="metric">Productivity Improvement</td><td class="value">50% (GEODIS Dallas TX)</td><td class="desc">12 Vectors across 40,000 sq ft picking area</td></tr><tr class="shade"><td class="metric">Operating Hours</td><td class="value">Multi-shift capable</td><td class="desc"></td></tr><tr><td class="metric">Cycle Time</td><td class="value">Significantly reduced (stated)</td><td class="desc">State-of-the-art sensors reduce cycle times vs. manual transport</td></tr><tr class="sec-row"><td colspan="3">FLEET &amp; INTEGRATION</td></tr><tr><td class="metric">Works Alongside</td><td class="value">Locus Origin, Locus Array</td><td class="desc">Handles heavy/transport tasks Origin and Array cannot</td></tr><tr class="shade"><td class="metric">WMS Integration</td><td class="value">Via LocusONE API</td><td class="desc">Unified integration layer shared across the full Locus fleet</td></tr><tr><td class="metric">Notable Deployment</td><td class="value">GEODIS — expanding to 1,000 LocusBots worldwide</td><td class="desc">GEODIS committed to 1,000-bot global deployment after Dallas TX Vector success</td></tr><tr class="sec-row"><td colspan="3">DEPLOYMENT SCALE</td></tr><tr><td class="metric">Customer Sites</td><td class="value">350+ sites / 150+ customers</td><td class="desc">20+ countries across NA, EMEA, APAC. Source: Locus press release, Oct 2025.</td></tr><tr class="shade"><td class="metric">Active Robots</td><td class="value">Tens of thousands (fleet-wide)</td><td class="desc">Exact per-model split not published. Majority are Origin units.</td></tr><tr><td class="metric">Total Lifetime Picks</td><td class="value">6B+ picks (fleet-wide)</td><td class="desc">Hit 6B in Oct 2025; last 1B in 24 weeks — fastest pace in company history.</td></tr><tr class="shade"><td class="metric">Annual Throughput</td><td class="value">1.8B units in 2024 (+50% YoY)</td><td class="desc">45M picks/week in 2025; on track for 60M/week in Q4 peak.</td></tr><tr><td class="metric">RaaS Pricing</td><td class="value">~$1,990/mo + ~$35K hardware</td><td class="desc">Illustrative only — not officially published. Do NOT quote to customers.</td></tr><tr class="shade"><td class="metric">Avg ROI Timeframe</td><td class="value">6 months or less (Locus claim)</td><td class="desc">Industry median ~13 months. Staples Canada: 1M picks in 70 days. 500K sq ft DC: under 18 months.</td></tr><tr class="sec-row"><td colspan="3">KEY DIFFERENTIATOR</td></tr><tr><td class="metric">Why Vector</td><td class="value">Only robot in the fleet that handles heavy payloads (600 lbs)</td><td class="desc">Omnidirectional mobility allows it to navigate spaces where forklifts can't. Fills the transport gap Origin and Array don't address.</td></tr><tr class="sec-row"><td colspan="3">HONEST LIMITATIONS</td></tr><tr><td class="metric">Not a Picking Solution</td><td class="value">Does not fulfill orders</td><td class="desc">Cannot replace pickers or Array. Transport only.</td></tr><tr class="shade"><td class="metric">Niche Use Case</td><td class="value">Only relevant when heavy transport is a bottleneck</td><td class="desc">Most standard e-comm operations won't need it as their primary robot</td></tr><tr><td class="metric">Less Proven</td><td class="value">Launched 2023; fewer public deployments</td><td class="desc">Origin has years of battle-tested track record; Vector is still building its portfolio</td></tr><tr class="shade"><td class="metric">Space Requirements</td><td class="value">Large chassis despite omnidirectional movement</td><td class="desc">Aisles must accommodate its footprint and turning radius</td></tr></tbody>
+  </table>
+  </div>
+</div>
+  
+<div class="tab-panel" id="tab-software">
+  <div class="panel-header" style="border-left:4px solid #1B3A6B">
+    <h2 style="color:#1B3A6B">External Software</h2>
+    <p>Customer-facing products and platform components.</p>
+  </div>
+  <div class="soft-grid">
+    <div class="soft-card" data-search="LocusONE Platform Central intelligence layer coordinating all robots, labor, and WMS Fleet management, order routing, WES functionality, multi-site visibility">
+      <div class="soft-icon">🧠</div>
+      <div class="soft-body">
+        <div class="soft-name">LocusONE Platform</div>
+        <div class="soft-type">Orchestration Platform</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Customer IT + ops leadership</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Central intelligence layer coordinating all robots, labor, and WMS</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>Fleet management, order routing, WES functionality, multi-site visibility</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>WMS API (any system)</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="LocusHub Real-time KPI monitoring and reporting across all sites UPH, LPH, robot productivity, worker productivity, 24+ report types">
+      <div class="soft-icon">📊</div>
+      <div class="soft-body">
+        <div class="soft-name">LocusHub</div>
+        <div class="soft-type">Analytics Dashboard</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Customer supervisors, ops managers</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Real-time KPI monitoring and reporting across all sites</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>UPH, LPH, robot productivity, worker productivity, 24+ report types</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>LocusONE + WMS</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="System Directed Labor (SDL) Real-time labor coordination — directs workers to next optimal task via on-robot UI Task routing, labor utilization, throughput balancing">
+      <div class="soft-icon">🤖</div>
+      <div class="soft-body">
+        <div class="soft-name">System Directed Labor (SDL)</div>
+        <div class="soft-type">AI Agent (patent-pending)</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Floor associates</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Real-time labor coordination — directs workers to next optimal task via on-robot UI</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>Task routing, labor utilization, throughput balancing</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>LocusONE (on-robot screen)</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="Mission Optimization Clusters picks by density, shortens cycle times, dynamically allocates tasks across robot types Pick density improvement, cycle time reduction, multi-workflow allocation">
+      <div class="soft-icon">⚡</div>
+      <div class="soft-body">
+        <div class="soft-name">Mission Optimization</div>
+        <div class="soft-type">AI Routing Engine</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Automated (no user-facing UI)</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Clusters picks by density, shortens cycle times, dynamically allocates tasks across robot types</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>Pick density improvement, cycle time reduction, multi-workflow allocation</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>LocusONE (internal)</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="Advanced Simulation Fleet sizing, ROI forecasting, and design validation before deployment Robot count recommendations, payback period projections, throughput estimates">
+      <div class="soft-icon">🏗️</div>
+      <div class="soft-body">
+        <div class="soft-name">Advanced Simulation</div>
+        <div class="soft-type">Pre-Deployment Modeling Tool</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>SE / Customer Success / Prospects</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Fleet sizing, ROI forecasting, and design validation before deployment</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>Robot count recommendations, payback period projections, throughput estimates</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>Pre-deployment (standalone)</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="NeuraGrasp™ Vision-guided picking AI enabling Array to grasp irregular SKUs including polybags 60–70% e-comm SKU coverage solo; 99.9% accuracy; ~30% polybag coverage">
+      <div class="soft-icon">✋</div>
+      <div class="soft-body">
+        <div class="soft-name">NeuraGrasp™</div>
+        <div class="soft-type">AI Grasping System</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Array robot (onboard)</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Vision-guided picking AI enabling Array to grasp irregular SKUs including polybags</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>60–70% e-comm SKU coverage solo; 99.9% accuracy; ~30% polybag coverage</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>Array hardware (Nexera Robotics acquisition)</span></div>
+      </div>
+    </div>
+    <div class="soft-card" data-search="Robot User Interface Displays item image, quantity, and pick location on robot's touch screen 80% training time reduction (DHL); reduced pick errors">
+      <div class="soft-icon">📱</div>
+      <div class="soft-body">
+        <div class="soft-name">Robot User Interface</div>
+        <div class="soft-type">Associate-Facing Screen</div>
+        <div class="soft-row"><span class="soft-label">Who Uses It</span><span>Floor pickers (Origin workflow)</span></div>
+        <div class="soft-row"><span class="soft-label">Core Function</span><span>Displays item image, quantity, and pick location on robot's touch screen</span></div>
+        <div class="soft-row"><span class="soft-label">Key Metrics</span><span>80% training time reduction (DHL); reduced pick errors</span></div>
+        <div class="soft-row"><span class="soft-label">Integration</span><span>Origin robot screen / LocusONE</span></div>
+      </div>
+    </div></div>
+</div>
+  
+<div class="tab-panel" id="tab-stack">
+  <div class="panel-header" style="border-left:4px solid #404040">
+    <h2 style="color:#404040">Internal Stack</h2>
+    <p>Locus's internal tooling sourced from job descriptions. Confidence ratings reflect how directly each tool was evidenced.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ref-table">
+    <thead><tr><th>TOOL / PLATFORM</th><th>CONFIDENCE</th><th>WHAT IT'S USED FOR</th><th>SOURCE</th></tr></thead>
+    <tbody><tr class="sec-row"><td colspan="4">DATA ANALYSIS / SE &amp; PRE-SALES</td></tr><tr><td class="metric">Excel (Advanced)</td><td><span class="conf conf-high">High</span></td><td class="desc">Customer data analysis, concept system designs, ROI models</td><td class="source-cell">Senior SE JD — Greenhouse (directly fetched)</td></tr><tr class="shade"><td class="metric">SQL</td><td><span class="conf conf-high">High</span></td><td class="desc">Data querying and manipulation of warehouse and customer data</td><td class="source-cell">Senior SE JD + Data Architect LinkedIn JD</td></tr><tr><td class="metric">Python</td><td><span class="conf conf-high">High</span></td><td class="desc">Data analysis, scripting, and ML/AI workflows</td><td class="source-cell">Senior SE JD + AI Enterprise Architect JD (directly fetched)</td></tr><tr class="shade"><td class="metric">PowerBI</td><td><span class="conf conf-high">High</span></td><td class="desc">Reporting dashboards for SE work and customer-facing outputs</td><td class="source-cell">Senior SE JD — Greenhouse (directly fetched)</td></tr><tr><td class="metric">AutoCAD</td><td><span class="conf conf-high">High</span></td><td class="desc">Facility layout design and warehouse mapping for concept designs</td><td class="source-cell">Senior SE JD + Deployment Engineer JD (both directly fetched)</td></tr><tr class="shade"><td class="metric">FlexSim</td><td><span class="conf conf-high">High</span></td><td class="desc">Simulation of warehouse throughput for fleet sizing and ROI forecasting</td><td class="source-cell">Senior SE JD — Greenhouse (directly fetched)</td></tr><tr class="sec-row"><td colspan="4">DATA ARCHITECTURE / BACKEND</td></tr><tr><td class="metric">Databricks (Lakehouse)</td><td><span class="conf conf-high">High</span></td><td class="desc">Enterprise analytical data platform and data warehouse layer</td><td class="source-cell">AI Enterprise Architect JD — explicitly named (directly fetched)</td></tr><tr class="shade"><td class="metric">AWS / Azure / GCP</td><td><span class="conf conf-high">High</span></td><td class="desc">Cloud infrastructure (5+ yrs hands-on required in JD)</td><td class="source-cell">AI Enterprise Architect JD (directly fetched)</td></tr><tr><td class="metric">ETL/ELT Pipelines</td><td><span class="conf conf-high">High</span></td><td class="desc">Data movement and integration across enterprise systems</td><td class="source-cell">AI Enterprise Architect JD (directly fetched)</td></tr><tr class="shade"><td class="metric">SQL Server, Oracle, MongoDB, AWS RDS &amp; Aurora</td><td><span class="conf conf-med">Medium</span></td><td class="desc">Operational and analytical databases across the stack</td><td class="source-cell">Data Architect LinkedIn JD (search summary)</td></tr><tr><td class="metric">Metadata / Data Catalog</td><td><span class="conf conf-med">Medium</span></td><td class="desc">Data governance, lineage tracking, and data quality frameworks</td><td class="source-cell">AI Enterprise Architect JD (directly fetched)</td></tr><tr class="sec-row"><td colspan="4">BI / REPORTING</td></tr><tr><td class="metric">PowerBI</td><td><span class="conf conf-high">High</span></td><td class="desc">Internal reporting and dashboards; also used in SE pre-sales work</td><td class="source-cell">Senior SE JD (directly fetched)</td></tr><tr class="shade"><td class="metric">Looker</td><td><span class="conf conf-med">Medium</span></td><td class="desc">BI tool — listed as preferred in past Data Engineer posting</td><td class="source-cell">Data Engineer posting via aijobs.net (search summary)</td></tr><tr><td class="metric">GA4 (Google Analytics 4)</td><td><span class="conf conf-high">High</span></td><td class="desc">Web analytics for locusrobotics.com and digital properties</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr><tr class="shade"><td class="metric">Google Tag Manager</td><td><span class="conf conf-high">High</span></td><td class="desc">Tag management for web tracking and analytics</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr><tr class="sec-row"><td colspan="4">AI / LLM STACK</td></tr><tr><td class="metric">GPT-4 / Claude</td><td><span class="conf conf-high">High</span></td><td class="desc">Foundation models for enterprise AI workflows and agentic systems</td><td class="source-cell">AI Enterprise Architect JD — explicitly named (directly fetched)</td></tr><tr class="shade"><td class="metric">RAG Architecture</td><td><span class="conf conf-high">High</span></td><td class="desc">LLM-powered retrieval over enterprise data sources</td><td class="source-cell">AI Enterprise Architect JD (directly fetched)</td></tr><tr><td class="metric">Agentic Workflows</td><td><span class="conf conf-high">High</span></td><td class="desc">Automated end-to-end business process automation across Sales, CS, Finance, Ops</td><td class="source-cell">AI Enterprise Architect JD (directly fetched)</td></tr><tr class="shade"><td class="metric">ROS (Robot Operating System)</td><td><span class="conf conf-high">High</span></td><td class="desc">Robot navigation, control, and sensor processing</td><td class="source-cell">Deployment Engineer JD (directly fetched)</td></tr><tr><td class="metric">SLAM Navigation</td><td><span class="conf conf-high">High</span></td><td class="desc">Simultaneous Localization and Mapping for warehouse floor maps</td><td class="source-cell">Deployment Engineer JD + LocusONE product page (directly fetched)</td></tr><tr class="sec-row"><td colspan="4">MARKETING / CRM STACK</td></tr><tr><td class="metric">Marketo</td><td><span class="conf conf-high">High</span></td><td class="desc">Marketing automation — email, nurture, campaign management</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr><tr class="shade"><td class="metric">6sense / Demandbase</td><td><span class="conf conf-high">High</span></td><td class="desc">Intent data and account-based marketing (ABM) targeting</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr><tr><td class="metric">WordPress</td><td><span class="conf conf-high">High</span></td><td class="desc">Website CMS for locusrobotics.com</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr><tr class="shade"><td class="metric">A/B Testing / Personalization</td><td><span class="conf conf-high">High</span></td><td class="desc">Conversion optimization and web personalization</td><td class="source-cell">Digital Experience Manager JD (directly fetched)</td></tr></tbody>
+  </table>
+  </div>
+</div>
+  
+<div class="tab-panel" id="tab-profiles">
+  <div class="panel-header" style="border-left:4px solid #B8520A">
+    <h2 style="color:#B8520A">Target Customer Profiles</h2>
+    <p>Who to prioritize, who to nurture, and who to pass on quickly.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ref-table profiles-table">
+    <thead>
+      <tr>
+        <th>CRITERIA</th>
+        <th class="th-strong">STRONG FIT</th>
+        <th class="th-mid">MID FIT</th>
+        <th class="th-weak">WEAK FIT / PASS</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td class="criteria-cell"><strong>Volume (units/day)</strong></td>
+      <td class="strong-cell">30,000 – 500,000+</td>
+      <td class="mid-cell">10,000 – 30,000</td>
+      <td class="weak-cell">Under 10,000 — too low to justify RaaS economics</td>
+    </tr><tr class="shade-row">
+      <td class="criteria-cell"><strong>Facility Size</strong></td>
+      <td class="strong-cell">50,000 sq ft – 1M+ sq ft</td>
+      <td class="mid-cell">25,000 – 50,000 sq ft</td>
+      <td class="weak-cell">Under 25,000 sq ft or fixed-automation facility already locked in</td>
+    </tr><tr>
+      <td class="criteria-cell"><strong>Labor Situation</strong></td>
+      <td class="strong-cell">High turnover, labor scarcity, rising wages</td>
+      <td class="mid-cell">Moderate stability; seasonal spikes create stress</td>
+      <td class="weak-cell">Stable, low-cost labor — no urgency to automate</td>
+    </tr><tr class="shade-row">
+      <td class="criteria-cell"><strong>WMS Maturity</strong></td>
+      <td class="strong-cell">Modern WMS with clean API (Manhattan, Blue Yonder, Logiwa, Made4Net, Tecsys)</td>
+      <td class="mid-cell">Older WMS via middleware; willing to invest in integration</td>
+      <td class="weak-cell">No WMS, custom legacy, or IT bandwidth unavailable</td>
+    </tr><tr>
+      <td class="criteria-cell"><strong>Order Profile</strong></td>
+      <td class="strong-cell">High-velocity, repetitive SKU picks; e-comm, retail, 3PL</td>
+      <td class="mid-cell">Mixed profiles; manageable with Origin + Vector combo</td>
+      <td class="weak-cell">Heavy-only SKUs; bulk shipments; pure cold chain; manufacturing</td>
+    </tr><tr class="shade-row">
+      <td class="criteria-cell"><strong>Budget / Pricing Model</strong></td>
+      <td class="strong-cell">Prefers OpEx; open to RaaS subscription</td>
+      <td class="mid-cell">Mixed appetite; needs ROI proof; long procurement process</td>
+      <td class="weak-cell">Requires CapEx ownership; CFO opposed to monthly fee model</td>
+    </tr><tr>
+      <td class="criteria-cell"><strong>Automation Readiness</strong></td>
+      <td class="strong-cell">Has piloted AMRs; executive champion in place</td>
+      <td class="mid-cell">Exploring automation; needs education and proof-of-concept</td>
+      <td class="weak-cell">No automation experience; floor management resistance</td>
+    </tr><tr class="shade-row">
+      <td class="criteria-cell"><strong>Peak Variability</strong></td>
+      <td class="strong-cell">Significant peak swings — RaaS elasticity is a direct advantage</td>
+      <td class="mid-cell">Some seasonality but manageable with overtime</td>
+      <td class="weak-cell">Flat, predictable volume — RaaS elasticity not a selling point</td>
+    </tr><tr>
+      <td class="criteria-cell"><strong>Customer Archetypes</strong></td>
+      <td class="strong-cell">Large 3PLs (DHL, GEODIS); major e-comm brands; multi-site DCs</td>
+      <td class="mid-cell">Regional 3PLs scaling up; mid-market specialty retail</td>
+      <td class="weak-cell">Single-site boutique retailers; manufacturing plants</td>
+    </tr><tr class="shade-row">
+      <td class="criteria-cell"><strong>Competitive Dynamic</strong></td>
+      <td class="strong-cell">Evaluating Locus vs. 6RS/Fetch — Locus wins on track record</td>
+      <td class="mid-cell">Evaluating AMR broadly vs. ASRS or fixed conveyor</td>
+      <td class="weak-cell">Already committed to a competitor or fixed automation</td>
+    </tr><tr>
+      <td class="criteria-cell"><strong>Red Flags (pass quickly)</strong></td>
+      <td class="strong-cell">—</td>
+      <td class="mid-cell">—</td>
+      <td class="weak-cell">No WMS / Under 10K units/day / Fixed automation deployed / CFO opposes OpEx</td>
+    </tr></tbody>
+  </table>
+  </div>
+</div>
+  
+<div class="tab-panel" id="tab-competitors">
+  <div class="panel-header" style="border-left:4px solid #6B1A1A">
+    <h2 style="color:#6B1A1A">Competitors</h2>
+    <p>Sourced competitive landscape — direct AMRs, winding-down players, and adjacent categories.</p>
+  </div>
+  
+    <div class="comp-group">
+      <div class="comp-group-hdr" style="background:#1F4E79">Direct AMR Competitors</div>
+      <div class="comp-grid">
+      <div class="comp-card" data-search="Geek+ (Geekplus) G-series AMRs: goods-to-person pods, picking robots, sorting bots. Supports 5,000+ AMRs in a single warehouse. Launched Gino 1 humanoid Feb 2026. GeekOS orchestration platform. Multi-robot, multi-workflow coordination. Comparable scope to LocusONE.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">Geek+ (Geekplus)</div>
+            <span class="badge badge-direct">Direct AMR — P2G + R2G</span>
+          </div>
+          <span class="conf conf-high" style="align-self:flex-start">HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>G-series AMRs: goods-to-person pods, picking robots, sorting bots. Supports 5,000+ AMRs in a single warehouse. Launched Gino 1 humanoid Feb 2026.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>GeekOS orchestration platform. Multi-robot, multi-workflow coordination. Comparable scope to LocusONE.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>66,000+ robots · 950+ customers · 40+ countries · 23% global AMR market share · $378.7M revenue (2024) · IPO'd HKSE July 2025</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>Largest global AMR install base. Broadest robot type catalog. Strong APAC + EMEA footprint. Public company = greater R&amp;D resources.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>Chinese HQ = US data security concerns (ITAR adjacency). Less US warehouse expertise. Thinner US support network. Humanoid pivot is unproven distraction.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>IPO filings, Robot Report, Interact Analysis market data</p></div>
+        </div>
+      </div>
+      <div class="comp-card" data-search="6 River Systems (now Ocado) Chuck robot — collaborative P2G AMR. 90.7 kg, 1.3 m/s. No autonomous picking equivalent to Array. Cloud-based WES. WMS integration layer. Similar concept to LocusONE but narrower scope.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">6 River Systems (now Ocado)</div>
+            <span class="badge badge-direct">Direct AMR — P2G Collaborative</span>
+          </div>
+          <span class="conf conf-high" style="align-self:flex-start">HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>Chuck robot — collaborative P2G AMR. 90.7 kg, 1.3 m/s. No autonomous picking equivalent to Array.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>Cloud-based WES. WMS integration layer. Similar concept to LocusONE but narrower scope.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>100+ warehouses · 70+ customers · GXO, DHL, XPO · Acquired by Ocado (2023)</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>Strong 3PL customer overlap with Locus (GXO, DHL). Ocado brand = enterprise credibility. Solid P2G parity with Origin.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>Ocado acquisition created roadmap uncertainty. No autonomous picking capability. Fewer robot types. Less US-centric post-acquisition.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>Ocado investor docs, Robot Report, 6RS announcements</p></div>
+        </div>
+      </div>
+      <div class="comp-card" data-search="GreyOrange Ranger AMRs (multiple models). Hardware-agnostic CRN (Collaborative Robot Network) can orchestrate third-party robots. GreyMatter AI orchestration. Google Cloud partnership for GreyMatter DeepNav. SOC2 + ISO 27001 certified.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">GreyOrange</div>
+            <span class="badge badge-direct">Direct AMR + HW-Agnostic Orchestration</span>
+          </div>
+          <span class="conf conf-med" style="align-self:flex-start">MEDIUM-HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>Ranger AMRs (multiple models). Hardware-agnostic CRN (Collaborative Robot Network) can orchestrate third-party robots.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>GreyMatter AI orchestration. Google Cloud partnership for GreyMatter DeepNav. SOC2 + ISO 27001 certified.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>100,000+ active agents claimed · Customer count not disclosed · Active in NA, EMEA, APAC</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>Hardware-agnostic = can layer on existing robot fleets. Google Cloud AI partnership. Strong compliance posture.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>Requires WiFi 6 and specific floor specs — brownfield friction. No equivalent to Array's autonomous picking arm.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>GreyOrange website, Google partnership press release</p></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="comp-group">
+      <div class="comp-group-hdr" style="background:#8B0000">Winding Down — Displacement Opportunity</div>
+      <div class="comp-grid">
+      <div class="comp-card" data-search="Zebra Technologies / Fetch Robotics Fetch AMR fleet. Division being wound down — no new product development. Most staff cut by end of 2025. FetchCore cloud platform. No active development roadmap.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">Zebra Technologies / Fetch Robotics</div>
+            <span class="badge badge-winding">WINDING DOWN — AMR Division</span>
+          </div>
+          <span class="conf conf-high" style="align-self:flex-start">HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>Fetch AMR fleet. Division being wound down — no new product development. Most staff cut by end of 2025.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>FetchCore cloud platform. No active development roadmap.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>~100 customers at peak · Division wind-down underway · Existing customers need to migrate</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>⚡ OPPORTUNITY: Displaced Fetch customers actively seeking migration paths. Target these accounts directly.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>Customers face real support risk. No new features or robots. Existing deployments are depreciating assets with no upgrade path.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>Robot Report, multiple industry sources</p></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="comp-group">
+      <div class="comp-group-hdr" style="background:#7F3F00">Adjacent (Different Category — For Positioning Conversations)</div>
+      <div class="comp-grid">
+      <div class="comp-card" data-search="AutoStore Grid robots (R5, B1) moving across a proprietary cube storage grid. Fixed infrastructure — not mobile or brownfield. AutoStore WCS + WMS integration. No equivalent to LocusONE fleet orchestration.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">AutoStore</div>
+            <span class="badge badge-adjacent">Adjacent — Cube ASRS (NOT an AMR)</span>
+          </div>
+          <span class="conf conf-high" style="align-self:flex-start">HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>Grid robots (R5, B1) moving across a proprietary cube storage grid. Fixed infrastructure — not mobile or brownfield.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>AutoStore WCS + WMS integration. No equivalent to LocusONE fleet orchestration.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>1,900+ installations · 65+ countries · ~$596M revenue · Entry cost $500K–$2M+ per site</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>Extreme storage density. Very high throughput for fast-moving SKUs. Proven at massive global scale.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>MASSIVE CapEx ($500K–$2M+) vs. Locus RaaS OpEx. Requires full facility redesign. Not brownfield-compatible. Fixed infrastructure can't flex.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>AutoStore investor materials, Robot Report, public financials</p></div>
+        </div>
+      </div>
+      <div class="comp-card" data-search="Symbotic Symbotic bots within a proprietary fixed grid. Pallet-to-piece fulfillment. Not modular or brownfield-compatible. Symbotic AI platform for put-away, retrieval, and sortation. Optimized for hyperscale retail DCs.">
+        <div class="comp-head">
+          <div>
+            <div class="comp-name">Symbotic</div>
+            <span class="badge badge-adjacent">Adjacent — Fixed DC Automation (NOT an AMR)</span>
+          </div>
+          <span class="conf conf-high" style="align-self:flex-start">HIGH</span>
+        </div>
+        <div class="comp-body">
+          <div class="comp-row"><span class="comp-label">Robot Offering</span><p>Symbotic bots within a proprietary fixed grid. Pallet-to-piece fulfillment. Not modular or brownfield-compatible.</p></div>
+          <div class="comp-row"><span class="comp-label">Software</span><p>Symbotic AI platform for put-away, retrieval, and sortation. Optimized for hyperscale retail DCs.</p></div>
+          <div class="comp-row"><span class="comp-label">Scale</span><p>70 systems deployed · ~85% Walmart revenue concentration · $550–618M quarterly revenue · Publicly traded (SYM)</p></div>
+          <div class="comp-row comp-strength"><span class="comp-label">Strengths vs. Locus</span><p>Extreme efficiency at hyperscale. AI-optimized put-away and retrieval. Proven with world's largest retailer.</p></div>
+          <div class="comp-row comp-weakness"><span class="comp-label">Weaknesses vs. Locus</span><p>Requires $100M+ CapEx per installation. 85% Walmart concentration = single-customer risk. Requires purpose-built facility.</p></div>
+          <div class="comp-row comp-source"><span class="comp-label">Source</span><p>Symbotic 10-K / 10-Q SEC filings, earnings call transcripts</p></div>
+        </div>
+      </div></div>
+    </div>
+</div>
+  
+<div class="tab-panel" id="tab-personas">
+  <div class="panel-header" style="border-left:4px solid #4B2D8F">
+    <h2 style="color:#4B2D8F">Buyer &amp; User Personas</h2>
+    <p>Who you're selling to vs. who uses the product — with SE angles for each.</p>
+  </div>
+  
+    <div class="persona-group">
+      <div class="persona-group-hdr" style="background:#1F4E79">
+        <div class="pgn">Buyer Personas</div>
+        <div class="pgs">People Who Own the Purchasing Decision</div>
+      </div>
+      <div class="persona-grid">
+      <div class="persona-card" style="border-top:3px solid #1F4E79">
+        <div class="persona-head">
+          <span class="persona-icon">🏭</span>
+          <div>
+            <div class="persona-name">The Ops Champion</div>
+            <div class="persona-title">VP / Director of Operations</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>VP Operations, Director of Supply Chain, SVP Fulfillment</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Mid-to-large 3PL or enterprise retailer. Owns DC P&amp;L. Reports to COO or CEO. Accountable for throughput, cost-per-pick, and SLA compliance.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>Throughput, labor efficiency, cost-per-unit, peak season readiness, reducing dependency on hard-to-find labor.</p></div><div class="pattr"><span class="pattr-label">Key Questions</span><p>How much will this reduce my cost-per-pick? Can I scale for peak without hiring? What do other 3PLs see for ROI? How long until payback?</p></div><div class="pattr"><span class="pattr-label">Budget / Authority</span><p>Often the budget owner OR strong influencer. In larger orgs, needs CFO sign-off for multi-year RaaS commitment.</p></div><div class="pattr"><span class="pattr-label">Pain Points</span><p>Labor scarcity and rising wages. High turnover. Missed SLAs during peak. Pressure to do more with less.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Has evaluated AMRs before. Has a live labor problem. Under pressure from CEO/Board to modernize. Has a peer who deployed Locus.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Lead with operational outcomes: UPH gains, cost-per-pick reduction, peak elasticity. Have DHL, GEODIS, and Staples Canada case studies ready.</p></div></div>
+      </div>
+      <div class="persona-card" style="border-top:3px solid #1F4E79">
+        <div class="persona-head">
+          <span class="persona-icon">💰</span>
+          <div>
+            <div class="persona-name">The Budget Gatekeeper</div>
+            <div class="persona-title">CFO / VP Finance</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>CFO, VP Finance, Controller, SVP Finance</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Reports to CEO. Owns financial approvals for OpEx and CapEx. Risk-averse by nature. Measures success in IRR, payback period, and cost avoidance.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>Total cost of ownership, financial risk management, budget predictability, justifying spend to the board.</p></div><div class="pattr"><span class="pattr-label">Key Questions</span><p>What is total cost over 3 years? Is this OpEx or CapEx? What happens if volume drops — am I locked in? What is the exit clause?</p></div><div class="pattr"><span class="pattr-label">Budget / Authority</span><p>Final sign-off in many deals. Can approve or kill even when ops team is fully sold. Know their fiscal calendar.</p></div><div class="pattr"><span class="pattr-label">Pain Points</span><p>Unpredictable labor costs. CapEx avoidance after write-off experiences. Subscription fatigue. Fear of long-term commitment to unproven tech.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Has approved SaaS tools before. CFO is asking questions rather than delegating. Finance team modeling scenarios — that's a buy signal.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Lead with RaaS OpEx story: no CapEx outlay, predictable monthly cost. Have a 3-year TCO model ready. Address exit clauses proactively.</p></div></div>
+      </div>
+      <div class="persona-card" style="border-top:3px solid #1F4E79">
+        <div class="persona-head">
+          <span class="persona-icon">🔌</span>
+          <div>
+            <div class="persona-name">The Integration Gatekeeper</div>
+            <div class="persona-title">IT Director / VP Technology</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>Director of IT, VP Technology, CTO (smaller company), Director of Enterprise Systems</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Owns WMS, ERP, and all technology integrations. Reports to COO or CEO. Manages a lean team stretched across multiple systems.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>Technical feasibility, integration complexity, data security, system uptime, and not creating new tickets for their team.</p></div><div class="pattr"><span class="pattr-label">Key Questions</span><p>How does this connect to our WMS? What APIs? Who owns the data? What's the uptime SLA? How do you handle security?</p></div><div class="pattr"><span class="pattr-label">Budget / Authority</span><p>Rarely owns budget but can block or delay by raising technical concerns. Get to IT early — ambush creates gatekeeping.</p></div><div class="pattr"><span class="pattr-label">Pain Points</span><p>Custom WMS integrations that break. Vendor lock-in. Data security compliance pressure. IT bandwidth — already stretched too thin.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Has done AMR or WMS integrations before. WMS is modern with REST API. IT team is lean (wants low-maintenance). Brings system architect to call.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Lead with pre-built WMS connectors and Fortress Cybersecurity Award (2 consecutive years). Offer API docs during sales — not post-signature.</p></div></div>
+      </div></div>
+    </div>
+    <div class="persona-group">
+      <div class="persona-group-hdr" style="background:#375623">
+        <div class="pgn">User Personas</div>
+        <div class="pgs">People Who Use the Product Day-to-Day</div>
+      </div>
+      <div class="persona-grid">
+      <div class="persona-card" style="border-top:3px solid #375623">
+        <div class="persona-head">
+          <span class="persona-icon">📋</span>
+          <div>
+            <div class="persona-name">The Daily Driver</div>
+            <div class="persona-title">DC Operations Manager / Warehouse Manager</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>DC Manager, Warehouse Manager, Shift Manager, Operations Manager</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Manages day-to-day floor operations. Direct reports are supervisors and pickers. Reports to VP Operations.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>Daily throughput targets, labor coordination with robots, robot uptime, shift-by-shift KPI attainment.</p></div><div class="pattr"><span class="pattr-label">Daily Workflows</span><p>Reviews LocusHub dashboard each morning. Monitors UPH and robot utilization. Coordinates robot-to-picker assignments. Handles exception management.</p></div><div class="pattr"><span class="pattr-label">Frustrations</span><p>Robots going offline during peak. Unclear why throughput dipped. Manual workarounds when system errors occur.</p></div><div class="pattr"><span class="pattr-label">Technical Skills</span><p>Moderate. Comfortable with dashboards. Not a developer. Uses LocusHub daily. Escalates technical issues rather than debugging.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Uses LocusHub daily without prompting. Shares performance screenshots with VP Ops. Requests more robots. Becomes your best reference at 90 days.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Demo LocusHub live. Show fleet re-tasking ease. Address support SLA. Include them in deployment planning — creates ownership, not resistance.</p></div></div>
+      </div>
+      <div class="persona-card" style="border-top:3px solid #375623">
+        <div class="persona-head">
+          <span class="persona-icon">📦</span>
+          <div>
+            <div class="persona-name">The Floor Worker</div>
+            <div class="persona-title">Warehouse Associate (Picker)</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>Warehouse Associate, Order Picker, Fulfillment Specialist, DC Associate</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Front-line worker walking alongside Origin robots during P2G picking. Varies widely in tenure, language, and technical comfort.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>Completing daily pick quota. Physical safety near robots. Keeping up with robot pace. Not losing their job to a machine.</p></div><div class="pattr"><span class="pattr-label">Daily Workflows</span><p>Follows pick prompts on Origin robot touchscreen. Places items in tote. Responds to SDL task routing. Moves between pick zones as robot navigates.</p></div><div class="pattr"><span class="pattr-label">Frustrations</span><p>Robot pace too fast or inconsistent. Pick instructions that are unclear. Robot navigating to wrong zone.</p></div><div class="pattr"><span class="pattr-label">Technical Skills</span><p>Low to moderate. Uses robot touchscreen only. No system-level access. May not speak English as first language — icon-heavy UI matters.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Floor adoption is smooth post-go-live. Low error rates. Associates stop asking supervisors for help within the first week.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Address job security concern in change management plan. 80% training time reduction (DHL). Include floor training plan in your deployment proposal.</p></div></div>
+      </div>
+      <div class="persona-card" style="border-top:3px solid #375623">
+        <div class="persona-head">
+          <span class="persona-icon">⚙️</span>
+          <div>
+            <div class="persona-name">The System Owner</div>
+            <div class="persona-title">IT Systems Admin / Integration Manager</div>
+          </div>
+        </div>
+        <div class="persona-body"><div class="pattr"><span class="pattr-label">Title / Role</span><p>Systems Administrator, WMS Admin, Integration Manager, IT Manager</p></div><div class="pattr"><span class="pattr-label">Company Context</span><p>Manages the technical bridge between LocusONE and the customer's WMS and ERP. Often a single person covering multiple systems.</p></div><div class="pattr"><span class="pattr-label">Primary Focus</span><p>System uptime, API connection health, order sync accuracy, error resolution, data integrity between LocusONE and WMS.</p></div><div class="pattr"><span class="pattr-label">Daily Workflows</span><p>Monitors API connection health. Reviews error logs. Resolves order sync issues. Manages Locus software update windows. Escalates L2/L3 issues to Locus support.</p></div><div class="pattr"><span class="pattr-label">Frustrations</span><p>Black-box integrations they didn't build. API changes that break connections without warning. Unclear documentation. Slow support during peak season.</p></div><div class="pattr"><span class="pattr-label">Technical Skills</span><p>High. Comfortable with REST APIs, JSON, system logs, and network troubleshooting. Will read the docs. Will test the integration themselves.</p></div><div class="pattr"><span class="pattr-label">Win Signals</span><p>Validates integration docs proactively. Brings architecture questions to the table. Confirms API connectivity before go-live sign-off.</p></div><div class="pattr"><span class="pattr-label">SE Angle</span><p>Offer API documentation during the sales process — not post-signature. Position Locus Deployment Engineers as ongoing partners, not a one-time setup team.</p></div></div>
+      </div></div>
+    </div>
+</div>
+</main>
+
+<footer>
+  Built by <a href="mailto:brandohazelton@gmail.com">Brandon Hazelton</a> &nbsp;|&nbsp;
+  Locus Robotics Solutions Engineering Portfolio &nbsp;|&nbsp;
+  <a href="https://github.com/brandorandos/RobotCalculatorExampleLR">GitHub Repo</a>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2b82e77306e84bfd856c40c201ad9040"}'></script><!-- End Cloudflare Web Analytics -->
+
+<script>
+(function() {
+  const btns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  const search = document.getElementById('search');
+
+  function activate(id) {
+    btns.forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + id));
+    search.value = '';
+    clearSearch();
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+  activate('origin');
+
+  function clearSearch() {
+    document.querySelectorAll('.ref-table tbody tr:not(.sec-row)').forEach(r => r.classList.remove('hidden'));
+    document.querySelectorAll('.soft-card, .comp-card, .persona-card').forEach(c => c.classList.remove('hidden'));
+  }
+
+  search.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    const active = document.querySelector('.tab-panel.active');
+    if (!active) return;
+    if (!q) { clearSearch(); return; }
+
+    // Tables
+    active.querySelectorAll('.ref-table tbody tr:not(.sec-row)').forEach(row => {
+      row.classList.toggle('hidden', !row.textContent.toLowerCase().includes(q));
+    });
+
+    // Cards
+    active.querySelectorAll('.soft-card, .comp-card, .persona-card').forEach(card => {
+      card.classList.toggle('hidden', !card.textContent.toLowerCase().includes(q));
+    });
+  });
+})();
+</script>
+</body>
+</html>
