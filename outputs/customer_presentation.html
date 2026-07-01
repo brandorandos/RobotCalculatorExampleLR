@@ -92,10 +92,33 @@
   .badge-mid { background:#eaf0fb; color:#1a4070; }
   .badge-green { background:var(--grn-bg); color:var(--green); }
   .note { background:#f7f9fc; border-radius:8px; padding:16px 20px; border:1px solid #dde6f0; font-size:13px; color:var(--grey); line-height:1.6; margin-top:16px; }
+
+  nav {
+    background:var(--navy); padding:0 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav .brand { color:#fff; font-size:15px; font-weight:600; }
+  nav .brand span { color:#90c8f0; }
+  nav .links a { color:#cde; text-decoration:none; font-size:13px; margin-left:24px; }
+  nav .links a:hover { color:#fff; }
 </style>
 </head>
 <body>
 
+<nav>
+  <div class="brand">Brandon Hazelton &nbsp;|&nbsp; <span>Locus Robotics SE Example</span></div>
+  <div class="links">
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#data">Data</a>
+    <a href="../index.html#calculators">Calculators</a>
+    <a href="../index.html#outputs">Outputs</a>
+    <a href="../se_process.html">Process</a>
+    <a href="../company-research/quick-reference/">Quick Ref</a>
+    <a href="../about.html">About</a>
+  </div>
+</nav>
 <a href="../index.html" class="back">&larr; Back to Portfolio</a>
 
 <!-- TITLE -->
@@ -291,6 +314,5 @@
   </div>
 </div>
 
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2b82e77306e84bfd856c40c201ad9040"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

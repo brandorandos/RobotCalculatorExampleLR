@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SE Engagement Process | Brandon Hazelton - Locus SE Portfolio</title>
+<style>
+  :root {
+    --navy:#1F4E79; --blue:#2E75B6; --green:#375623;
+    --grn-bg:#E2EFDA; --amb:#7F3F00; --amb-bg:#FFF2CC;
+    --hdr:#D6E4F0; --grey:#595959; --light:#f7f9fc;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--light); color:#222; }
+  nav {
+    background:var(--navy); padding:0 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px; position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav .brand { color:#fff; font-size:15px; font-weight:600; }
+  nav .brand span { color:#90c8f0; }
+  nav .links a { color:#cde; text-decoration:none; font-size:13px; margin-left:24px; }
+  nav .links a:hover { color:#fff; }
+  .hero {
+    background:linear-gradient(135deg,#2c3e6e 0%,var(--navy) 60%,#1a3d6b 100%);
+    color:#fff; padding:64px 40px 52px; text-align:center;
+  }
+  .hero .tag {
+    display:inline-block; background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3); border-radius:20px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+    padding:4px 16px; margin-bottom:20px; color:#cde;
+  }
+  .hero h1 { font-size:34px; font-weight:700; line-height:1.2; margin-bottom:12px; }
+  .hero h1 span { color:#90c8f0; }
+  .hero p { font-size:16px; color:#cde; max-width:640px; margin:0 auto; line-height:1.6; }
+  main { max-width:1080px; margin:0 auto; padding:40px 24px 80px; }
+  .back { display:inline-flex; align-items:center; gap:6px; color:var(--blue);
+          text-decoration:none; font-size:13px; font-weight:600; margin-bottom:28px; }
+  .back:hover { color:var(--navy); }
+
+  /* Swimlane */
+  .wrap { overflow-x:auto; }
+  table { border-collapse:collapse; min-width:960px; width:100%; }
+
+  th.phase { background:var(--navy); color:#fff; font-size:10px; font-weight:700;
+             text-align:center; padding:10px 8px 6px; text-transform:uppercase;
+             letter-spacing:0.5px; vertical-align:top; }
+  th.gate  { background:var(--amb); color:#fff; font-size:10px; font-weight:700;
+             text-align:center; padding:10px 8px 6px; text-transform:uppercase;
+             letter-spacing:0.5px; vertical-align:top; }
+  th.blank { background:var(--navy); width:80px; }
+  .io-hint { font-size:9px; font-weight:400; color:rgba(255,255,255,0.6);
+             display:block; margin-top:4px; line-height:1.4; }
+
+  td.lane  { background:var(--navy); color:#fff; font-size:10px; font-weight:700;
+             padding:10px 8px; text-align:right; vertical-align:middle; width:80px; }
+  td.cell  { background:#fff; border:1px solid #dde6f0; padding:10px;
+             vertical-align:top; }
+  td.empty { background:var(--light); border:1px solid #edf2f8; }
+  td.gated { background:#FFF8E8; border:1px solid #e6c85a; padding:10px;
+             vertical-align:top; }
+
+  .action { font-size:12px; font-weight:700; color:var(--navy);
+            display:block; margin-bottom:3px; }
+  .detail { font-size:11px; color:var(--grey); display:block;
+            margin-bottom:2px; line-height:1.4; }
+  .new-tag { display:block; background:var(--grn-bg); color:var(--green);
+             font-size:9px; font-weight:700; padding:1px 6px; border-radius:6px;
+             text-transform:uppercase; margin-bottom:5px; width:fit-content; }
+  .opt { display:inline-block; background:#f0f0f0; color:#999; font-size:9px;
+         font-weight:700; padding:1px 6px; border-radius:6px;
+         text-transform:uppercase; margin-top:4px; }
+  .gate-result { font-size:11px; font-weight:700; display:block; margin-top:5px; }
+  .gate-result.yes { color:var(--green); }
+  .gate-result.no  { color:#c00; }
+  .warn { font-size:10px; color:var(--amb); display:block; margin-top:6px;
+          border-top:1px solid #e6c85a; padding-top:5px; line-height:1.4; }
+
+  .legend { margin-top:16px; font-size:12px; color:#999;
+            display:flex; gap:20px; flex-wrap:wrap; }
+  .swatch { display:inline-block; width:12px; height:12px; margin-right:5px;
+            vertical-align:middle; border-radius:2px; }
+
+  footer { background:var(--navy); color:#aac4de; text-align:center;
+           padding:24px; font-size:13px; }
+  footer a { color:#90c8f0; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Brandon Hazelton &nbsp;|&nbsp; <span>Locus Robotics SE Example</span></div>
+  <div class="links">
+    <a href="index.html#story">Story</a>
+    <a href="index.html#data">Data</a>
+    <a href="index.html#calculators">Calculators</a>
+    <a href="index.html#outputs">Outputs</a>
+    <a href="se_process.html">Process</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tag">SE Process Reference</div>
+  <h1>SE Engagement <span>Process</span></h1>
+  <p>A swimlane view of the full Locus SE engagement - from lead qualification to deployment handoff. Four roles, five phases, two decision gates.</p>
+</div>
+
+<main>
+
+<a href="index.html" class="back">&larr; Back to Portfolio</a>
+
+<div class="wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="blank"></th>
+      <th class="phase" style="width:90px;">Pre-Engagement
+        <span class="io-hint">In: Lead, CRM<br>Out: Briefed SE</span>
+      </th>
+      <th class="phase" style="width:110px;">Phase 1<br>Discovery
+        <span class="io-hint">In: Data request<br>Out: Customer data</span>
+      </th>
+      <th class="phase" style="width:120px;">Phase 2<br>Prelim Analysis
+        <span class="io-hint">In: CAD, CSVs, PFDs<br>Out: Fleet options, rough ROI</span>
+      </th>
+      <th class="gate" style="width:90px;">Gate 1<br>Prelim Deck
+        <span class="io-hint">Proceed or close</span>
+      </th>
+      <th class="phase" style="width:130px;">Phase 3<br>Detailed Analysis
+        <span class="io-hint">In: Remaining data<br>Out: Full fleet design</span>
+      </th>
+      <th class="gate" style="width:90px;">Gate 2<br>Design Review
+        <span class="io-hint">Buy-in or revise</span>
+      </th>
+      <th class="phase" style="width:110px;">Phase 4<br>Proposal
+        <span class="io-hint">In: Fleet proposal<br>Out: Signed contract</span>
+      </th>
+      <th class="phase" style="width:100px;">Phase 5<br>Handoff
+        <span class="io-hint">Out: Deployment<br>team ready</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- AE -->
+    <tr>
+      <td class="lane">AE</td>
+      <td class="cell">
+        <span class="action">Qualifies lead</span>
+        <span class="detail">Loads CRM, briefs SE</span>
+      </td>
+      <td class="cell">
+        <span class="action">Supports discovery</span>
+        <span class="detail">Manages relationship</span>
+      </td>
+      <td class="empty"></td>
+      <td class="gated">
+        <span class="action">Co-presents deck</span>
+      </td>
+      <td class="empty"></td>
+      <td class="gated">
+        <span class="action">Attends DDR</span>
+      </td>
+      <td class="cell">
+        <span class="action">Leads proposal</span>
+        <span class="detail">Pricing, SLA, contract negotiation</span>
+      </td>
+      <td class="empty"></td>
+    </tr>
+
+    <!-- SE -->
+    <tr>
+      <td class="lane">SE</td>
+      <td class="cell">
+        <span class="action">Reviews CRM</span>
+        <span class="detail">Preps for discovery</span>
+      </td>
+      <td class="cell">
+        <span class="action">Leads discovery call</span>
+        <span class="detail">Sends data request</span>
+      </td>
+      <td class="cell">
+        <span class="action">CAD review</span>
+        <span class="action">Data analysis</span>
+        <span class="action">PFD review</span>
+        <span class="opt">Optional: site visit</span>
+      </td>
+      <td class="gated">
+        <span class="action">Builds prelim deck</span>
+        <span class="detail">Fleet options + rough ROI</span>
+      </td>
+      <td class="cell">
+        <span class="action">Deepens analysis</span>
+        <span class="action">Fleet + labor model</span>
+        <span class="action">Floor routing</span>
+        <span class="opt">Optional: site visit</span>
+        <span class="opt">Optional: sim request</span>
+      </td>
+      <td class="gated">
+        <span class="action">Leads DDR</span>
+        <span class="detail">Full fleet + ROI model</span>
+      </td>
+      <td class="cell">
+        <span class="action">Customer Detailed Proposal</span>
+        <span class="detail">Fleet config, assumptions log</span>
+      </td>
+      <td class="cell">
+        <span class="action">Deployment handoff</span>
+        <span class="detail">Design pkg, flagged unknowns</span>
+      </td>
+    </tr>
+
+    <!-- SA -->
+    <tr>
+      <td class="lane">SA</td>
+      <td class="empty"></td>
+      <td class="empty"></td>
+      <td class="empty"></td>
+      <td class="gated">
+        <span class="new-tag">Enters here</span>
+        <span class="action">Joins engagement</span>
+      </td>
+      <td class="cell">
+        <span class="action">WMS integration spec</span>
+        <span class="action">Network + hardware</span>
+        <span class="action">Integration design</span>
+      </td>
+      <td class="gated">
+        <span class="action">Presents integration plan</span>
+      </td>
+      <td class="cell">
+        <span class="action">Supports proposal</span>
+        <span class="detail">Technical sections</span>
+      </td>
+      <td class="empty"></td>
+    </tr>
+
+    <!-- Customer -->
+    <tr>
+      <td class="lane">Customer</td>
+      <td class="empty"></td>
+      <td class="cell">
+        <span class="action">Discovery call</span>
+        <span class="detail">Ops Mgr, WH Engineer, VP</span>
+        <span class="action" style="margin-top:6px;">Returns data package</span>
+        <span class="detail">CSVs, CAD, PFDs, schedules</span>
+      </td>
+      <td class="empty"></td>
+      <td class="gated">
+        <span class="action">Reviews prelim deck</span>
+        <span class="gate-result yes">Proceed</span>
+        <span class="gate-result no">Close</span>
+        <span class="warn">Assumption gaps ripple from here</span>
+      </td>
+      <td class="cell">
+        <span class="action">Provides remaining data</span>
+        <span class="opt">Optional: hosts site visit</span>
+      </td>
+      <td class="gated">
+        <span class="action">Attends DDR</span>
+        <span class="gate-result yes">Buy-in</span>
+        <span class="gate-result no">Revise / close</span>
+        <span class="warn">Unresolved gaps most damaging here</span>
+      </td>
+      <td class="cell">
+        <span class="action">Contract negotiation</span>
+      </td>
+      <td class="empty"></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<div class="legend">
+  <span><span class="swatch" style="background:#FFF8E8;border:1px solid #e6c85a;"></span>Gate / decision point</span>
+  <span><span class="swatch" style="background:var(--light);border:1px solid #edf2f8;"></span>Not involved</span>
+  <span><span class="swatch" style="background:#f0f0f0;border:1px solid #ccc;"></span>Optional track</span>
+</div>
+
+</main>
+
+<footer>
+  Built by <a href="mailto:brandohazelton@gmail.com">Brandon Hazelton</a> &nbsp;|&nbsp;
+  Locus Robotics Solutions Engineering Portfolio &nbsp;|&nbsp;
+  <a href="https://github.com/brandorandos/RobotCalculatorExampleLR">GitHub Repo</a>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2b82e77306e84bfd856c40c201ad9040"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
